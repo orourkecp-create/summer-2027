@@ -1147,7 +1147,7 @@
       <button class="country-tab" id="tabPortugal" data-trip="portugal" role="tab" aria-selected="false">🇵🇹🇪🇸 PT + ES</button>
       <button class="country-tab" id="tabItaly" data-trip="italy" role="tab" aria-selected="false">🇮🇹 IT</button>
       <button class="country-tab" id="tabCroatia" data-trip="croatia" role="tab" aria-selected="false">🇭🇷🇲🇪 HR + ME</button>
-      <button class="country-tab" id="tabNye" data-trip="nye" role="tab" aria-selected="false">🎆 NYE</button>
+      <button class="country-tab" id="tabNye" data-trip="nye" role="tab" aria-selected="false">🎆 2028</button>
     </div>
   </nav>
 
@@ -1273,13 +1273,12 @@
         </div>
       </div>
 
-      <!-- 6. Winter 2028: NYE Strategy Tile -->
+      <!-- 6. Winter 2028: NYE Strategy Tile (Sophisticated European / Paris NYE fireworks photograph) -->
       <div class="home-country-card" onclick="updateSelectedTrip('nye')">
         <div class="home-card-img-wrap">
           <div class="home-card-collage two-photo">
-            <!-- Paris at night / winter city lights -->
-            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80" alt="Paris skyline at night">
-            <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=800&q=80" alt="Paris winter evening lights">
+            <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80" alt="New Year's Eve fireworks over Paris at night">
+            <img src="https://images.unsplash.com/photo-1498036882173-b41cf287533c?auto=format&fit=crop&w=1200&q=80" alt="Festive fireworks celebration night view">
           </div>
           <div class="home-card-emoji-badge">🎆</div>
         </div>
@@ -1960,9 +1959,9 @@ async function saveState() {
   try {
     const state = { currentTripKey, franceSeasonMode, selectedNyeOptionId, selectedWinterSummerOptionId, activeParisScenarioKey };
     if (window.storage && window.storage.set) {
-      await window.storage.set("summer2027_trip_state_v12", JSON.stringify(state));
+      await window.storage.set("summer2027_trip_state_v14", JSON.stringify(state));
     } else {
-      localStorage.setItem("summer2027_trip_state_v12", JSON.stringify(state));
+      localStorage.setItem("summer2027_trip_state_v14", JSON.stringify(state));
     }
   } catch(e) {}
 }
@@ -1971,10 +1970,10 @@ async function loadState() {
   try {
     let raw = null;
     if (window.storage && window.storage.get) {
-      const res = await window.storage.get("summer2027_trip_state_v12");
+      const res = await window.storage.get("summer2027_trip_state_v14");
       if (res && res.value) raw = res.value;
     } else {
-      raw = localStorage.getItem("summer2027_trip_state_v12");
+      raw = localStorage.getItem("summer2027_trip_state_v14");
     }
     if (raw) {
       const parsed = JSON.parse(raw);
