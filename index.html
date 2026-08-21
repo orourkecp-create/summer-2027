@@ -864,34 +864,6 @@
     box-shadow: 0 2px 10px rgba(217, 119, 6, 0.4);
   }
 
-  /* SCENARIO TOGGLES FOR PARIS NYE */
-  .scenario-toggle-group {
-    display: flex;
-    gap: 6px;
-    margin: 10px 0 16px;
-    overflow-x: auto;
-    padding-bottom: 4px;
-  }
-  .scenario-chip {
-    background: #1e293b;
-    border: 1px solid #475569;
-    color: #cbd5e1;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 6px 12px;
-    border-radius: 16px;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all 0.2s ease;
-  }
-  .scenario-chip:hover { border-color: #38bdf8; color: #fff; }
-  .scenario-chip.active {
-    background: #38bdf8;
-    color: #0f172a;
-    border-color: #38bdf8;
-    font-weight: 700;
-  }
-
   /* CURRENT CHOICE PROMPT BANNER */
   .unlock-prompt-box {
     background: rgba(255,255,255,0.05);
@@ -1067,7 +1039,7 @@
     padding-top: 10px;
     margin-top: 10px;
     display: flex;
-    justify-style: space-around;
+    justify-content: space-around;
     flex-wrap: wrap;
     gap: 8px;
   }
@@ -1576,16 +1548,6 @@
         <!-- Dynamically injected prompt -->
       </div>
 
-      <!-- PARIS NYE SCENARIO SELECTOR (VISIBLE ONLY IN WINTER MODE) -->
-      <div id="parisScenarioContainer" style="display:none; background:rgba(255,255,255,0.03); padding:12px; border-radius:8px; margin-bottom:16px;">
-        <div style="font-family:var(--font-plaque); font-size:11px; text-transform:uppercase; letter-spacing:0.12em; color:#fef3c7; margin-bottom:6px;">Select Paris NYE Lodging Scenario:</div>
-        <div class="scenario-toggle-group">
-          <button class="scenario-chip active" id="chipParis3p" onclick="setParisScenario('3p')">3 Travelers (Con + Ashley + Michele) · 5 Nights · Full Trip $4.5K–$5.5K</button>
-          <button class="scenario-chip" id="chipParis2p4n" onclick="setParisScenario('2p4n')">2-Person Studio · 4 Nights · Full Trip $2.45K–$2.9K</button>
-          <button class="scenario-chip" id="chipParis2p5n" onclick="setParisScenario('2p5n')">2-Person Marais · 5 Nights · Full Trip $2.8K–$3.35K</button>
-        </div>
-      </div>
-
       <!-- SELECTABLE CARDS GRID -->
       <div class="unlock-grid" id="unlockCardsGrid">
         <!-- Dynamically injected cards -->
@@ -1672,7 +1634,7 @@ const DATA = {
   greece: {
     id: "greece",
     countryName: "Greece 🇬🇷",
-    route: "Naxos 6n → Hydra 4n → Athens 3n",
+    route: "Naxos 6n · Hydra 4n · Athens 3n",
     subtitle: "The Adventure",
     tagline: "The strongest pure island feeling, Aegean swimming, car-free Hydra, and ancient history in Athens.",
     
@@ -1716,7 +1678,7 @@ const DATA = {
   portugal: {
     id: "portugal",
     countryName: "Portugal + Spain 🇵🇹🇪🇸",
-    route: "Cascais 6n → Calpe 7n",
+    route: "Cascais 6n · Calpe 7n",
     subtitle: "The Vacation",
     tagline: "The easiest, slowest, most conventional vacation option — long stays, pool, beach, terrace, and 1 move.",
     
@@ -1759,7 +1721,7 @@ const DATA = {
   italy: {
     id: "italy",
     countryName: "Italy 🇮🇹",
-    route: "Monopoli 9n → Rome 4n",
+    route: "Monopoli 9n · Rome 4n",
     subtitle: "Food & Culture Powerhouse",
     tagline: "Nine slow nights in coastal Puglia coves → four nights of historic Rome dining and landmarks.",
     
@@ -1802,7 +1764,7 @@ const DATA = {
   france: {
     id: "france",
     countryName: "France 🇫🇷",
-    route: "Amboise 3n → Paris 6n → Cassis 4n",
+    route: "Amboise 3n · Paris 6n · Cassis 4n",
     subtitle: "Châteaux, Marais & Calanques",
     tagline: "Loire countryside castles → living in the Marais → Mediterranean calanques of Cassis.",
     
@@ -1895,37 +1857,15 @@ const UNLOCK_DATA = {
   },
 
   winterFrance: {
-    prompt: "<b>SUMMER: 2 TRAVELERS | PARIS NYE: 3 TRAVELERS</b><br>Paris owns NYE — which Mediterranean/European summer route do you want instead?",
+    prompt: "<b>SUMMER: 2 TRAVELERS | PARIS NYE: 3 TRAVELERS (CON + ASHLEY + MICHELE · 5 NIGHTS)</b><br>Paris owns NYE — which Mediterranean/European summer route do you want instead?",
     
-    // Paris NYE Scenarios (December 28, 2027 – January 2, 2028)
-    parisScenarios: {
-      "3p": { 
-        id: "3p",
-        chipLabel: "3 Travelers (Con + Ashley + Michele) · 5 Nights · Full Trip $4.5K–$5.5K",
-        name: "3 Travelers Marais (5n)", 
-        partySize: "3 Travelers (Con + Ashley + Michele)",
-        lodgingText: "Apartment Total: $1,589.06 (23 Rue Vieille du Temple) | 3-way lodging share: ~$529.69 pp | Con + Ashley Share: ~$1,059.37",
-        lowVal: 4500, highVal: 5500,
-        rangeText: "~$4,500–$5,500 total 3-person trip planning range"
-      },
-      "2p4n": { 
-        id: "2p4n",
-        chipLabel: "2-Person Studio · 4 Nights · Full Trip $2.45K–$2.9K",
-        name: "2-Person Studio (4n)", 
-        partySize: "2 Travelers (Couple Only)",
-        lodgingText: "Total Studio Lodging: $511.18 (Dec 29–Jan 2 Le Marais Studio)",
-        lowVal: 2450, highVal: 2900,
-        rangeText: "~$2,450–$2,900 total 2-person trip planning range"
-      },
-      "2p5n": { 
-        id: "2p5n",
-        chipLabel: "2-Person Marais · 5 Nights · Full Trip $2.8K–$3.35K",
-        name: "2-Person Marais (5n)", 
-        partySize: "2 Travelers (Couple Only)",
-        lodgingText: "Total Marais Airbnb Lodging: $828.00 (Dec 28–Jan 2)",
-        lowVal: 2800, highVal: 3350,
-        rangeText: "~$2,800–$3,350 total 2-person trip planning range"
-      }
+    // Fixed Paris NYE 3-person scenario (December 28, 2027 – January 2, 2028)
+    parisFixed: {
+      name: "Paris NYE (3p · 5n)",
+      partySize: "3 Travelers (Con + Ashley + Michele)",
+      lodgingText: "Apartment Total: $1,589.06 (23 Rue Vieille du Temple) | 3-way lodging share: ~$529.69 pp | Con + Ashley Share: ~$1,059.37",
+      lowVal: 4500, highVal: 5500,
+      rangeText: "~$4,500–$5,500 total 3-person trip planning range"
     },
 
     options: [
@@ -1973,15 +1913,14 @@ let currentTripKey = 'home';
 let franceSeasonMode = 'summer'; // 'summer' or 'winter'
 let selectedNyeOptionId = 'cdmx';
 let selectedWinterSummerOptionId = 'croatia_summer';
-let activeParisScenarioKey = '3p';
 
 async function saveState() {
   try {
-    const state = { currentTripKey, franceSeasonMode, selectedNyeOptionId, selectedWinterSummerOptionId, activeParisScenarioKey };
+    const state = { currentTripKey, franceSeasonMode, selectedNyeOptionId, selectedWinterSummerOptionId };
     if (window.storage && window.storage.set) {
-      await window.storage.set("summer2027_trip_state_v16", JSON.stringify(state));
+      await window.storage.set("summer2027_trip_state_v19", JSON.stringify(state));
     } else {
-      localStorage.setItem("summer2027_trip_state_v16", JSON.stringify(state));
+      localStorage.setItem("summer2027_trip_state_v19", JSON.stringify(state));
     }
   } catch(e) {}
 }
@@ -1990,10 +1929,10 @@ async function loadState() {
   try {
     let raw = null;
     if (window.storage && window.storage.get) {
-      const res = await window.storage.get("summer2027_trip_state_v16");
+      const res = await window.storage.get("summer2027_trip_state_v19");
       if (res && res.value) raw = res.value;
     } else {
-      raw = localStorage.getItem("summer2027_trip_state_v16");
+      raw = localStorage.getItem("summer2027_trip_state_v19");
     }
     if (raw) {
       const parsed = JSON.parse(raw);
@@ -2001,7 +1940,6 @@ async function loadState() {
       if (parsed.franceSeasonMode) franceSeasonMode = parsed.franceSeasonMode;
       if (parsed.selectedNyeOptionId) selectedNyeOptionId = parsed.selectedNyeOptionId;
       if (parsed.selectedWinterSummerOptionId) selectedWinterSummerOptionId = parsed.selectedWinterSummerOptionId;
-      if (parsed.activeParisScenarioKey) activeParisScenarioKey = parsed.activeParisScenarioKey;
     }
   } catch(e) {}
 }
@@ -2149,23 +2087,21 @@ function getAnnualCombinations() {
     });
   });
 
-  // Branch B: Winter France
+  // Branch B: Winter France (Fixed 3p Paris NYE only)
+  const parisScen = UNLOCK_DATA.winterFrance.parisFixed;
   UNLOCK_DATA.winterFrance.options.forEach(summerOpt => {
-    Object.values(UNLOCK_DATA.winterFrance.parisScenarios).forEach(parisScen => {
-      const combinedLow = summerOpt.lowVal + parisScen.lowVal;
-      const combinedHigh = summerOpt.highVal + parisScen.highVal;
-      combos.push({
-        key: `winter_france_${summerOpt.id}_${parisScen.id}`,
-        branch: 'winter',
-        summerName: summerOpt.name,
-        winterName: `Paris NYE (${parisScen.name})`,
-        parisScenKey: parisScen.id,
-        summerOptId: summerOpt.id,
-        label: `${summerOpt.name} + 🇫🇷 Paris NYE (${parisScen.name})`,
-        combinedLow,
-        combinedHigh,
-        midpoint: (combinedLow + combinedHigh) / 2
-      });
+    const combinedLow = summerOpt.lowVal + parisScen.lowVal;
+    const combinedHigh = summerOpt.highVal + parisScen.highVal;
+    combos.push({
+      key: `winter_france_${summerOpt.id}`,
+      branch: 'winter',
+      summerName: summerOpt.name,
+      winterName: `Paris NYE (${parisScen.name})`,
+      summerOptId: summerOpt.id,
+      label: `${summerOpt.name} + 🇫🇷 Paris NYE (${parisScen.name})`,
+      combinedLow,
+      combinedHigh,
+      midpoint: (combinedLow + combinedHigh) / 2
     });
   });
 
@@ -2179,7 +2115,6 @@ function renderUnlockModule() {
   const calcBanner = document.getElementById("combinedCalcBanner");
   const btnSummer = document.getElementById("btnFranceSummerMode");
   const btnWinter = document.getElementById("btnFranceWinterMode");
-  const parisContainer = document.getElementById("parisScenarioContainer");
 
   if (!promptBox || !cardsGrid || !calcBanner) return;
 
@@ -2203,7 +2138,6 @@ function renderUnlockModule() {
   if (franceSeasonMode === 'summer') {
     btnSummer?.classList.add("active");
     btnWinter?.classList.remove("active");
-    if (parisContainer) parisContainer.style.display = "none";
 
     const data = UNLOCK_DATA.summerFrance;
     promptBox.innerHTML = data.prompt;
@@ -2234,7 +2168,7 @@ function renderUnlockModule() {
     let tierBadgeClass = "balanced";
     let tierText = "BALANCED YEAR";
     if (activeMidpoint < t1) { tierBadgeClass = "best"; tierText = "BEST VALUE YEAR"; }
-    else if (activeMidpoint >= t2) { tierBadgeClass = "highest"; tierText = "HIGHEST-SPEND YEAR"; }
+    else if (activeMidpoint >= t2) { tierBadgeClass = "highest"; tierText = "HIGH-SPEND YEAR"; }
 
     calcBanner.innerHTML = `
       <div class="annual-tier-badge ${tierBadgeClass}">${tierText}</div>
@@ -2253,7 +2187,6 @@ function renderUnlockModule() {
   } else {
     btnWinter?.classList.add("active");
     btnSummer?.classList.remove("active");
-    if (parisContainer) parisContainer.style.display = "block";
 
     const data = UNLOCK_DATA.winterFrance;
     promptBox.innerHTML = data.prompt;
@@ -2272,26 +2205,26 @@ function renderUnlockModule() {
     }).join("");
 
     const activeSummerOpt = data.options.find(o => o.id === selectedWinterSummerOptionId) || data.options[0];
-    const activeParisScen = data.parisScenarios[activeParisScenarioKey];
-    const combinedLow = activeSummerOpt.lowVal + activeParisScen.lowVal;
-    const combinedHigh = activeSummerOpt.highVal + activeParisScen.highVal;
+    const parisScen = data.parisFixed;
+    const combinedLow = activeSummerOpt.lowVal + parisScen.lowVal;
+    const combinedHigh = activeSummerOpt.highVal + parisScen.highVal;
     const activeMidpoint = (combinedLow + combinedHigh) / 2;
 
     // Dynamic Tercile Tier Classification
     let tierBadgeClass = "balanced";
     let tierText = "BALANCED YEAR";
     if (activeMidpoint < t1) { tierBadgeClass = "best"; tierText = "BEST VALUE YEAR"; }
-    else if (activeMidpoint >= t2) { tierBadgeClass = "highest"; tierText = "HIGHEST-SPEND YEAR"; }
+    else if (activeMidpoint >= t2) { tierBadgeClass = "highest"; tierText = "HIGH-SPEND YEAR"; }
 
     calcBanner.innerHTML = `
       <div class="annual-tier-badge ${tierBadgeClass}">${tierText}</div>
       <div class="calc-label">2027 Combined Major Travel Spend</div>
-      <div class="calc-combo-title">${activeSummerOpt.name} + 🇫🇷 Paris NYE (${activeParisScen.name})</div>
+      <div class="calc-combo-title">${activeSummerOpt.name} + 🇫🇷 Paris NYE (3 Travelers · 5n)</div>
       <div class="calc-number-big">~$${combinedLow.toLocaleString()}–$${combinedHigh.toLocaleString()} combined range</div>
-      <div style="font-size:12px; color:#fef3c7; margin-bottom:8px;">${activeParisScen.lodgingText}</div>
+      <div style="font-size:12px; color:#fef3c7; margin-bottom:8px;">${parisScen.lodgingText}</div>
       <div class="calc-breakdown">
         <span>Summer Choice (2 Travelers): <b>${activeSummerOpt.costRangeText}</b></span>
-        <span>Paris NYE Choice (${activeParisScen.partySize}): <b>${activeParisScen.rangeText}</b></span>
+        <span>Paris NYE (${parisScen.partySize}): <b>~$${parisScen.lowVal.toLocaleString()}–$${parisScen.highVal.toLocaleString()}</b></span>
       </div>
       <div class="calc-comparative-context">
         <span>Lowest Annual Combo: <b>~$${minCombo.combinedLow.toLocaleString()}–$${minCombo.combinedHigh.toLocaleString()}</b> (${minCombo.label})</span>
@@ -2299,16 +2232,6 @@ function renderUnlockModule() {
       </div>
     `;
   }
-}
-
-function setParisScenario(key) {
-  activeParisScenarioKey = key;
-  document.querySelectorAll(".scenario-chip").forEach(chip => chip.classList.remove("active"));
-  if (key === '3p') document.getElementById("chipParis3p")?.classList.add("active");
-  if (key === '2p4n') document.getElementById("chipParis2p4n")?.classList.add("active");
-  if (key === '2p5n') document.getElementById("chipParis2p5n")?.classList.add("active");
-  renderUnlockModule();
-  saveState();
 }
 
 function selectNyeOption(id) {
