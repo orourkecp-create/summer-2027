@@ -334,84 +334,6 @@
     background: var(--card-border);
   }
 
-  /* SELECTOR CARDS (5 TRIPS GRID) */
-  .trip-cards-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-  @media (min-width: 520px) {
-    .trip-cards-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  .trip-card-select {
-    background: var(--card-bg);
-    border: 2px solid var(--card-border);
-    border-radius: 10px;
-    padding: 16px;
-    text-align: left;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    position: relative;
-    width: 100%;
-    color: var(--text-dark);
-  }
-  .trip-card-select:hover {
-    border-color: var(--accent);
-    transform: translateY(-2px);
-  }
-  .trip-card-select[aria-pressed="true"] {
-    border-color: var(--accent);
-    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
-  }
-  .trip-card-select[aria-pressed="true"]::before {
-    content: "SELECTED";
-    position: absolute;
-    top: -10px;
-    right: 12px;
-    background: var(--accent);
-    color: #fff;
-    font-family: var(--font-plaque);
-    font-size: 9px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 10px;
-    letter-spacing: 0.1em;
-  }
-  .tc-country {
-    font-family: var(--font-plaque);
-    font-size: 15px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-dark);
-    line-height: 1.2;
-  }
-  .tc-route {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin: 3px 0 8px;
-  }
-  .tc-cost {
-    font-family: var(--font-display);
-    font-size: 21px;
-    font-weight: 700;
-    color: var(--text-dark);
-    line-height: 1;
-  }
-  .tc-pp {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-  }
-  .tc-badge {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 12.5px;
-    color: var(--accent);
-    font-weight: 600;
-  }
-
   /* CARD BOX CONTAINERS */
   .card-box {
     background: var(--card-bg);
@@ -966,51 +888,6 @@
         <!-- Dynamically filled by JS -->
       </div>
     </header>
-
-    <div class="section-label">Select Destination to Explore</div>
-
-    <!-- 5 TRIPS SELECTOR GRID -->
-    <div class="trip-cards-grid" role="radiogroup" aria-label="Summer 2027 Trip Options">
-      <button class="trip-card-select" id="btnFrance" data-trip="france" role="radio" aria-pressed="true">
-        <div class="tc-country">France 🇫🇷</div>
-        <div class="tc-route">Amboise 3n · Paris 6n · Cassis 4n</div>
-        <div class="tc-cost" id="gridCostFrance">~$7,050 likely</div>
-        <div class="tc-pp" id="gridPpFrance">$7,850 ceiling (~$3,525–$3,925 pp)</div>
-        <div class="tc-badge">“Châteaux, Marais & Calanques”</div>
-      </button>
-
-      <button class="trip-card-select" id="btnGreece" data-trip="greece" role="radio" aria-pressed="false">
-        <div class="tc-country">Greece 🇬🇷</div>
-        <div class="tc-route">Naxos 6n · Hydra 4n · Athens 3n</div>
-        <div class="tc-cost" id="gridCostGreece">~$6,410 likely</div>
-        <div class="tc-pp" id="gridPpGreece">$7,000 ceiling (~$3,205–$3,500 pp)</div>
-        <div class="tc-badge">“The Island Adventure”</div>
-      </button>
-
-      <button class="trip-card-select" id="btnPortugal" data-trip="portugal" role="radio" aria-pressed="false">
-        <div class="tc-country">Portugal + Spain 🇵🇹🇪🇸</div>
-        <div class="tc-route">Cascais 6n · Calpe 7n</div>
-        <div class="tc-cost" id="gridCostPortugal">~$6,500 likely</div>
-        <div class="tc-pp" id="gridPpPortugal">$7,050 ceiling (~$3,250–$3,525 pp)</div>
-        <div class="tc-badge">“The Slow Vacation”</div>
-      </button>
-
-      <button class="trip-card-select" id="btnItaly" data-trip="italy" role="radio" aria-pressed="false">
-        <div class="tc-country">Italy 🇮🇹</div>
-        <div class="tc-route">Monopoli 9n · Rome 4n</div>
-        <div class="tc-cost" id="gridCostItaly">~$6,620 likely</div>
-        <div class="tc-pp" id="gridPpItaly">$7,200 ceiling (~$3,310–$3,600 pp)</div>
-        <div class="tc-badge">“Food & Culture Powerhouse”</div>
-      </button>
-
-      <button class="trip-card-select" id="btnCroatia" data-trip="croatia" role="radio" aria-pressed="false" style="grid-column: 1 / -1;">
-        <div class="tc-country">Croatia 🇭🇷</div>
-        <div class="tc-route">Bol 8n · Dubrovnik 5n</div>
-        <div class="tc-cost" id="gridCostCroatia">~$6,050 likely</div>
-        <div class="tc-pp" id="gridPpCroatia">$6,600 ceiling (~$3,025–$3,300 pp)</div>
-        <div class="tc-badge">“The Adriatic Summer”</div>
-      </button>
-    </div>
 
     <!-- SELECTED TRIP PROFILE -->
     <div class="section-label">Selected Trip Overview</div>
@@ -1967,11 +1844,6 @@ function updateSelectedTrip(tripKey) {
     tab.setAttribute("aria-selected", tab.dataset.trip === tripKey ? "true" : "false");
   });
 
-  // Update Grid Cards
-  document.querySelectorAll(".trip-card-select").forEach(btn => {
-    btn.setAttribute("aria-pressed", btn.dataset.trip === tripKey ? "true" : "false");
-  });
-
   // Update Bar Chart Highlights
   document.querySelectorAll(".bar-fill").forEach(bar => bar.classList.remove("highlight"));
   if (tripKey === "france") document.getElementById("barFrance")?.classList.add("highlight");
@@ -1995,13 +1867,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Top Navigation Tabs
   document.querySelectorAll(".country-tab").forEach(tab => {
     tab.addEventListener("click", (e) => {
-      updateSelectedTrip(e.currentTarget.dataset.trip);
-    });
-  });
-
-  // Destination Selector Cards
-  document.querySelectorAll(".trip-card-select").forEach(btn => {
-    btn.addEventListener("click", (e) => {
       updateSelectedTrip(e.currentTarget.dataset.trip);
     });
   });
