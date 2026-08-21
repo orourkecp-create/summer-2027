@@ -16,6 +16,24 @@
     --font-sans: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
+  /* DEFAULT / HOME THEME */
+  [data-theme="home"] {
+    --bg-main: #0f172a;
+    --hero-bg: #0f172a;
+    --hero-kicker: #38bdf8;
+    --hero-text: #ffffff;
+    --accent: #38bdf8;
+    --accent-light: rgba(56, 189, 248, 0.15);
+    --accent-text: #38bdf8;
+    --card-bg: #1e293b;
+    --card-border: #334155;
+    --text-dark: #f8fafc;
+    --text-muted: #94a3b8;
+    --bar-highlight: #38bdf8;
+    --badge-bg: #0284c7;
+    --badge-text: #ffffff;
+  }
+
   /* CROATIA THEME 🇭🇷 */
   [data-theme="croatia"] {
     --bg-main: #f0f6fa;
@@ -312,6 +330,130 @@
     margin-top: 6px;
     line-height: 1.4;
     opacity: 0.95;
+  }
+
+  /* HOME PAGE DESTINATION CARDS */
+  .home-hero-header {
+    text-align: center;
+    padding: 40px 10px 20px;
+  }
+  .home-hero-header h1 {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 8vw, 54px);
+    color: #f8fafc;
+    margin: 0 0 8px;
+    line-height: 1.05;
+  }
+  .home-hero-header p {
+    font-size: 16px;
+    color: #94a3b8;
+    margin: 0 auto;
+    max-width: 500px;
+  }
+
+  .home-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 24px;
+  }
+  @media (min-width: 550px) {
+    .home-cards-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .home-country-card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    position: relative;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  }
+  .home-country-card:hover {
+    transform: translateY(-4px);
+    border-color: #38bdf8;
+    box-shadow: 0 8px 28px rgba(56, 189, 248, 0.25);
+  }
+  .home-card-img-wrap {
+    height: 180px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  .home-card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .home-country-card:hover .home-card-img-wrap img {
+    transform: scale(1.05);
+  }
+  .home-card-emoji-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(4px);
+    font-size: 20px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  .home-card-content {
+    padding: 16px 18px 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .home-card-title {
+    font-family: var(--font-plaque);
+    font-size: 18px;
+    font-weight: 700;
+    color: #f8fafc;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .home-card-route {
+    font-size: 12.5px;
+    color: #38bdf8;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .home-card-desc {
+    font-size: 13px;
+    color: #cbd5e1;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    flex: 1;
+  }
+  .home-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #334155;
+    padding-top: 10px;
+    font-size: 12px;
+  }
+  .home-card-cost {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: #fef3c7;
+  }
+  .home-card-cta {
+    font-family: var(--font-plaque);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #38bdf8;
+    text-transform: uppercase;
   }
 
   /* SECTION HEADINGS */
@@ -860,14 +1002,15 @@
   }
 </style>
 </head>
-<body data-theme="france">
+<body data-theme="home">
 
 <div class="wrap">
 
   <!-- TOP STICKY NAVIGATION TABS -->
   <nav class="nav-header">
     <div class="country-tabs" role="tablist" aria-label="Select Destination Country">
-      <button class="country-tab" id="tabFrance" data-trip="france" role="tab" aria-selected="true">🇫🇷 France</button>
+      <button class="country-tab" id="tabHome" data-trip="home" role="tab" aria-selected="true">🏠 Home</button>
+      <button class="country-tab" id="tabFrance" data-trip="france" role="tab" aria-selected="false">🇫🇷 France</button>
       <button class="country-tab" id="tabGreece" data-trip="greece" role="tab" aria-selected="false">🇬🇷 Greece</button>
       <button class="country-tab" id="tabPortugal" data-trip="portugal" role="tab" aria-selected="false">🇵🇹🇪🇸 PT + ES</button>
       <button class="country-tab" id="tabItaly" data-trip="italy" role="tab" aria-selected="false">🇮🇹 Italy</button>
@@ -875,8 +1018,104 @@
     </div>
   </nav>
 
-  <!-- DASHBOARD WRAPPER -->
-  <div id="viewSummer">
+  <!-- HOME VIEW PAGE -->
+  <div id="viewHome">
+    <div class="home-hero-header">
+      <p class="hero-kicker">CON & ASHLEY · SUMMER 2027 DECISION GUIDE</p>
+      <h1>Summer 2027</h1>
+      <p>Select a destination below to explore the detailed itinerary, lodging options, budget breakdown, and annual travel strategy.</p>
+    </div>
+
+    <div class="home-cards-grid">
+      <!-- France -->
+      <div class="home-country-card" onclick="updateSelectedTrip('france')">
+        <div class="home-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80" alt="Paris France">
+          <div class="home-card-emoji-badge">🇫🇷</div>
+        </div>
+        <div class="home-card-content">
+          <div class="home-card-title">France</div>
+          <div class="home-card-route">Amboise 3n · Paris 6n · Cassis 4n</div>
+          <div class="home-card-desc">Châteaux, Marais & Calanques. Loire countryside castles → living in the Marais → Mediterranean calanques.</div>
+          <div class="home-card-footer">
+            <span class="home-card-cost">~$7,050 likely</span>
+            <span class="home-card-cta">Explore Route →</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Greece -->
+      <div class="home-country-card" onclick="updateSelectedTrip('greece')">
+        <div class="home-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80" alt="Greece Islands">
+          <div class="home-card-emoji-badge">🇬🇷</div>
+        </div>
+        <div class="home-card-content">
+          <div class="home-card-title">Greece</div>
+          <div class="home-card-route">Naxos 6n · Hydra 4n · Athens 3n</div>
+          <div class="home-card-desc">The Island Adventure. Pure Aegean island feeling, car-free Hydra relaxation, and ancient history in Athens.</div>
+          <div class="home-card-footer">
+            <span class="home-card-cost">~$6,410 likely</span>
+            <span class="home-card-cta">Explore Route →</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portugal + Spain -->
+      <div class="home-country-card" onclick="updateSelectedTrip('portugal')">
+        <div class="home-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=800&q=80" alt="Portugal Coast">
+          <div class="home-card-emoji-badge">🇵🇹🇪🇸</div>
+        </div>
+        <div class="home-card-content">
+          <div class="home-card-title">Portugal + Spain</div>
+          <div class="home-card-route">Cascais 6n · Calpe 7n</div>
+          <div class="home-card-desc">The Slow Vacation. Easiest, slowest vacation option — hotel pool value in Cascais + private sea-view terrace in Calpe.</div>
+          <div class="home-card-footer">
+            <span class="home-card-cost">~$6,500 likely</span>
+            <span class="home-card-cta">Explore Route →</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Italy -->
+      <div class="home-country-card" onclick="updateSelectedTrip('italy')">
+        <div class="home-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=800&q=80" alt="Puglia Italy">
+          <div class="home-card-emoji-badge">🇮🇹</div>
+        </div>
+        <div class="home-card-content">
+          <div class="home-card-title">Italy</div>
+          <div class="home-card-route">Monopoli 9n · Rome 4n</div>
+          <div class="home-card-desc">Food & Culture Powerhouse. Nine slow nights in coastal Puglia coves, followed by historic Rome dining and landmarks.</div>
+          <div class="home-card-footer">
+            <span class="home-card-cost">~$6,620 likely</span>
+            <span class="home-card-cta">Explore Route →</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Croatia -->
+      <div class="home-country-card" onclick="updateSelectedTrip('croatia')">
+        <div class="home-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80" alt="Dubrovnik Croatia">
+          <div class="home-card-emoji-badge">🇭🇷</div>
+        </div>
+        <div class="home-card-content">
+          <div class="home-card-title">Croatia</div>
+          <div class="home-card-route">Bol, Brač 8n → Dubrovnik 5n</div>
+          <div class="home-card-desc">The Adriatic Summer. Eight slow nights of Brač island life → five nights of beach, history and Old Town atmosphere in Dubrovnik.</div>
+          <div class="home-card-footer">
+            <span class="home-card-cost">~$6,050 likely</span>
+            <span class="home-card-cta">Explore Route →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DESTINATION DETAIL VIEW PAGE -->
+  <div id="viewSummer" style="display:none;">
     
     <header class="hero">
       <p class="hero-kicker">CON & ASHLEY · SUMMER 2027 DECISION GUIDE</p>
@@ -1095,9 +1334,9 @@
       <div id="parisScenarioContainer" style="display:none; background:rgba(255,255,255,0.03); padding:12px; border-radius:8px; margin-bottom:16px;">
         <div style="font-family:var(--font-plaque); font-size:11px; text-transform:uppercase; letter-spacing:0.12em; color:#fef3c7; margin-bottom:6px;">Select Paris NYE Lodging Scenario:</div>
         <div class="scenario-toggle-group">
-          <button class="scenario-chip active" id="chipParis4p" onclick="setParisScenario('4p')">4-Person Split · 5 Nights · ~$795 Couple Lodging Share</button>
-          <button class="scenario-chip" id="chipParis2p4n" onclick="setParisScenario('2p4n')">2-Person Studio · 4 Nights · $511 Lodging</button>
-          <button class="scenario-chip" id="chipParis2p5n" onclick="setParisScenario('2p5n')">2-Person Marais · 5 Nights · $828 Lodging</button>
+          <button class="scenario-chip active" id="chipParis3p" onclick="setParisScenario('3p')">3 Travelers (Con + Ashley + Michele) · 5 Nights · Full Trip $4.5K–$5.5K</button>
+          <button class="scenario-chip" id="chipParis2p4n" onclick="setParisScenario('2p4n')">2-Person Studio · 4 Nights · Full Trip $2.45K–$2.9K</button>
+          <button class="scenario-chip" id="chipParis2p5n" onclick="setParisScenario('2p5n')">2-Person Marais · 5 Nights · Full Trip $2.8K–$3.35K</button>
         </div>
       </div>
 
@@ -1366,7 +1605,7 @@ const DATA = {
 const UNLOCK_DATA = {
   summerFrance: {
     fixedSummer: { name: "🇫🇷 France (Summer)", costRangeText: "~$7,050–$7,850", lowVal: 7050, highVal: 7850 },
-    prompt: "<b>France in summer leaves NYE open.</b> Where should the year's remaining travel money go?",
+    prompt: "<b>SUMMER: 2 TRAVELERS | NYE: 2 TRAVELERS</b><br>France in summer leaves NYE open. Where should the year's remaining travel money go?",
     options: [
       {
         id: "cdmx",
@@ -1412,37 +1651,49 @@ const UNLOCK_DATA = {
   },
 
   winterFrance: {
-    prompt: "<b>Paris owns NYE</b> — which Mediterranean/European summer route do you want instead?",
+    prompt: "<b>SUMMER: 2 TRAVELERS | PARIS NYE: 3 TRAVELERS</b><br>Paris owns NYE — which Mediterranean/European summer route do you want instead?",
     
     // Paris NYE Scenarios (December 28, 2027 – January 2, 2028)
     parisScenarios: {
-      "4p": { 
-        id: "4p",
-        chipLabel: "4-Person Split · 5 Nights · ~$795 Couple Lodging",
-        name: "4-Person Marais (5n)", 
-        lodgingText: "Apartment Total: $1,589.06 (23 Rue Vieille du Temple) | 4-way share: ~$397 pp | Con + Ashley Couple Share: ~$795",
-        lowVal: 2750, highVal: 3200,
-        rangeText: "~$2,750–$3,200 couple planning range"
+      "3p": { 
+        id: "3p",
+        chipLabel: "3 Travelers (Con + Ashley + Michele) · 5 Nights · Full Trip $4.5K–$5.5K",
+        name: "3 Travelers Marais (5n)", 
+        partySize: "3 Travelers (Con + Ashley + Michele)",
+        lodgingText: "Apartment Total: $1,589.06 (23 Rue Vieille du Temple) | 3-way lodging share: ~$529.69 pp | Con + Ashley Share: ~$1,059.37",
+        lowVal: 4500, highVal: 5500,
+        rangeText: "~$4,500–$5,500 total 3-person trip planning range"
       },
       "2p4n": { 
         id: "2p4n",
-        chipLabel: "2-Person Studio · 4 Nights · $511 Lodging",
+        chipLabel: "2-Person Studio · 4 Nights · Full Trip $2.45K–$2.9K",
         name: "2-Person Studio (4n)", 
+        partySize: "2 Travelers (Couple Only)",
         lodgingText: "Total Studio Lodging: $511.18 (Dec 29–Jan 2 Le Marais Studio)",
         lowVal: 2450, highVal: 2900,
-        rangeText: "~$2,450–$2,900 couple planning range"
+        rangeText: "~$2,450–$2,900 total 2-person trip planning range"
       },
       "2p5n": { 
         id: "2p5n",
-        chipLabel: "2-Person Marais · 5 Nights · $828 Lodging",
+        chipLabel: "2-Person Marais · 5 Nights · Full Trip $2.8K–$3.35K",
         name: "2-Person Marais (5n)", 
+        partySize: "2 Travelers (Couple Only)",
         lodgingText: "Total Marais Airbnb Lodging: $828.00 (Dec 28–Jan 2)",
         lowVal: 2800, highVal: 3350,
-        rangeText: "~$2,800–$3,350 couple planning range"
+        rangeText: "~$2,800–$3,350 total 2-person trip planning range"
       }
     },
 
     options: [
+      {
+        id: "croatia_summer",
+        name: "🇭🇷 Croatia (Summer)",
+        nights: "13 nights · Bol 8n → Dubrovnik 5n",
+        costRangeText: "~$6,050–$6,600 couple",
+        lowVal: 6050, highVal: 6600,
+        vibe: "Best-value Adriatic swimming, 8 nights on Brač island, and 5 nights of Dubrovnik Old Town walls.",
+        lodging: "Bol Apt + Dubrovnik Old Town ($1,066 pre-tax): ~$2,116 lodging."
+      },
       {
         id: "greece_summer",
         name: "🇬🇷 Greece (Summer)",
@@ -1451,15 +1702,6 @@ const UNLOCK_DATA = {
         lowVal: 6410, highVal: 7000,
         vibe: "Pure Aegean island adventure, car-free Hydra relaxation, and ancient history in Athens.",
         lodging: "Hotel Grotta (€970.50 ≈ $1,135) + Hydra Town + Stanley Athens: ~$2,240 lodging."
-      },
-      {
-        id: "italy_summer",
-        name: "🇮🇹 Italy (Summer)",
-        nights: "13 nights · Monopoli → Rome",
-        costRangeText: "~$6,620–$7,200 couple",
-        lowVal: 6620, highVal: 7200,
-        vibe: "Nine slow nights in coastal Puglia coves, followed by historic Rome dining and landmarks.",
-        lodging: "Monopoli Airbnb + Rome Hotel Quirinale: $2,521 confirmed."
       },
       {
         id: "portugal_summer",
@@ -1471,31 +1713,31 @@ const UNLOCK_DATA = {
         lodging: "Vila Galé + Calpe Sea-View Airbnb: $2,498 confirmed."
       },
       {
-        id: "croatia_summer",
-        name: "🇭🇷 Croatia (Summer)",
-        nights: "13 nights · Bol 8n → Dubrovnik 5n",
-        costRangeText: "~$6,050–$6,600 couple",
-        lowVal: 6050, highVal: 6600,
-        vibe: "Best-value Adriatic swimming, 8 nights on Brač island, and 5 nights of Dubrovnik Old Town walls.",
-        lodging: "Bol Apt + Dubrovnik Old Town ($1,066 pre-tax): ~$2,116 lodging."
+        id: "italy_summer",
+        name: "🇮🇹 Italy (Summer)",
+        nights: "13 nights · Monopoli → Rome",
+        costRangeText: "~$6,620–$7,200 couple",
+        lowVal: 6620, highVal: 7200,
+        vibe: "Nine slow nights in coastal Puglia coves, followed by historic Rome dining and landmarks.",
+        lodging: "Monopoli Airbnb + Rome Hotel Quirinale: $2,521 confirmed."
       }
     ]
   }
 };
 
-let currentTripKey = 'france';
+let currentTripKey = 'home';
 let franceSeasonMode = 'summer'; // 'summer' or 'winter'
 let selectedNyeOptionId = 'cdmx';
 let selectedWinterSummerOptionId = 'greece_summer';
-let activeParisScenarioKey = '4p';
+let activeParisScenarioKey = '3p';
 
 async function saveState() {
   try {
     const state = { currentTripKey, franceSeasonMode, selectedNyeOptionId, selectedWinterSummerOptionId, activeParisScenarioKey };
     if (window.storage && window.storage.set) {
-      await window.storage.set("summer2027_trip_state_v8", JSON.stringify(state));
+      await window.storage.set("summer2027_trip_state_v10", JSON.stringify(state));
     } else {
-      localStorage.setItem("summer2027_trip_state_v8", JSON.stringify(state));
+      localStorage.setItem("summer2027_trip_state_v10", JSON.stringify(state));
     }
   } catch(e) {}
 }
@@ -1504,14 +1746,14 @@ async function loadState() {
   try {
     let raw = null;
     if (window.storage && window.storage.get) {
-      const res = await window.storage.get("summer2027_trip_state_v8");
+      const res = await window.storage.get("summer2027_trip_state_v10");
       if (res && res.value) raw = res.value;
     } else {
-      raw = localStorage.getItem("summer2027_trip_state_v8");
+      raw = localStorage.getItem("summer2027_trip_state_v10");
     }
     if (raw) {
       const parsed = JSON.parse(raw);
-      if (parsed.currentTripKey && DATA[parsed.currentTripKey]) currentTripKey = parsed.currentTripKey;
+      if (parsed.currentTripKey && (DATA[parsed.currentTripKey] || parsed.currentTripKey === 'home')) currentTripKey = parsed.currentTripKey;
       if (parsed.franceSeasonMode) franceSeasonMode = parsed.franceSeasonMode;
       if (parsed.selectedNyeOptionId) selectedNyeOptionId = parsed.selectedNyeOptionId;
       if (parsed.selectedWinterSummerOptionId) selectedWinterSummerOptionId = parsed.selectedWinterSummerOptionId;
@@ -1603,7 +1845,7 @@ function renderTripProfile(trip) {
 
 function renderScorecard() {
   const tbody = document.getElementById("scoreBody");
-  if (!tbody) return;
+  if (!tbody || !DATA[currentTripKey]) return;
 
   const categories = [
     "Beaches / Swimming", "Food Quality", "Wine / Drinks",
@@ -1695,6 +1937,8 @@ function renderUnlockModule() {
   const btnWinter = document.getElementById("btnFranceWinterMode");
   const parisContainer = document.getElementById("parisScenarioContainer");
 
+  if (!promptBox || !cardsGrid || !calcBanner) return;
+
   // Generate all valid combinations dynamically
   const combos = getAnnualCombinations();
   
@@ -1713,9 +1957,9 @@ function renderUnlockModule() {
   const t2 = sortedMidpoints[Math.floor((2 * n) / 3)];
 
   if (franceSeasonMode === 'summer') {
-    btnSummer.classList.add("active");
-    btnWinter.classList.remove("active");
-    parisContainer.style.display = "none";
+    btnSummer?.classList.add("active");
+    btnWinter?.classList.remove("active");
+    if (parisContainer) parisContainer.style.display = "none";
 
     const data = UNLOCK_DATA.summerFrance;
     promptBox.innerHTML = data.prompt;
@@ -1754,8 +1998,8 @@ function renderUnlockModule() {
       <div class="calc-combo-title">${data.fixedSummer.name} + ${activeOpt.name}</div>
       <div class="calc-number-big">~$${combinedLow.toLocaleString()}–$${combinedHigh.toLocaleString()} combined range</div>
       <div class="calc-breakdown">
-        <span>Summer France: <b>${data.fixedSummer.costRangeText}</b></span>
-        <span>NYE Choice: <b>${activeOpt.costRangeText}</b></span>
+        <span>Summer France (2 Travelers): <b>${data.fixedSummer.costRangeText}</b></span>
+        <span>NYE Choice (2 Travelers): <b>${activeOpt.costRangeText}</b></span>
       </div>
       <div class="calc-comparative-context">
         <span>Lowest Annual Combo: <b>~$${minCombo.combinedLow.toLocaleString()}–$${minCombo.combinedHigh.toLocaleString()}</b> (${minCombo.label})</span>
@@ -1763,9 +2007,9 @@ function renderUnlockModule() {
       </div>
     `;
   } else {
-    btnWinter.classList.add("active");
-    btnSummer.classList.remove("active");
-    parisContainer.style.display = "block";
+    btnWinter?.classList.add("active");
+    btnSummer?.classList.remove("active");
+    if (parisContainer) parisContainer.style.display = "block";
 
     const data = UNLOCK_DATA.winterFrance;
     promptBox.innerHTML = data.prompt;
@@ -1802,8 +2046,8 @@ function renderUnlockModule() {
       <div class="calc-number-big">~$${combinedLow.toLocaleString()}–$${combinedHigh.toLocaleString()} combined range</div>
       <div style="font-size:12px; color:#fef3c7; margin-bottom:8px;">${activeParisScen.lodgingText}</div>
       <div class="calc-breakdown">
-        <span>Summer Choice: <b>${activeSummerOpt.costRangeText}</b></span>
-        <span>Paris NYE Choice: <b>${activeParisScen.rangeText}</b></span>
+        <span>Summer Choice (2 Travelers): <b>${activeSummerOpt.costRangeText}</b></span>
+        <span>Paris NYE Choice (${activeParisScen.partySize}): <b>${activeParisScen.rangeText}</b></span>
       </div>
       <div class="calc-comparative-context">
         <span>Lowest Annual Combo: <b>~$${minCombo.combinedLow.toLocaleString()}–$${minCombo.combinedHigh.toLocaleString()}</b> (${minCombo.label})</span>
@@ -1816,7 +2060,7 @@ function renderUnlockModule() {
 function setParisScenario(key) {
   activeParisScenarioKey = key;
   document.querySelectorAll(".scenario-chip").forEach(chip => chip.classList.remove("active"));
-  if (key === '4p') document.getElementById("chipParis4p")?.classList.add("active");
+  if (key === '3p') document.getElementById("chipParis3p")?.classList.add("active");
   if (key === '2p4n') document.getElementById("chipParis2p4n")?.classList.add("active");
   if (key === '2p5n') document.getElementById("chipParis2p5n")?.classList.add("active");
   renderUnlockModule();
@@ -1837,26 +2081,41 @@ function selectWinterSummerOption(id) {
 
 function updateSelectedTrip(tripKey) {
   currentTripKey = tripKey;
-  document.body.setAttribute("data-theme", tripKey);
 
   // Update Navigation Tabs
   document.querySelectorAll(".country-tab").forEach(tab => {
     tab.setAttribute("aria-selected", tab.dataset.trip === tripKey ? "true" : "false");
   });
 
-  // Update Bar Chart Highlights
-  document.querySelectorAll(".bar-fill").forEach(bar => bar.classList.remove("highlight"));
-  if (tripKey === "france") document.getElementById("barFrance")?.classList.add("highlight");
-  if (tripKey === "greece") document.getElementById("barGreece")?.classList.add("highlight");
-  if (tripKey === "portugal") document.getElementById("barPortugal")?.classList.add("highlight");
-  if (tripKey === "italy") document.getElementById("barItaly")?.classList.add("highlight");
-  if (tripKey === "croatia") document.getElementById("barCroatia")?.classList.add("highlight");
+  const viewHome = document.getElementById("viewHome");
+  const viewSummer = document.getElementById("viewSummer");
 
-  const trip = DATA[tripKey];
-  renderTopBanner(trip);
-  renderTripProfile(trip);
-  renderScorecard();
-  renderUnlockModule();
+  if (tripKey === 'home') {
+    document.body.setAttribute("data-theme", "home");
+    if (viewHome) viewHome.style.display = "block";
+    if (viewSummer) viewSummer.style.display = "none";
+  } else {
+    document.body.setAttribute("data-theme", tripKey);
+    if (viewHome) viewHome.style.display = "none";
+    if (viewSummer) viewSummer.style.display = "block";
+
+    // Update Bar Chart Highlights
+    document.querySelectorAll(".bar-fill").forEach(bar => bar.classList.remove("highlight"));
+    if (tripKey === "france") document.getElementById("barFrance")?.classList.add("highlight");
+    if (tripKey === "greece") document.getElementById("barGreece")?.classList.add("highlight");
+    if (tripKey === "portugal") document.getElementById("barPortugal")?.classList.add("highlight");
+    if (tripKey === "italy") document.getElementById("barItaly")?.classList.add("highlight");
+    if (tripKey === "croatia") document.getElementById("barCroatia")?.classList.add("highlight");
+
+    const trip = DATA[tripKey];
+    if (trip) {
+      renderTopBanner(trip);
+      renderTripProfile(trip);
+      renderScorecard();
+      renderUnlockModule();
+    }
+  }
+
   saveState();
 }
 
@@ -1885,7 +2144,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   // Initial Load Render
-  updateSelectedTrip(currentTripKey || 'france');
+  updateSelectedTrip(currentTripKey || 'home');
 });
 </script>
 </body>
