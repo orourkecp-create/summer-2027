@@ -139,6 +139,27 @@
     --badge-text: #ffffff;
   }
 
+  /* NYE / WINTER 2028 THEME 🎆 */
+  [data-theme="nye"] {
+    --bg-main: #090d16;
+    --hero-bg: #0b1329;
+    --hero-kicker: #fef3c7;
+    --hero-text: #ffffff;
+    --top-cost-bg: #050811;
+    --top-cost-border: #d97706;
+    --top-cost-number: #fef3c7;
+    --accent: #d97706;
+    --accent-light: rgba(217, 119, 6, 0.15);
+    --accent-text: #fbbf24;
+    --card-bg: #131c31;
+    --card-border: #2a3a5e;
+    --text-dark: #f8fafc;
+    --text-muted: #94a3b8;
+    --bar-highlight: #f59e0b;
+    --badge-bg: #d97706;
+    --badge-text: #ffffff;
+  }
+
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   body {
@@ -250,6 +271,13 @@
     line-height: 0.98;
     margin: 0;
     letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+  @media (max-width: 650px) {
+    .hero h1 {
+      white-space: normal;
+      font-size: clamp(28px, 8vw, 42px);
+    }
   }
   .hero-dates {
     font-family: var(--font-plaque);
@@ -355,10 +383,17 @@
   }
   .home-hero-header h1 {
     font-family: var(--font-display);
-    font-size: clamp(36px, 8vw, 54px);
+    font-size: clamp(32px, 7vw, 48px);
     color: #f8fafc;
     margin: 0 0 8px;
     line-height: 1.05;
+    white-space: nowrap;
+  }
+  @media (max-width: 650px) {
+    .home-hero-header h1 {
+      white-space: normal;
+      font-size: clamp(26px, 7vw, 36px);
+    }
   }
   .home-hero-header p {
     font-size: 16px;
@@ -1112,14 +1147,14 @@
       <button class="country-tab" id="tabPortugal" data-trip="portugal" role="tab" aria-selected="false">🇵🇹🇪🇸 PT + ES</button>
       <button class="country-tab" id="tabItaly" data-trip="italy" role="tab" aria-selected="false">🇮🇹 IT</button>
       <button class="country-tab" id="tabCroatia" data-trip="croatia" role="tab" aria-selected="false">🇭🇷🇲🇪 HR + ME</button>
+      <button class="country-tab" id="tabNye" data-trip="nye" role="tab" aria-selected="false">🎆 NYE</button>
     </div>
   </nav>
 
   <!-- HOME VIEW PAGE -->
   <div id="viewHome">
     <div class="home-hero-header">
-      <p class="hero-kicker">CON & ASHLEY · SUMMER 2027 DECISION GUIDE</p>
-      <h1>Summer 2027</h1>
+      <h1>Summer 2027 Decision Guide</h1>
       <p>Select a destination below to explore the detailed itinerary, lodging options, budget breakdown, and annual travel strategy.</p>
     </div>
 
@@ -1132,8 +1167,8 @@
             <img src="https://static.eldiario.es/clip/05f27ecc-a1fa-4ee8-890e-8c5111f5e30e_16-9-aspect-ratio_default_0.jpg" alt="Le Marais street in Paris" class="home-card-photo-primary">
             <!-- France_Loire_Chenonceau: Verified Château de Chenonceau spanning River Cher -->
             <img src="https://www.eurobus.ch/tourtrader/pressmind/1049147.jpg" alt="Château de Chenonceau in the Loire Valley">
-            <!-- France_Cassis_Calanques: Verified Calanques de Cassis pale limestone cliffs & water -->
-            <img src="https://images.trvl-media.com/place/178710/64866f25-0beb-4e82-8b71-ca83b6810e2d.jpg" alt="Turquoise Calanques near Cassis">
+            <!-- France_Cassis_Calanques: Verified Calanque d'En-Vau near Cassis -->
+            <img src="https://images.trvl-media.com/place/178745/946cf746-7f39-4185-aac2-48861b8afca4.jpg" alt="Calanque d'En-Vau near Cassis with turquoise Mediterranean water">
           </div>
           <div class="home-card-emoji-badge">🇫🇷</div>
         </div>
@@ -1237,6 +1272,27 @@
           </div>
         </div>
       </div>
+
+      <!-- 6. Winter 2028: NYE Strategy Tile -->
+      <div class="home-country-card" onclick="updateSelectedTrip('nye')">
+        <div class="home-card-img-wrap">
+          <div class="home-card-collage two-photo">
+            <!-- Paris at night / winter city lights -->
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80" alt="Paris skyline at night">
+            <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=800&q=80" alt="Paris winter evening lights">
+          </div>
+          <div class="home-card-emoji-badge">🎆</div>
+        </div>
+        <div class="home-card-content">
+          <div class="home-card-title">Winter 2028</div>
+          <div class="home-card-route">NYE 2027 → 2028</div>
+          <div class="home-card-desc">Where does France live? Choose whether France happens in Summer or Paris NYE, then see full annual travel spend.</div>
+          <div class="home-card-footer">
+            <span class="home-card-cost">Annual Strategy</span>
+            <span class="home-card-cta">Explore NYE →</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1244,8 +1300,7 @@
   <div id="viewSummer" style="display:none;">
     
     <header class="hero">
-      <p class="hero-kicker">CON & ASHLEY · SUMMER 2027 DECISION GUIDE</p>
-      <h1>Summer 2027</h1>
+      <h1>Summer 2027 Decision Guide</h1>
       <p class="hero-dates">July 2–15 · 13 nights · 2 adults</p>
       <p class="hero-copy">“Five routes. One summer. Same travel philosophy.”</p>
 
@@ -1473,6 +1528,16 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- DEDICATED NYE VIEW PAGE -->
+  <div id="viewNye" style="display:none;">
+    <header class="hero" style="background: var(--hero-bg); border-bottom: 5px solid var(--accent);">
+      <h1>Winter 2028</h1>
+      <p class="hero-dates">NYE 2027 → 2028 · Annual Strategy Guide</p>
+      <p class="hero-copy">“Mapping out the full annual travel equation.”</p>
+    </header>
+
     <!-- DYNAMIC INTERACTIVE MODULE: WHERE DOES FRANCE GO? -->
     <div class="section-label">Annual Strategy & Unlock Calculator</div>
     <div class="unlock-module" id="unlockModule">
@@ -1521,7 +1586,6 @@
         </div>
       </div>
     </div>
-
   </div>
 
   <footer>
@@ -1896,9 +1960,9 @@ async function saveState() {
   try {
     const state = { currentTripKey, franceSeasonMode, selectedNyeOptionId, selectedWinterSummerOptionId, activeParisScenarioKey };
     if (window.storage && window.storage.set) {
-      await window.storage.set("summer2027_trip_state_v11", JSON.stringify(state));
+      await window.storage.set("summer2027_trip_state_v12", JSON.stringify(state));
     } else {
-      localStorage.setItem("summer2027_trip_state_v11", JSON.stringify(state));
+      localStorage.setItem("summer2027_trip_state_v12", JSON.stringify(state));
     }
   } catch(e) {}
 }
@@ -1907,14 +1971,14 @@ async function loadState() {
   try {
     let raw = null;
     if (window.storage && window.storage.get) {
-      const res = await window.storage.get("summer2027_trip_state_v11");
+      const res = await window.storage.get("summer2027_trip_state_v12");
       if (res && res.value) raw = res.value;
     } else {
-      raw = localStorage.getItem("summer2027_trip_state_v11");
+      raw = localStorage.getItem("summer2027_trip_state_v12");
     }
     if (raw) {
       const parsed = JSON.parse(raw);
-      if (parsed.currentTripKey && (DATA[parsed.currentTripKey] || parsed.currentTripKey === 'home')) currentTripKey = parsed.currentTripKey;
+      if (parsed.currentTripKey && (DATA[parsed.currentTripKey] || parsed.currentTripKey === 'home' || parsed.currentTripKey === 'nye')) currentTripKey = parsed.currentTripKey;
       if (parsed.franceSeasonMode) franceSeasonMode = parsed.franceSeasonMode;
       if (parsed.selectedNyeOptionId) selectedNyeOptionId = parsed.selectedNyeOptionId;
       if (parsed.selectedWinterSummerOptionId) selectedWinterSummerOptionId = parsed.selectedWinterSummerOptionId;
@@ -2250,15 +2314,24 @@ function updateSelectedTrip(tripKey) {
 
   const viewHome = document.getElementById("viewHome");
   const viewSummer = document.getElementById("viewSummer");
+  const viewNye = document.getElementById("viewNye");
 
   if (tripKey === 'home') {
     document.body.setAttribute("data-theme", "home");
     if (viewHome) viewHome.style.display = "block";
     if (viewSummer) viewSummer.style.display = "none";
+    if (viewNye) viewNye.style.display = "none";
+  } else if (tripKey === 'nye') {
+    document.body.setAttribute("data-theme", "nye");
+    if (viewHome) viewHome.style.display = "none";
+    if (viewSummer) viewSummer.style.display = "none";
+    if (viewNye) viewNye.style.display = "block";
+    renderUnlockModule();
   } else {
     document.body.setAttribute("data-theme", tripKey);
     if (viewHome) viewHome.style.display = "none";
     if (viewSummer) viewSummer.style.display = "block";
+    if (viewNye) viewNye.style.display = "none";
 
     // Update Bar Chart Highlights
     document.querySelectorAll(".bar-fill").forEach(bar => bar.classList.remove("highlight"));
@@ -2273,7 +2346,6 @@ function updateSelectedTrip(tripKey) {
       renderTopBanner(trip);
       renderTripProfile(trip);
       renderScorecard();
-      renderUnlockModule();
     }
   }
 
