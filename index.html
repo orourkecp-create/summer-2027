@@ -892,6 +892,22 @@
   .badge-status.working { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; }
   .badge-status.pretax { background: #ffedd5; color: #9a3412; border: 1px solid #fed7aa; }
 
+  .badge-tag {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-left: 6px;
+  }
+  .badge-tag.free { background: #dcfce7; color: #166534; }
+  .badge-tag.cheap { background: #e0f2fe; color: #0369a1; }
+  .badge-tag.casual { background: #fef3c7; color: #92400e; }
+  .badge-tag.special { background: #fce7f3; color: #9d174d; }
+  .badge-tag.optional { background: #f3e8ff; color: #6b21a8; }
+
   /* LODGING CARDS */
   .lodging-item {
     border-left: 3px solid var(--accent);
@@ -934,7 +950,7 @@
   .bar-item { margin-bottom: 12px; }
   .bar-label-group {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     font-size: 12.5px;
     font-weight: 600;
     margin-bottom: 4px;
@@ -1009,6 +1025,66 @@
     font-size: 18px;
     top: 4px;
     transition: color var(--transition-speed) ease;
+  }
+
+  /* ACCORDION / EXPANDABLE SECTIONS */
+  details.italy-section {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  details.italy-section summary {
+    padding: 14px 16px;
+    font-family: var(--font-plaque);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    background: rgba(0,0,0,0.03);
+    color: var(--text-dark);
+    user-select: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  details.italy-section summary:hover {
+    background: rgba(0,0,0,0.06);
+  }
+  details.italy-section .section-content {
+    padding: 16px;
+    border-top: 1px solid var(--card-border);
+  }
+
+  /* DAILY ITINERARY ITEM CARD */
+  .day-card {
+    background: rgba(0,0,0,0.02);
+    border: 1px solid var(--card-border);
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+  .day-card:last-child { margin-bottom: 0; }
+  .day-title {
+    font-family: var(--font-plaque);
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--card-border);
+    padding-bottom: 4px;
+  }
+  .day-detail {
+    font-size: 13px;
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+  .day-detail b {
+    color: var(--text-dark);
   }
 
   /* INTERACTIVE "WHERE DOES FRANCE GO?" MODULE */
@@ -1145,7 +1221,7 @@
     text-transform: uppercase;
     color: #ffffff;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
   }
   .uc-tier-tag {
@@ -1432,7 +1508,7 @@
         </div>
       </div>
 
-      <!-- 4. Italy: Monopoli -> Rome -->
+      <!-- 4. Italy: Rome -> Monopoli -->
       <div class="home-country-card" onclick="updateSelectedTrip('italy')">
         <div class="home-card-img-wrap">
           <div class="home-card-collage italy-photo">
@@ -1444,10 +1520,10 @@
         </div>
         <div class="home-card-content">
           <div class="home-card-title">Italy</div>
-          <div class="home-card-route">Monopoli 9n · Rome 4n</div>
-          <div class="home-card-desc">The Food & Culture Powerhouse. Nine slow nights in coastal Puglia coves, followed by historic Rome dining and landmarks.</div>
+          <div class="home-card-route">Rome 4n · Monopoli 9n</div>
+          <div class="home-card-desc">The Food + Culture Powerhouse. Four nights of Rome landmarks while fresh → nine slow nights in coastal Puglia coves.</div>
           <div class="home-card-footer">
-            <span class="home-card-cost">~$6,600 likely</span>
+            <span class="home-card-cost">~$6,700 likely</span>
             <span class="home-card-cta">Explore Route →</span>
           </div>
         </div>
@@ -1607,6 +1683,9 @@
       </div>
     </div>
 
+    <!-- DESTINATION-SPECIFIC MODULES CONTAINER (E.G. ITALY ITINERARY & CALCULATOR) -->
+    <div id="destCustomModules"></div>
+
     <!-- BUDGET COMPARISON BARS -->
     <div class="section-label">The Money & Cost Breakdown</div>
     <div class="card-box">
@@ -1647,10 +1726,10 @@
         <div class="bar-item">
           <div class="bar-label-group">
             <span>Italy 🇮🇹 (Food & Culture)</span>
-            <span id="barLabelItaly">~$6,600 likely / $7,100 ceiling</span>
+            <span id="barLabelItaly">~$6,700 likely / $7,000 ceiling</span>
           </div>
           <div class="bar-track">
-            <div class="bar-fill" id="barItaly" style="width: 84.1%;"></div>
+            <div class="bar-fill" id="barItaly" style="width: 85.3%;"></div>
           </div>
         </div>
 
@@ -1666,7 +1745,7 @@
       </div>
 
       <div style="margin-top:14px; padding:12px; background:rgba(56, 189, 248, 0.08); border-left:3px solid var(--accent); border-radius:4px; font-size:12.5px;">
-        <b>Core Cost Takeaway:</b> Croatia + Montenegro is the clear value play. At <b>~$5,900 likely</b>, it saves approx. <b>~$400 vs Greece</b>, <b>~$600 vs Portugal + Spain</b>, and <b>~$700 vs Italy</b>. Montenegro’s lower everyday dining and waterfront accommodation costs help offset Dubrovnik’s peak July pricing.
+        <b>Core Cost Takeaway:</b> Croatia + Montenegro is the clear value play. At <b>~$5,900 likely</b>, it saves approx. <b>~$400 vs Greece</b>, <b>~$600 vs Portugal + Spain</b>, and <b>~$800 vs Italy</b>. Montenegro’s lower everyday dining and waterfront accommodation costs help offset Dubrovnik’s peak July pricing.
       </div>
 
       <h4 style="font-family:var(--font-plaque); font-size:12px; text-transform:uppercase; letter-spacing:0.1em; margin:18px 0 8px; color:var(--text-dark);">Selected Trip Itemized Estimate</h4>
@@ -1753,6 +1832,12 @@
 
 <script>
 const EUR_TO_USD = 1.17;
+
+// ITALY DYNAMIC CALCULATOR STATE
+let italyAirfare = 1800;
+let italyFood = 1800;
+let italyTrans = 325;
+let italyBdayOption = 'boat'; // 'boat' ($200) or 'lido' ($90)
 
 // 10 CONCISE SURVEY QUESTIONS WITH CONTEXTUAL CHOICES
 const SURVEY_QUESTIONS = [
@@ -1883,17 +1968,17 @@ const DESTINATION_CHARACTERISTICS = {
   portugal: {
     beaches: 4.5, food: 4.2, drinks: 3.8, culture: 3.5, towns: 4.0, relaxation: 5.0, daytrips: 3.8, nightlife: 3.2, variety: 3.2, ease: 5.0,
     fits: ["Lowest friction trip — only 2 bases and 1 effortless move", "Vila Galé hotel pool amenities + confirmed private sea-view terrace in Calpe", "Slow, relaxing pace perfect for effortless unpacking"],
-    compromises: ["Less ancient monumental history than Greece or Rome", "Lower variety between stops than multi-region France"]
+    compromises: ["Less ancient monumental history than Greece or Italy", "Lower variety between stops than multi-region France"]
   },
   italy: {
     beaches: 4.2, food: 5.0, drinks: 4.5, culture: 5.0, towns: 4.8, relaxation: 4.4, daytrips: 4.5, nightlife: 4.0, variety: 4.5, ease: 4.2,
-    fits: ["Peak culinary experience (Puglia seafood & focaccia → classic Rome trattorias)", "Deep 9-night slow stay in coastal Puglia coves", "Unmatched monumental Roman history and city atmosphere"],
-    compromises: ["Rome in mid-July is warm and busy", "Requires a train journey from Apulia north to Rome"]
+    fits: ["Peak culinary experience (Puglia seafood & focaccia → classic Rome trattorias)", "Four nights in Rome while fresh followed by 9 slow nights in coastal Puglia coves", "Unmatched monumental Roman history and city atmosphere"],
+    compromises: ["Rome in early July is warm and busy", "Requires a train journey from Rome south to Apulia"]
   },
   france: {
     beaches: 3.8, food: 5.0, drinks: 4.5, culture: 4.8, towns: 5.0, relaxation: 3.8, daytrips: 4.5, nightlife: 4.0, variety: 5.0, ease: 3.5,
     fits: ["Seamless blend of Loire châteaux, Parisian urban living, and Mediterranean coast", "Six full nights in the Marais allows 'living in Paris' feel", "Michele conditionally joins Paris portion (July 6–11)", "High culinary value with iconic bistro dining & bakery picnics"],
-    compromises: ["Highest budget tier (~$7,050 likely)", "3 bases and TGV transfers across 3 distinct French regions"]
+    compromises: ["Higher overall cost tier (~$7,050 likely)", "3 bases and TGV transfers across 3 distinct French regions"]
   }
 };
 
@@ -2069,54 +2154,55 @@ const DATA = {
   italy: {
     id: "italy",
     countryName: "Italy 🇮🇹",
-    route: "Monopoli 9n · Rome 4n",
-    subtitle: "Food & Culture Powerhouse",
-    tagline: "Nine slow nights in coastal Puglia coves → four nights of historic Rome dining and landmarks.",
+    route: "Rome 4n → Monopoli/Puglia 9n",
+    subtitle: "The Food + Culture Powerhouse",
+    tagline: "Rome comes first while Conor and Ashley are fresh, followed by nine slower nights in Puglia. The trip ends with beaches, seafood, local wine and deliberately unstructured time.",
     
     budget: {
-      lodgingLow: 2521, lodgingHigh: 2521,
-      airfareLow: 1600, airfareHigh: 1900,
-      transitLow: 350, transitHigh: 450,
-      foodLow: 1650, foodHigh: 1850,
-      activitiesLow: 300, activitiesHigh: 400,
-      likelyLow: 6421, likelyHigh: 7121,
-      likely: 6600,
-      ceiling: 7100
+      lodgingLow: 2490, lodgingHigh: 2490,
+      airfareLow: 1600, airfareHigh: 2000,
+      transitLow: 275, transitHigh: 350,
+      foodLow: 1700, foodHigh: 1900,
+      activitiesLow: 110, activitiesHigh: 290,
+      likelyLow: 6450, likelyHigh: 6750,
+      likely: 6665.04,
+      ceiling: 7000
     },
 
-    lodgingTotalText: "$2,520.79 Exact",
+    lodgingTotalText: "$2,490.04 Exact Total",
     lodgingItems: [
-      { name: "Monopoli: Airbnb 'The Seagull'", status: "CONFIRMED RATE", statusClass: "confirmed", details: "9 nights · $1,678.88 all-in · Guest Favorite, coastal Puglia base" },
-      { name: "Rome: Hotel Quirinale", status: "CONFIRMED RATE", statusClass: "confirmed", details: "4 nights · $841.91 all-in · Breakfast included" }
+      { name: "Rome: Relais Forus Inn, Monti (Via Cavour 194)", status: "CURRENT PAY-LATER QUOTE", statusClass: "found", details: "$795.86 total · $0 due today · due at property · 4 nights (July 2–6) · Approx. €681.50 · Monti neighborhood base" },
+      { name: "Monopoli (Puglia): The Seagull Airbnb", status: "CURRENT AIRBNB OPTION", statusClass: "found", details: "$1,694.18 total · kitchen · nine-night Monopoli base · 9 nights (July 6–15) · Coastal Puglia base" }
     ],
 
     strengths: [
-      "Only two bases with a deep 9-night Puglia stay",
-      "Arguably the highest overall food & wine quality",
-      "Rome creates an unforgettable capital city second act",
-      "100% confirmed lodging prices locked in"
+      "Rome comes first while fresh for maximum cultural impact, followed by 9 slow nights in Puglia coves",
+      "Zero rental car required — relies strictly on walkable old towns, trains, and occasional taxis",
+      "Deep 9-night base in Monopoli reduces lodging movement friction and hotel turnover costs",
+      "Exceptional food balance with distinct nightly dinners, cheap casual lunches, and local grocery living",
+      "Average lodging rate of ~$192/night across 13 peak July nights"
     ],
     tradeoffs: [
-      "Slightly less pure island feeling than Greece",
-      "Rome is a busier, warmer July finish"
+      "Rome in early July is warm for afternoon sightseeing (mitigated by midday hotel resets)",
+      "High-speed train transfer required from Rome south to Monopoli"
     ],
 
     diningStrategy: {
-      morning: "<b>Easy & Inexpensive.</b> Espresso & cornetto at the bar or simple apartment breakfast; hotel breakfast in Rome.",
-      lunch: "<b>Main Savings Lever.</b> Fresh focaccia barese, panzerotti, or pizza al taglio.",
-      afternoon: "<b>Flexible.</b> Coastal aperitivo, espresso, or wine.",
-      dinner: "<b>Spend Selectively.</b> Puglia seafood trattorias, local pizza, plus selective Rome dinners."
+      morning: "espresso/cornetto or simple apartment breakfast; hotel breakfast in Rome",
+      lunch: "focaccia, panzerotti, pizza al taglio",
+      afternoon: "aperitivo, coffee, wine",
+      dinner: "Puglia seafood/trattorias/pizza + selective Rome dinners"
     },
 
-    foodExamples: "<b>Italy Food Vibe:</b> Fresh focaccia, panzerotti, pizza al taglio, Puglia seafood, authentic pasta trattorias, aperitivo.",
-    howWeSave: "<b>Italy Savings Strategy:</b> A 9-night extended base in Monopoli reduces expensive hotel turnover and transfer costs, enjoy cheap local bakery lunches like warm focaccia barese and panzerotti, substitute full sit-down lunches with evening aperitivi, buy wine and snacks for the apartment terrace, and walk Rome's historic center on foot.",
+    foodExamples: "<b>Italy Food Vibe:</b> Espresso & cornetti, fresh focaccia barese, panzerotti, pizza al taglio, Trapizzino, classic Roman pasta (La Taverna dei Fori Imperiali), modern Italian (Cuoco & Camicia), fresh Puglian seafood, and evening aperitivi.",
+    howWeSave: "<b>How Italy Stays Under $7,000:</b> Savings come from zero rental car fees/parking/fuel, 9 nights in one Puglia apartment with grocery breakfasts & homemade beach sandwiches, one intentional local Airbnb dinner, mostly casual bakery lunches, free public beaches, only one planned cocktail night (Club Derrière), shared boat OR lido (never both), and no expensive cooking classes.",
     rhythm: [
-      "Espresso + fresh pastry in Monopoli old town",
-      "Swim in a turquoise Puglia cove beach",
-      "Focaccia/panzerotti lunch by the sea",
-      "Polignano a Mare or Ostuni afternoon day trip",
-      "Aperitivo + fresh seafood dinner in Monopoli",
-      "Rome historic center/Colosseum wandering + classic Roman dinner"
+      "Espresso + pastry in Monopoli old town",
+      "Swim in a Puglia cove",
+      "Focaccia/panzerotti lunch",
+      "Polignano or Ostuni day trip",
+      "Aperitivo + seafood dinner in Monopoli",
+      "Rome historic center/Colosseum + Roman dinner"
     ]
   },
 
@@ -2158,21 +2244,21 @@ const DATA = {
     ],
 
     diningStrategy: {
-      morning: "<b>Easy & Inexpensive.</b> Fresh bakery pastries, café coffee, simple breakfast/market groceries.",
-      lunch: "<b>Main Savings Lever.</b> Bakery sandwiches, baguettes, market spreads, picnics along the Seine/parks/Cassis takeaway.",
-      afternoon: "<b>Flexible.</b> Café terrace, natural wine bar, apéro, Cassis waterfront drink.",
-      dinner: "<b>Spend Selectively.</b> Selective Paris bistros/restaurants, casual pizza/neighborhood meals, Cassis seafood."
+      morning: "pastries, café, simple breakfast/market groceries",
+      lunch: "bakery sandwiches, baguettes, markets, picnics, Seine/park/Cassis takeaway",
+      afternoon: "café, wine bar, apéro, Cassis waterfront drink",
+      dinner: "selective Paris bistros/restaurants, casual pizza/neighborhood meals, Cassis seafood"
     },
 
     foodExamples: "<b>France Food Vibe:</b> Bakery baguettes, market picnics, Oobatz, Parcelles, Bistrot Paul Bert, wine on the Champ-de-Mars, Cassis seafood.",
     howWeSave: "<b>France Savings Strategy:</b> Prioritize bakery, market, and neighborhood charcuterie picnics for lunch over expensive sit-down restaurants every day, save dinner splurges for selected iconic bistros, walk or use the Metro in Paris rather than taxis, enjoy relaxed takeaway wine and cheese along the Seine or Cassis beaches, and rent bikes for Loire exploration.",
     rhythm: [
       "Château/bike morning around Amboise or Chenonceau",
-      "Loire bakery/market picnic along the river",
-      "Marais wandering + café/wine bar afternoon",
+      "Loire bakery/market picnic",
+      "Marais wandering + café/wine bar",
       "Paris dinner/cocktails/neighborhood night",
-      "Calanques swim or boat day near Cassis",
-      "Cassis harbor/terrace evening with local Rosé"
+      "Calanques swim or boat day",
+      "Cassis harbor/terrace evening"
     ]
   }
 };
@@ -2181,7 +2267,7 @@ const PACE_DATA = [
   { id: "croatia", name: "CROATIA + MONTENEGRO (2 Bases · 1 Move · 2 Countries)", segments: [{ text: "Dubrovnik 🇭🇷 (6n)", width: "46%", bg: "#0284c7" }, { text: "Kotor Bay 🇲🇪 (7n)", width: "54%", bg: "#075985" }] },
   { id: "greece", name: "GREECE (3 Bases · 2 Moves)", segments: [{ text: "Naxos (6n)", width: "46%", bg: "#1d4ed8" }, { text: "Hydra (4n)", width: "31%", bg: "#0f3b7e" }, { text: "Athens (3n)", width: "23%", bg: "#0284c7" }] },
   { id: "portugal", name: "PORTUGAL + SPAIN (2 Bases · 1 Move)", segments: [{ text: "Cascais (6n)", width: "46%", bg: "#1b4332" }, { text: "Calpe (7n)", width: "54%", bg: "#c8372d" }] },
-  { id: "italy", name: "ITALY (2 Bases · 1 Move)", segments: [{ text: "Monopoli, Puglia (9n)", width: "69%", bg: "#184e28" }, { text: "Rome (4n)", width: "31%", bg: "#b91c1c" }] },
+  { id: "italy", name: "ITALY (2 Bases · 1 Move)", segments: [{ text: "Rome (4n)", width: "31%", bg: "#b91c1c" }, { text: "Monopoli, Puglia (9n)", width: "69%", bg: "#184e28" }] },
   { id: "france", name: "FRANCE (3 Bases · 2 Moves)", segments: [{ text: "Amboise (3n)", width: "23%", bg: "#1e3a8a" }, { text: "Paris (6n)", width: "46%", bg: "#002395" }, { text: "Cassis (4n)", width: "31%", bg: "#ED2939" }] }
 ];
 
@@ -2203,7 +2289,7 @@ const UNLOCK_DATA = {
       { id: "croatia_summer", name: "🇭🇷🇲🇪 Croatia + Montenegro (Summer)", nights: "13 nights · Dubrovnik 6n → Kotor Bay 7n", costRangeText: "~$5,900–$6,500 couple", lowVal: 5900, highVal: 6500, vibe: "The Value Play. Old Town Dubrovnik history + Kotor Bay mountain fjord scenery across two countries.", lodging: "Dubrovnik target ($1.2K–$1.4K) + Kotor Bay target ($900–$1.1K): ~$2.3K lodging target." },
       { id: "greece_summer", name: "🇬🇷 Greece (Summer)", nights: "13 nights · Naxos → Hydra → Athens", costRangeText: "~$6,300–$6,800 couple", lowVal: 6300, highVal: 6800, vibe: "Pure Aegean island adventure, car-free Hydra relaxation, and ancient history in Athens.", lodging: "Hotel Grotta (€970.50 ≈ $1,135) + Hydra Town + Stanley Athens: ~$2,240 lodging." },
       { id: "portugal_summer", name: "🇵🇹🇪🇸 Portugal + Spain (Summer)", nights: "13 nights · Cascais → Calpe", costRangeText: "~$6,500–$7,000 couple", lowVal: 6500, highVal: 7000, vibe: "The slowest, easiest 2-week vacation. Hotel pool value in Cascais + private sea-view terrace in Spain.", lodging: "Vila Galé + Calpe Sea-View Airbnb: $2,498 confirmed." },
-      { id: "italy_summer", name: "🇮🇹 Italy (Summer)", nights: "13 nights · Monopoli → Rome", costRangeText: "~$6,600–$7,100 couple", lowVal: 6600, highVal: 7100, vibe: "Nine slow nights in coastal Puglia coves, followed by historic Rome dining and landmarks.", lodging: "Monopoli Airbnb + Rome Hotel Quirinale: $2,521 confirmed." }
+      { id: "italy_summer", name: "🇮🇹 Italy (Summer)", nights: "13 nights · Rome → Monopoli", costRangeText: "~$6,450–$6,750 couple", lowVal: 6450, highVal: 6750, vibe: "Four nights of Rome landmarks while fresh followed by nine slow nights in coastal Puglia coves.", lodging: "Relais Forus Inn Monti + Monopoli Airbnb: $2,490 total." }
     ]
   }
 };
@@ -2219,11 +2305,11 @@ let selectedWinterSummerOptionId = 'croatia_summer';
 
 async function saveState() {
   try {
-    const state = { currentTripKey, activePerson, conAnswers, ashleyAnswers, franceSeasonMode, selectedNyeOptionId, selectedWinterSummerOptionId };
+    const state = { currentTripKey, activePerson, conAnswers, ashleyAnswers, franceSeasonMode, selectedNyeOptionId, selectedWinterSummerOptionId, italyAirfare, italyFood, italyTrans, italyBdayOption };
     if (window.storage && window.storage.set) {
-      await window.storage.set("summer2027_dual_state_v24", JSON.stringify(state));
+      await window.storage.set("summer2027_dual_state_v25", JSON.stringify(state));
     } else {
-      localStorage.setItem("summer2027_dual_state_v24", JSON.stringify(state));
+      localStorage.setItem("summer2027_dual_state_v25", JSON.stringify(state));
     }
   } catch(e) {}
 }
@@ -2232,10 +2318,10 @@ async function loadState() {
   try {
     let raw = null;
     if (window.storage && window.storage.get) {
-      const res = await window.storage.get("summer2027_dual_state_v24");
+      const res = await window.storage.get("summer2027_dual_state_v25");
       if (res && res.value) raw = res.value;
     } else {
-      raw = localStorage.getItem("summer2027_dual_state_v24");
+      raw = localStorage.getItem("summer2027_dual_state_v25");
     }
     if (raw) {
       const parsed = JSON.parse(raw);
@@ -2246,6 +2332,10 @@ async function loadState() {
       if (parsed.franceSeasonMode) franceSeasonMode = parsed.franceSeasonMode;
       if (parsed.selectedNyeOptionId) selectedNyeOptionId = parsed.selectedNyeOptionId;
       if (parsed.selectedWinterSummerOptionId) selectedWinterSummerOptionId = parsed.selectedWinterSummerOptionId;
+      if (parsed.italyAirfare !== undefined) italyAirfare = parsed.italyAirfare;
+      if (parsed.italyFood !== undefined) italyFood = parsed.italyFood;
+      if (parsed.italyTrans !== undefined) italyTrans = parsed.italyTrans;
+      if (parsed.italyBdayOption) italyBdayOption = parsed.italyBdayOption;
     }
   } catch(e) {}
 }
@@ -2596,8 +2686,15 @@ function renderTopBanner(trip) {
   const banner = document.getElementById("topCostBanner");
   if (!banner) return;
 
-  const likely = trip.budget.likely;
-  const ceiling = trip.budget.ceiling;
+  let likely = trip.budget.likely;
+  let ceiling = trip.budget.ceiling;
+
+  if (trip.id === 'italy') {
+    const actVal = italyBdayOption === 'boat' ? 250 : 140;
+    likely = Math.round(2490.04 + italyAirfare + italyTrans + italyFood + actVal);
+    ceiling = 7000;
+  }
+
   const ppLow = Math.round(likely / 2);
   const ppHigh = Math.round(ceiling / 2);
 
@@ -2614,6 +2711,277 @@ function renderTopBanner(trip) {
     <div class="selected-tagline-badge">${trip.subtitle}</div>
     <div class="selected-tagline-desc">${trip.tagline}</div>
   `;
+}
+
+function renderItalySpecificModules() {
+  const container = document.getElementById("destCustomModules");
+  if (!container) return;
+
+  if (currentTripKey !== 'italy') {
+    container.innerHTML = "";
+    return;
+  }
+
+  const actVal = italyBdayOption === 'boat' ? 250 : 140;
+  const calcTotal = 2490.04 + Number(italyAirfare) + Number(italyTrans) + Number(italyFood) + actVal;
+  const roundedHeadline = Math.round(calcTotal / 50) * 50;
+
+  container.innerHTML = `
+    <!-- ITALY DAILY ITINERARY ACCORDIONS -->
+    <div class="section-label">Detailed Italy Itinerary (July 2–15)</div>
+    
+    <details class="italy-section" open>
+      <summary>🏛️ Rome — July 2–6 (4 Nights)</summary>
+      <div class="section-content">
+        <div class="day-card">
+          <div class="day-title">Friday, July 2 — Arrival and Monti</div>
+          <div class="day-detail"><b>Activities:</b> Arrive in Rome, check in at Relais Forus Inn (Monti), easy Monti orientation walk, Piazza della Madonna dei Monti. Optional Trevi Fountain after dark if energy permits.</div>
+          <div class="day-detail"><b>Breakfast:</b> Travel day</div>
+          <div class="day-detail"><b>Lunch:</b> Fuorinorma panino if arrival timing works <span class="badge-tag cheap">Cheap Casual TBD</span></div>
+          <div class="day-detail"><b>Dinner:</b> Pizzeria della Madonna dei Monti <span class="badge-tag casual">Casual</span></div>
+          <div class="day-detail"><b>Drinks:</b> One inexpensive neighborhood spritz or glass of wine</div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-title">Saturday, July 3 — Ancient Rome</div>
+          <div class="day-detail"><b>Activities:</b> Colosseum interior, Roman Forum and Palatine Hill. Afternoon hotel reset during hottest hours.</div>
+          <div class="day-detail"><b>Breakfast:</b> Relais Forus breakfast if included in final rate</div>
+          <div class="day-detail"><b>Lunch:</b> Ce Stamo a Pensà — Casual seated lunch (pasta, fried pizza or daily plates, ~€30–40 for two) <span class="badge-tag casual">Casual Seated</span></div>
+          <div class="day-detail"><b>Dinner:</b> La Taverna dei Fori Imperiali — Primary classic Roman dinner <span class="badge-tag special">Reserve Ahead</span></div>
+          <div class="day-detail"><b>Drinks:</b> Casual wine only; no destination cocktail bar</div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-title">Sunday, July 4 — Roaming, Shopping and Eating</div>
+          <div class="day-detail"><b>Activities:</b> Spanish Steps, Via Condotti & Via del Corso, Trevi Fountain, Pantheon (admired outside), Piazza Navona. Open roaming/shopping/eating day.</div>
+          <div class="day-detail"><b>Breakfast:</b> Er Baretto (cappuccino & cornetto) <span class="badge-tag cheap">Cheap</span></div>
+          <div class="day-detail"><b>Lunch:</b> Antico Forno Roscioli — Pizza bianca, bakery items, pizza by the slice or supplì <span class="badge-tag cheap">Cheap Casual</span></div>
+          <div class="day-detail"><b>Coffee/Gelato:</b> Sant’Eustachio Caffè espresso & Giolitti gelato</div>
+          <div class="day-detail"><b>Dinner:</b> Osteria delle Coppelle — Casual seated dinner convenient to route <span class="badge-tag casual">Casual Seated</span></div>
+          <div class="day-detail"><b>Cocktails:</b> Club Derrière — One planned cocktail-bar night (one cocktail each) <span class="badge-tag special">Special Night</span></div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-title">Monday, July 5 — Vatican and Prati</div>
+          <div class="day-detail"><b>Activities:</b> St. Peter’s Square, optional St. Peter’s Basilica interior if security line is reasonable. Wander Prati, return to Monti for final evening.</div>
+          <div class="day-detail"><b>Breakfast:</b> Relais Forus breakfast if included</div>
+          <div class="day-detail"><b>Lunch:</b> 200 Gradi — Made-to-order hot panino near Vatican <span class="badge-tag cheap">Cheap Casual</span></div>
+          <div class="day-detail"><b>Dinner:</b> Cuoco & Camicia — Modern, creative Italian cooking <span class="badge-tag special">Reserve Ahead</span></div>
+          <div class="day-detail"><b>After Dinner:</b> Final Monti passeggiata and optional glass of wine</div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-title">Tuesday, July 6 — Rome to Monopoli (Transfer Day)</div>
+          <div class="day-detail"><b>Activities:</b> Check out, high-speed train from Rome to Monopoli, check in at The Seagull Airbnb — current nine-night Monopoli option, arrival grocery run.</div>
+          <div class="day-detail"><b>Breakfast:</b> Quick hotel breakfast or café stop</div>
+          <div class="day-detail"><b>Lunch:</b> Trapizzino at Mercato Centrale if timing works <span class="badge-tag cheap">Cheap Casual TBD</span></div>
+          <div class="day-detail"><b>Dinner:</b> Vico Fish Bar in Monopoli <span class="badge-tag casual">Casual Seafood</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="italy-section" open>
+      <summary>🌊 Puglia — July 6–15 (9 Nights · No Car · Monopoli Base)</summary>
+      <div class="section-content">
+        <p style="font-size:12px; color:var(--text-muted); margin-top:0; margin-bottom:12px;"><i>No car · Monopoli is the single base · trains, walking and occasional taxis</i></p>
+        
+        <div class="day-card">
+          <div class="day-title">Wednesday, July 7 — Monopoli and Free Beach</div>
+          <div class="day-detail"><b>Activities:</b> Monopoli old town, Cala Porta Vecchia, free beach day <span class="badge-tag free">Free</span></div>
+          <div class="day-detail"><b>Breakfast:</b> Airbnb breakfast</div>
+          <div class="day-detail"><b>Lunch:</b> Airbnb-made Italian sandwiches #1 <span class="badge-tag cheap">Cheap / Groceries</span></div>
+          <div class="day-detail"><b>Dinner:</b> Trattoria San Domenico <span class="badge-tag casual">Casual</span></div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-title">Thursday, July 8 — Polignano a Mare Day Trip</div>
+          <div class="day-detail"><b>Activities:</b> Short train to Polignano a Mare, viewpoints, old town, swim if conditions permit, return to Monopoli.</div>
+          <div class="day-detail"><b>Breakfast:</b> Airbnb breakfast</div>
+          <div class="day-detail"><b>Lunch:</b> Pescaria seafood sandwich <span class="badge-tag cheap">Cheap Casual</span></div>
+          <div class="day-detail"><b>Dinner:</b> Al Vicoletto — Cucina di Casa <span class="badge-tag casual">Casual Home Cooking</span></div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-title">Friday, July 9 — Free Beach and Casual Food</div>
+          <div class="day-detail"><b>Activities:</b> Porto Bianco or Porto Rosso, relaxed Monopoli afternoon <span class="badge-tag free">Free</span></div>
+          <div class="day-detail"><b>Breakfast:</b> Cappuccino and cornetto out <span class="badge-tag cheap">Cheap</span></div>
+          <div class="day-detail"><b>Lunch:</b> Gustavo salumeria sandwich <span class="badge-tag cheap">Cheap Casual</span></div>
+          <div class="day-detail"><b>Dinner:</b> Pinsotti <span class="badge-tag casual">Casual Pizza</span></div>
+        </div>
+
+        <div class="day-card" style="border: 1.5px solid #ec4899; background: rgba(236,72,153,0.04);">
+          <div class="day-title" style="color: #db2777;">Saturday, July 10 — Ashley’s Birthday 🎉</div>
+          <div class="day-detail"><b>Birthday Experience:</b> ${italyBdayOption === 'boat' ? 'Shared Small-Group Boat Excursion (~$150–225 total)' : 'Lido Beach Day Lounge & Umbrella (~$60–120 total)'} <span class="badge-tag special">Birthday Highlight</span></div>
+          <div class="day-detail"><b>Breakfast:</b> Simple Airbnb breakfast</div>
+          <div class="day-detail"><b>Lunch:</b> Light beach, boat or lido lunch</div>
+          <div class="day-detail"><b>Dinner:</b> Atypical Restaurant — Ashley’s special birthday dinner <span class="badge-tag special">Reserve Ahead</span></div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-title">Sunday, July 11 — Lecce Day Trip</div>
+          <div class="day-detail"><b>Activities:</b> Train to Lecce, Baroque architecture, Piazza del Duomo, Basilica di Santa Croce, historic-center wandering.</div>
+          <div class="day-detail"><b>Breakfast:</b> Airbnb breakfast</div>
+          <div class="day-detail"><b>Lunch:</b> Doppiozero — Casual seated lunch (~€35–50 for two: burrata, salumi, local vegetables, salads) <span class="badge-tag casual">Casual Seated</span></div>
+          <div class="day-detail"><b>Snack:</b> Shared rustico leccese or panzerotto <span class="badge-tag cheap">Optional Snack</span></div>
+          <div class="day-detail"><b>Dinner:</b> Light spontaneous dinner in Lecce or Monopoli <span class="badge-tag casual">Casual</span></div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-title">Monday, July 12 — Empty Free-Beach Day</div>
+          <div class="day-detail"><b>Activities:</b> Deliberately unstructured, free beach, swimming, reading and resting <span class="badge-tag free">Free</span></div>
+          <div class="day-detail"><b>Breakfast:</b> Airbnb breakfast</div>
+          <div class="day-detail"><b>Lunch:</b> Airbnb-made Italian sandwiches #2 <span class="badge-tag cheap">Cheap / Groceries</span></div>
+          <div class="day-detail"><b>Dinner:</b> Intentional Airbnb dinner cooking local pasta, fresh tomatoes, cheese and wine <span class="badge-tag cheap">Local Grocery Experience</span></div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-title">Tuesday, July 13 — Slow Monopoli Day</div>
+          <div class="day-detail"><b>Activities:</b> Slow morning, swimming, shopping or wandering. No major excursion required.</div>
+          <div class="day-detail"><b>Breakfast/Lunch:</b> Cortino brunch (replaces both breakfast & lunch) <span class="badge-tag casual">Casual Seated Brunch</span></div>
+          <div class="day-detail"><b>Dinner:</b> Café Machiavelli <span class="badge-tag casual">Casual</span></div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-title">Wednesday, July 14 — Final Beach and Farewell Dinner</div>
+          <div class="day-detail"><b>Activities:</b> Final free beach, old-town shopping, pack and enjoy final evening.</div>
+          <div class="day-detail"><b>Breakfast:</b> Second cappuccino and cornetto morning out <span class="badge-tag cheap">Cheap</span></div>
+          <div class="day-detail"><b>Lunch:</b> Pick up puccia or sandwiches from Magnapulia <span class="badge-tag cheap">Cheap Casual</span></div>
+          <div class="day-detail"><b>Dinner:</b> Il Guazzetto — Farewell seafood dinner <span class="badge-tag special">Reserve Ahead</span></div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-title">Thursday, July 15 — Departure Day</div>
+          <div class="day-detail"><b>Activities:</b> Check out, travel to Bari Airport, depart.</div>
+          <div class="day-detail"><b>Breakfast:</b> Airbnb or airport breakfast</div>
+        </div>
+      </div>
+    </details>
+
+    <!-- PUGLIA GROCERY CARD -->
+    <div class="card-box">
+      <h3>🛒 Puglia Arrival Grocery Plan (Monopoli Base)</h3>
+      <p style="font-size:12.5px; color:var(--text-muted); margin-top:-6px;">A simple Italian home breakfast consists of coffee, cornetto/pastry, yogurt, fruit, and bread/fette biscottate with jam. Stocking up on arrival makes mornings effortless:</p>
+      <div style="font-size:13px; line-height:1.45; display:grid; grid-template-columns: 1fr 1fr; gap:8px; background:rgba(0,0,0,0.03); padding:10px; border-radius:6px; border:1px solid var(--card-border);">
+        <div>• Fresh Fruit & Yogurt<br>• Cornetti & Pastries<br>• Fette Biscottate, Jam, Nutella<br>• Coffee & Fresh Water</div>
+        <div>• Fresh Bread, Cheese & Salumi<br>• Ripe Local Tomatoes<br>• Wine, Beer & Snacks<br>• Sandwich Supplies</div>
+      </div>
+    </div>
+
+    <!-- FOOD BALANCE & SAVINGS EXPLANATION CARDS -->
+    <div class="st-grid" style="margin-bottom:14px;">
+      <div class="st-card strengths">
+        <h5>🍽️ Food Balance & Quality</h5>
+        <ul>
+          <li><b>Dinner is planned for all 13 nights:</b> 11 named restaurant experiences, one light spontaneous Lecce/Monopoli dinner and one intentional Airbnb dinner.</li>
+          <li><b>3 Daytime Seated Meals:</b> Ce Stamo a Pensà, Doppiozero, and Cortino brunch.</li>
+          <li><b>Casual Daytime Favorites:</b> Panini, pizza by the slice, Pescaria seafood sandwiches, bakery items, or Airbnb beach sandwiches.</li>
+          <li><b>Special Highlights:</b> Club Derrière cocktails in Rome, Ashley’s birthday dinner at Atypical, and farewell seafood at Il Guazzetto.</li>
+        </ul>
+      </div>
+      <div class="st-card tradeoffs" style="background:rgba(56, 189, 248, 0.08); border-color:var(--accent);">
+        <h5 style="color:var(--accent-text);">💡 How Italy Stays Under $7,000</h5>
+        <ul>
+          <li><b>No Rental Car:</b> $0 car rental, $0 parking, $0 fuel, $0 deposit credit hold. Walk & train default.</li>
+          <li><b>Lodging Efficiency:</b> Only 1 hotel move (Rome → Puglia) with 9 nights in 1 coastal Airbnb.</li>
+          <li><b>Grocery & Meal Tactics:</b> Airbnb breakfasts, 2 homemade beach sandwich lunches, and 1 local pasta night in.</li>
+          <li><b>Focused Splurges:</b> Free beaches, 1 cocktail night, shared boat OR lido (never both), and zero expensive cooking classes.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- INCLUDED / OPTIONAL / NOT INCLUDED MATRIX -->
+    <div class="card-box">
+      <h3>📋 Scope & Inclusions Matrix</h3>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px; font-size:12.5px; margin-top:8px;">
+        <div style="background:rgba(34, 197, 94, 0.08); border:1px solid #86efac; padding:10px; border-radius:6px;">
+          <b style="color:#166534; font-family:var(--font-plaque); font-size:10px; letter-spacing:0.1em; display:block; margin-bottom:6px;">INCLUDED IN BASELINE</b>
+          • Colosseum + Forum/Palatine tickets<br>
+          • Shared birthday boat OR lido day<br>
+          • Atypical birthday dinner<br>
+          • Club Derrière cocktail night<br>
+          • 2 casual seated lunches + Cortino brunch<br>
+          • Public transportation & occasional taxis<br>
+          • All listed dinners & grocery supplies
+        </div>
+        <div style="background:rgba(234, 179, 8, 0.08); border:1px solid #fde047; padding:10px; border-radius:6px;">
+          <b style="color:#854d0e; font-family:var(--font-plaque); font-size:10px; letter-spacing:0.1em; display:block; margin-bottom:6px;">OPTIONAL / SPONTANEOUS</b>
+          • St. Peter’s Basilica interior (if security line permits)<br>
+          • One additional spontaneous taxi<br>
+          • Extra cocktails beyond baseline<br>
+          • Shared rustico or panzerotto in Lecce<br>
+          • Trapizzino on transfer day
+        </div>
+        <div style="background:rgba(239, 68, 68, 0.08); border:1px solid #fca5a5; padding:10px; border-radius:6px;">
+          <b style="color:#991b1b; font-family:var(--font-plaque); font-size:10px; letter-spacing:0.1em; display:block; margin-bottom:6px;">NOT INCLUDED / EXCLUDED</b>
+          • Rental car, fuel & parking<br>
+          • Private boat charter (not in baseline)<br>
+          • Both boat AND lido simultaneously<br>
+          • Puglia cooking class<br>
+          • Vatican Museums & Sistine Chapel<br>
+          • Hotel Quirinale, Casa Coppelle, Retrobottega<br>
+          • Daily paid beach clubs
+        </div>
+      </div>
+    </div>
+
+    <!-- INTERACTIVE ITALY CALCULATOR & BIRTHDAY SELECTOR -->
+    <div class="card-box" style="border: 2px solid var(--accent);">
+      <h3>🧮 Interactive Italy Budget Calculator</h3>
+      <p style="font-size:12.5px; color:var(--text-muted); margin-top:-6px; margin-bottom:14px;">Adjust variables below to recalculate the expected Italy planning total in real time:</p>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; font-size:13px; margin-bottom:16px;">
+        <div>
+          <label style="font-weight:600; display:block; margin-bottom:4px;">Flights for Two ($1,600–$2,000):</label>
+          <input type="range" min="1600" max="2000" step="50" value="${italyAirfare}" oninput="updateItalyCalc('airfare', this.value)" style="width:100%;">
+          <div style="text-align:right; font-weight:700; color:var(--accent);">$${Number(italyAirfare).toLocaleString()}</div>
+        </div>
+
+        <div>
+          <label style="font-weight:600; display:block; margin-bottom:4px;">Food & Drinks ($1,700–$1,900):</label>
+          <input type="range" min="1700" max="1900" step="25" value="${italyFood}" oninput="updateItalyCalc('food', this.value)" style="width:100%;">
+          <div style="text-align:right; font-weight:700; color:var(--accent);">$${Number(italyFood).toLocaleString()}</div>
+        </div>
+
+        <div>
+          <label style="font-weight:600; display:block; margin-bottom:4px;">Transit ($275–$350):</label>
+          <input type="range" min="275" max="350" step="25" value="${italyTrans}" oninput="updateItalyCalc('trans', this.value)" style="width:100%;">
+          <div style="text-align:right; font-weight:700; color:var(--accent);">$${Number(italyTrans).toLocaleString()}</div>
+        </div>
+
+        <div>
+          <label style="font-weight:600; display:block; margin-bottom:4px;">Ashley's Birthday Experience (Boat OR Lido):</label>
+          <select onchange="updateItalyCalc('bday', this.value)" style="width:100%; padding:6px; border-radius:4px; background:var(--card-bg); color:var(--text-dark); border:1px solid var(--card-border);">
+            <option value="boat" ${italyBdayOption === 'boat' ? 'selected' : ''}>Option A: Shared Boat Excursion (~$200 midpoint)</option>
+            <option value="lido" ${italyBdayOption === 'lido' ? 'selected' : ''}>Option B: Lido Beach Day (~$90 midpoint)</option>
+          </select>
+          <div style="text-align:right; font-size:11px; color:var(--text-muted); margin-top:2px;">Rome Tickets ($55) + Selected Bday</div>
+        </div>
+      </div>
+
+      <div style="background:var(--accent-light); border:1px solid var(--card-border); padding:14px; border-radius:6px; text-align:center;">
+        <div style="font-family:var(--font-plaque); font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-muted);">Dynamically Calculated Italy Expected Total</div>
+        <div style="font-family:var(--font-display); font-size:32px; font-weight:700; color:var(--accent); margin:2px 0;">~$${roundedHeadline.toLocaleString()} for two</div>
+        <div style="font-size:12.5px; color:var(--text-dark);">
+          Exact Default Expected Total: <b>$6,665.04</b> | Per Person: <b>~$${Math.round(calcTotal/2).toLocaleString()} pp</b> | Safe Planning Target: <b>$7,000</b> (Absolute max slider combo: ~$7,030)
+        </div>
+        <div style="font-size:11.5px; color:var(--text-muted); margin-top:6px;">
+          Realistic likely booking outcome: <b>$6,450–$6,750</b> | Full adjustable calculator range: <b>$6,175–$7,030</b>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function updateItalyCalc(key, val) {
+  if (key === 'airfare') italyAirfare = Number(val);
+  if (key === 'food') italyFood = Number(val);
+  if (key === 'trans') italyTrans = Number(val);
+  if (key === 'bday') italyBdayOption = val;
+
+  renderItalySpecificModules();
+  renderTopBanner(DATA.italy);
+  renderTripProfile(DATA.italy);
+  saveState();
 }
 
 function renderTripProfile(trip) {
@@ -2676,25 +3044,49 @@ function renderTripProfile(trip) {
   const rhythmHTML = trip.rhythm.map(r => `<li>${r}</li>`).join("");
   document.getElementById("rhythmList").innerHTML = rhythmHTML;
 
-  const b = trip.budget;
-  document.getElementById("budgetTableContainer").innerHTML = `
-    <table class="budget-table">
-      <thead>
-        <tr>
-          <th>Category</th>
-          <th style="text-align:right;">Estimated Range (2 Adults)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Lodging</td><td style="text-align:right;">$${b.lodgingLow.toLocaleString()} ${b.lodgingHigh !== b.lodgingLow ? '– $' + b.lodgingHigh.toLocaleString() : ''}</td></tr>
-        <tr><td>International Airfare (from NYC)</td><td style="text-align:right;">$${b.airfareLow.toLocaleString()} – $${b.airfareHigh.toLocaleString()}</td></tr>
-        <tr><td>Intercity Trains / Ferries / Local Transit</td><td style="text-align:right;">$${b.transitLow.toLocaleString()} – $${b.transitHigh.toLocaleString()}</td></tr>
-        <tr><td>Food & Dining (Shared Dining Strategy)</td><td style="text-align:right;">$${b.foodLow.toLocaleString()} – $${b.foodHigh.toLocaleString()}</td></tr>
-        <tr><td>Activities & Sightseeing</td><td style="text-align:right;">$${b.activitiesLow.toLocaleString()} – $${b.activitiesHigh.toLocaleString()}</td></tr>
-        <tr class="total-row"><td>LIKELY PLAN TOTAL / CEILING</td><td style="text-align:right;">~$${b.likely.toLocaleString()} likely / $${b.ceiling.toLocaleString()} ceiling</td></tr>
-      </tbody>
-    </table>
-  `;
+  if (trip.id === 'italy') {
+    const actVal = italyBdayOption === 'boat' ? 250 : 140;
+    const calcTotal = 2490.04 + Number(italyAirfare) + Number(italyTrans) + Number(italyFood) + actVal;
+    
+    document.getElementById("budgetTableContainer").innerHTML = `
+      <table class="budget-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th style="text-align:right;">Estimated Amount (2 Adults)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Lodging (Relais Forus Inn $795.86 + The Seagull Airbnb $1,694.18)</td><td style="text-align:right;">$2,490.04</td></tr>
+          <tr><td>International Airfare for Two (Adjustable)</td><td style="text-align:right;">$${Number(italyAirfare).toLocaleString()}</td></tr>
+          <tr><td>Transportation (Trains, Transit, Airport Transfers, Taxis)</td><td style="text-align:right;">$${Number(italyTrans).toLocaleString()}</td></tr>
+          <tr><td>Food & Drinks (Dining Strategy, Groceries, Aperitivi)</td><td style="text-align:right;">$${Number(italyFood).toLocaleString()}</td></tr>
+          <tr><td>Activities (Colosseum/Forum $55 + ${italyBdayOption === 'boat' ? 'Shared Birthday Boat ~$195' : 'Lido Day ~$85'})</td><td style="text-align:right;">$${actVal}</td></tr>
+          <tr class="total-row"><td>EXPECTED TOTAL / SAFE CEILING</td><td style="text-align:right;">~$${Math.round(calcTotal).toLocaleString()} expected / $7,000 ceiling</td></tr>
+        </tbody>
+      </table>
+    `;
+  } else {
+    const b = trip.budget;
+    document.getElementById("budgetTableContainer").innerHTML = `
+      <table class="budget-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th style="text-align:right;">Estimated Range (2 Adults)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Lodging</td><td style="text-align:right;">$${b.lodgingLow.toLocaleString()} ${b.lodgingHigh !== b.lodgingLow ? '– $' + b.lodgingHigh.toLocaleString() : ''}</td></tr>
+          <tr><td>International Airfare (from NYC)</td><td style="text-align:right;">$${b.airfareLow.toLocaleString()} – $${b.airfareHigh.toLocaleString()}</td></tr>
+          <tr><td>Intercity Trains / Ferries / Local Transit</td><td style="text-align:right;">$${b.transitLow.toLocaleString()} – $${b.transitHigh.toLocaleString()}</td></tr>
+          <tr><td>Food & Dining (Shared Dining Strategy)</td><td style="text-align:right;">$${b.foodLow.toLocaleString()} – $${b.foodHigh.toLocaleString()}</td></tr>
+          <tr><td>Activities & Sightseeing</td><td style="text-align:right;">$${b.activitiesLow.toLocaleString()} – $${b.activitiesHigh.toLocaleString()}</td></tr>
+          <tr class="total-row"><td>LIKELY PLAN TOTAL / CEILING</td><td style="text-align:right;">~$${b.likely.toLocaleString()} likely / $${b.ceiling.toLocaleString()} ceiling</td></tr>
+        </tbody>
+      </table>
+    `;
+  }
 }
 
 function renderDynamicPace() {
@@ -2760,7 +3152,7 @@ function renderDecisionSummary() {
     { key: 'croatia', name: '🇭🇷🇲🇪 Croatia + Montenegro', price: '~$5,900 likely / $6,500 ceiling', vibe: '“The Adriatic Escape” — Old Town Dubrovnik history + Kotor Bay mountain fjord scenery across two countries.' },
     { key: 'greece', name: '🇬🇷 Greece', price: '~$6,300 likely / $6,800 ceiling', vibe: '“The Adventure” — Naxos beaches, car-free Hydra relaxation, and Acropolis views in Athens.' },
     { key: 'portugal', name: '🇵🇹🇪🇸 Portugal + Spain', price: '~$6,500 likely / $7,000 ceiling', vibe: '“The Vacation” — Cascais hotel pool + Calpe sea-view private terrace. Unpack twice and live slow.' },
-    { key: 'italy', name: '🇮🇹 Italy', price: '~$6,600 likely / $7,100 ceiling', vibe: '“The Food & Culture Powerhouse” — Nine slow nights in coastal Puglia coves followed by iconic Rome trattorias.' },
+    { key: 'italy', name: '🇮🇹 Italy', price: '~$6,700 likely / $7,000 ceiling', vibe: '“The Food + Culture Powerhouse” — Four nights of Rome landmarks while fresh followed by nine slow nights in coastal Puglia coves.' },
     { key: 'france', name: '🇫🇷 France', price: '~$7,050 likely / $7,850 ceiling', vibe: '“Châteaux, Marais & Calanques” — Loire countryside castles → living in the Marais → Mediterranean calanques.' }
   ];
 
@@ -3014,6 +3406,7 @@ function updateSelectedTrip(tripKey) {
       renderTripProfile(trip);
       renderPersonalizedFitSection();
       renderDynamicPace();
+      renderItalySpecificModules();
       renderDecisionSummary();
     }
   }
