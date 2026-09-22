@@ -2,3443 +2,536 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Summer 2027 · Decision & Annual Strategy Guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Europe 2027 · Con &amp; Ashley</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Cinzel:wght@600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;0,6..96,700;1,6..96,400&family=Karla:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-  /* COLOR SYSTEM & THEME VARIABLES */
-  :root {
-    --transition-speed: 0.35s;
-    --font-display: "Playfair Display", Georgia, serif;
-    --font-plaque: "Cinzel", serif;
-    --font-sans: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
-  }
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --page:#EFE6D3; --ink:#14284A; --ink-soft:#4A5A75;
+  --rule:#CDBE9E; --foil:#A9812F; --card:#F7F1E3; --shadow:rgba(20,40,74,.16);
+  --stamp-red:#A93226; --stamp-teal:#1C6B66; --stamp-violet:#5B4B8A; --stamp-olive:#6B7A2F;
+  --sky:#CFE3EC; --mrz:#1B1B1B;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);height:100%}
+body{margin:0;height:100%;background:var(--page);color:var(--ink);
+  font-family:"Karla",-apple-system,BlinkMacSystemFont,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --page:#101A2B;--ink:#EDE3CE;--ink-soft:#A4B0C6;--rule:#33425C;--foil:#D8B159;--card:#17243A;
+  --shadow:rgba(0,0,0,.45);--sky:#24374E;
+  --stamp-red:#D4685C;--stamp-teal:#4FA8A1;--stamp-violet:#9B8AD0;--stamp-olive:#A3B457;--mrz:#EDE3CE;}}
+:root[data-theme="dark"]{
+  --page:#101A2B;--ink:#EDE3CE;--ink-soft:#A4B0C6;--rule:#33425C;--foil:#D8B159;--card:#17243A;
+  --shadow:rgba(0,0,0,.45);--sky:#24374E;
+  --stamp-red:#D4685C;--stamp-teal:#4FA8A1;--stamp-violet:#9B8AD0;--stamp-olive:#A3B457;--mrz:#EDE3CE;}
 
-  /* DEFAULT / HOME THEME */
-  [data-theme="home"] {
-    --bg-main: #0f172a;
-    --hero-bg: #0f172a;
-    --hero-kicker: #38bdf8;
-    --hero-text: #ffffff;
-    --accent: #38bdf8;
-    --accent-light: rgba(56, 189, 248, 0.15);
-    --accent-text: #38bdf8;
-    --card-bg: #1e293b;
-    --card-border: #334155;
-    --text-dark: #f8fafc;
-    --text-muted: #94a3b8;
-    --bar-highlight: #38bdf8;
-    --badge-bg: #0284c7;
-    --badge-text: #ffffff;
-  }
+.book{max-width:820px;margin:0 auto;padding:0 18px 80px}
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;display:flex;gap:5px;align-items:flex-end;
+  padding:10px 18px 0;margin:0 -18px 22px;background:var(--page);border-bottom:1px solid var(--rule);overflow-x:auto;scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs button{font:inherit;font-size:13px;font-weight:700;letter-spacing:.04em;white-space:nowrap;
+  color:var(--ink-soft);background:transparent;border:1px solid transparent;border-bottom:none;
+  padding:9px 13px;border-radius:7px 7px 0 0;cursor:pointer}
+nav.tabs button[aria-selected="true"]{color:var(--ink);background:var(--card);border-color:var(--rule);box-shadow:0 -2px 0 var(--tabcol,var(--foil)) inset}
+nav.tabs button:focus-visible{outline:2px solid var(--foil);outline-offset:2px}
+.theme-flip{margin-left:auto;align-self:center;border:1px solid var(--rule)!important;border-radius:20px!important;padding:5px 11px!important;font-size:12px!important}
 
-  /* CROATIA + MONTENEGRO THEME 🇭🇷🇲🇪 */
-  [data-theme="croatia"] {
-    --bg-main: #f0f6fa;
-    --hero-bg: #0c3859;
-    --hero-kicker: #38bdf8;
-    --hero-text: #ffffff;
-    --top-cost-bg: #072238;
-    --top-cost-border: #0284c7;
-    --top-cost-number: #ffffff;
-    --accent: #0284c7;
-    --accent-light: #e0f2fe;
-    --accent-text: #0369a1;
-    --card-bg: #ffffff;
-    --card-border: #bae6fd;
-    --text-dark: #0f172a;
-    --text-muted: #475569;
-    --bar-highlight: #0284c7;
-    --badge-bg: #c8102e;
-    --badge-text: #ffffff;
-  }
+/* passport cover */
+.cover{position:relative;overflow:hidden;background:linear-gradient(168deg,#14284A 0%,#0B1A33 100%);
+  border-radius:4px 14px 14px 4px;padding:30px 24px 26px;box-shadow:0 10px 30px var(--shadow)}
+.cover::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 18% 22%,rgba(216,177,89,.10) 0 38%,transparent 39%),radial-gradient(circle at 82% 78%,rgba(216,177,89,.08) 0 30%,transparent 31%)}
+.crest{width:54px;height:54px;display:block;margin-bottom:14px}
+.cover h1{font-family:"Bodoni Moda",Georgia,serif;font-weight:700;font-size:clamp(30px,8vw,52px);line-height:.96;margin:0;color:#F3E4BF}
+.cover h1 em{font-style:italic;font-weight:400;display:block;font-size:.56em;color:#C9A455;margin-top:8px}
+.holders{margin-top:22px;padding-top:16px;border-top:1px solid rgba(216,177,89,.35);display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:14px 20px}
+.field span{display:block;font-size:10.5px;letter-spacing:.14em;color:#9DAEC8;margin-bottom:3px}
+.field b{font-family:"Bodoni Moda",serif;font-size:17px;font-weight:600;color:#F3E4BF}
+.mrz{margin:20px -24px -26px;padding:12px 24px;background:rgba(243,228,191,.92);color:#1B1B1B;
+  font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:clamp(9px,2.6vw,12px);letter-spacing:.08em;white-space:nowrap;overflow-x:auto}
+.mrz div+div{margin-top:2px}
+@keyframes thud{0%{opacity:0;transform:rotate(-26deg) scale(2.1)}70%{opacity:.95;transform:rotate(-13deg) scale(.97)}100%{opacity:.92;transform:rotate(-13deg) scale(1)}}
+.entry-stamp{position:absolute;right:14px;bottom:58px;width:112px;height:112px;animation:thud .5s cubic-bezier(.2,.9,.3,1.4) .35s both}
+@media(max-width:520px){.entry-stamp{width:86px;height:86px;bottom:66px;right:8px}}
+@media (prefers-reduced-motion:reduce){.entry-stamp{animation:none;opacity:.92;transform:rotate(-13deg)}*{transition:none!important}}
 
-  /* GREECE THEME 🇬🇷 */
-  [data-theme="greece"] {
-    --bg-main: #f0f4f9;
-    --hero-bg: #0d3b66;
-    --hero-kicker: #64dfdf;
-    --hero-text: #ffffff;
-    --top-cost-bg: #062340;
-    --top-cost-border: #1e56a0;
-    --top-cost-number: #ffffff;
-    --accent: #1d4ed8;
-    --accent-light: #e0f2fe;
-    --accent-text: #0369a1;
-    --card-bg: #ffffff;
-    --card-border: #cbd5e1;
-    --text-dark: #0f172a;
-    --text-muted: #475569;
-    --bar-highlight: #1d4ed8;
-    --badge-bg: #1e40af;
-    --badge-text: #ffffff;
-  }
+.countdown{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin:26px 0 8px;padding-bottom:14px;border-bottom:1px solid var(--rule)}
+.countdown b{font-family:"Bodoni Moda",serif;font-size:clamp(34px,9vw,54px);line-height:1;font-weight:700}
+.countdown p{margin:0;font-size:14px;color:var(--ink-soft);max-width:44ch}
 
-  /* PORTUGAL + SPAIN THEME 🇵🇹🇪🇸 */
-  [data-theme="portugal"] {
-    --bg-main: #fcf8f2;
-    --hero-bg: #1b4332;
-    --hero-kicker: #f4a261;
-    --hero-text: #fff3e0;
-    --top-cost-bg: #0f291e;
-    --top-cost-border: #2d6a4f;
-    --top-cost-number: #f4a261;
-    --accent: #c8372d;
-    --accent-light: #fde8e8;
-    --accent-text: #991b1b;
-    --card-bg: #ffffff;
-    --card-border: #ebd5c1;
-    --text-dark: #2c1810;
-    --text-muted: #6b5347;
-    --bar-highlight: #c8372d;
-    --badge-bg: #c8372d;
-    --badge-text: #ffffff;
-  }
+h2.sec{font-family:"Bodoni Moda",serif;font-weight:600;font-size:24px;margin:38px 0 4px}
+h2.sec+p.lede{margin:0 0 16px;color:var(--ink-soft);font-size:14.5px;max-width:62ch}
 
-  /* ITALY THEME 🇮🇹 */
-  [data-theme="italy"] {
-    --bg-main: #f4f7f4;
-    --hero-bg: #184e28;
-    --hero-kicker: #a3e635;
-    --hero-text: #ffffff;
-    --top-cost-bg: #0c3117;
-    --top-cost-border: #2e7d32;
-    --top-cost-number: #ffffff;
-    --accent: #b91c1c;
-    --accent-light: #fee2e2;
-    --accent-text: #991b1b;
-    --card-bg: #ffffff;
-    --card-border: #c8d6c9;
-    --text-dark: #142817;
-    --text-muted: #4a5d4e;
-    --bar-highlight: #b91c1c;
-    --badge-bg: #b91c1c;
-    --badge-text: #ffffff;
-  }
+.stamps{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:620px){.stamps{grid-template-columns:1fr 1fr}}
+.visa{position:relative;text-align:left;cursor:pointer;background:var(--card);border:1px solid var(--rule);
+  border-radius:3px;padding:0;overflow:hidden;color:inherit;font:inherit;box-shadow:0 2px 0 var(--rule)}
+.visa:focus-visible{outline:2px solid var(--foil);outline-offset:3px}
+.visa .art{display:block;width:100%;height:128px}
+.visa .body{padding:14px 16px 16px;border-top:1px dashed var(--rule)}
+.visa h3{font-family:"Bodoni Moda",serif;font-size:21px;margin:0;font-weight:600}
+.visa .meta{font-size:12.5px;color:var(--ink-soft);margin-top:2px}
+.visa p{margin:9px 0 0;font-size:14px}
+.roundel{position:absolute;top:10px;right:12px;width:72px;height:72px;transform:rotate(-11deg);opacity:.92}
 
-  /* FRANCE THEME 🇫🇷 */
-  [data-theme="france"] {
-    --bg-main: #F4F6FB;
-    --hero-bg: #002395;
-    --hero-kicker: #93c5fd;
-    --hero-text: #ffffff;
-    --top-cost-bg: #001866;
-    --top-cost-border: #ED2939;
-    --top-cost-number: #ffffff;
-    --accent: #002395;
-    --accent-light: #e7ebf6;
-    --accent-text: #001866;
-    --card-bg: #ffffff;
-    --card-border: #cbd5e1;
-    --text-dark: #0E1330;
-    --text-muted: #6a718f;
-    --bar-highlight: #ED2939;
-    --badge-bg: #ED2939;
-    --badge-text: #ffffff;
-  }
+.declaration{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:18px 18px 8px;box-shadow:0 2px 0 var(--rule)}
+.ledger{width:100%;border-collapse:collapse;font-size:14.5px}
+.ledger td{padding:9px 2px;border-bottom:1px dotted var(--rule)}
+.ledger td:last-child{text-align:right;font-family:"Bodoni Moda",serif;font-size:16px;white-space:nowrap}
+.ledger tr:last-child td{border-bottom:none;font-weight:700;padding-top:14px}
+.ledger tr:last-child td:last-child{color:var(--stamp-teal);font-size:19px}
+.note{font-size:12.5px;color:var(--ink-soft);margin:10px 0 0}
+.checklist{list-style:none;margin:0;padding:0}
+.checklist li{display:flex;gap:11px;align-items:flex-start;padding:11px 0;border-bottom:1px dotted var(--rule);font-size:14.5px}
+.checklist li:last-child{border-bottom:none}
+.tick{flex:0 0 auto;width:19px;height:19px;margin-top:2px}
 
-  /* NYE / WINTER 2028 THEME 🎆 */
-  [data-theme="nye"] {
-    --bg-main: #090d16;
-    --hero-bg: #0b1329;
-    --hero-kicker: #fef3c7;
-    --hero-text: #ffffff;
-    --top-cost-bg: #050811;
-    --top-cost-border: #d97706;
-    --top-cost-number: #fef3c7;
-    --accent: #d97706;
-    --accent-light: rgba(217, 119, 6, 0.15);
-    --accent-text: #fbbf24;
-    --card-bg: #131c31;
-    --card-border: #2a3a5e;
-    --text-dark: #f8fafc;
-    --text-muted: #94a3b8;
-    --bar-highlight: #f59e0b;
-    --badge-bg: #d97706;
-    --badge-text: #ffffff;
-  }
+/* city page */
+.cityhead{position:relative;overflow:hidden;border:1px solid var(--rule);border-radius:3px;background:var(--card);box-shadow:0 2px 0 var(--rule);margin-bottom:8px}
+.cityhead .art{display:block;width:100%;height:150px}
+.cityhead .body{padding:16px 18px 18px;border-top:1px dashed var(--rule)}
+.cityhead h2{font-family:"Bodoni Moda",serif;font-size:30px;margin:0;font-weight:700}
+.cityhead .meta{font-size:13px;color:var(--accent);font-weight:700;margin-top:2px}
+.cityhead p{margin:10px 0 0;font-size:14.5px;max-width:60ch}
+.citybar{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 22px}
 
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  body {
-    background: var(--bg-main);
-    color: var(--text-dark);
-    font-family: var(--font-sans);
-    font-size: 15px;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
-  }
-
-  .wrap {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 0 16px 64px;
-  }
-
-  /* TOP STICKY NAVIGATION BAR */
-  .nav-header {
-    background: var(--hero-bg);
-    margin: 0 -16px 0;
-    padding: 8px 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 3px solid var(--accent);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
-  }
-
-  .country-tabs {
-    display: flex;
-    gap: 4px;
-    overflow-x: auto;
-    max-width: 100%;
-    padding: 2px 0;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-    justify-content: center;
-  }
-  .country-tabs::-webkit-scrollbar { display: none; }
-
-  .country-tab {
-    font-family: var(--font-plaque);
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    font-size: 10.5px;
-    font-weight: 700;
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #ffffff;
-    padding: 6px 8px;
-    cursor: pointer;
-    border-radius: 20px;
-    white-space: nowrap;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
-  }
-  @media (max-width: 480px) {
-    .country-tabs {
-      justify-content: flex-start;
-      padding: 2px 4px;
-    }
-    .country-tab {
-      padding: 6px 7px;
-      font-size: 10px;
-    }
-    .nav-header {
-      padding: 8px 2px;
-    }
-  }
-  .country-tab:hover {
-    background: rgba(255, 255, 255, 0.28);
-  }
-  .country-tab[aria-selected="true"] {
-    background: #ffffff;
-    color: #0f172a;
-    border-color: #ffffff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-  }
-
-  /* HERO HEADER */
-  .hero {
-    background: var(--hero-bg);
-    color: var(--hero-text);
-    margin: 0 -16px 0;
-    padding: 28px 20px 28px;
-    position: relative;
-    border-bottom: 5px solid var(--accent);
-    transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
-  }
-  .hero-kicker {
-    font-family: var(--font-plaque);
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
-    font-size: 11px;
-    color: var(--hero-kicker);
-    margin: 0 0 8px;
-    font-weight: 700;
-    transition: color var(--transition-speed) ease;
-  }
-  .hero h1 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(34px, 10vw, 52px);
-    line-height: 0.98;
-    margin: 0;
-    letter-spacing: -0.01em;
-    white-space: nowrap;
-  }
-  @media (max-width: 650px) {
-    .hero h1 {
-      white-space: normal;
-      font-size: clamp(28px, 8vw, 42px);
-    }
-  }
-  .hero-dates {
-    font-family: var(--font-plaque);
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-size: 13px;
-    opacity: 0.9;
-    margin: 14px 0 0;
-    font-weight: 600;
-  }
-  .hero-copy {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 17px;
-    margin: 12px 0 0;
-    line-height: 1.35;
-    opacity: 0.95;
-  }
-
-  /* TOP ESTIMATED COST BANNER */
-  .selected-cost-banner {
-    background: var(--top-cost-bg);
-    border: 1.5px solid var(--top-cost-border);
-    border-radius: 8px;
-    padding: 18px 16px;
-    margin-top: 20px;
-    color: #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
-  }
-  .selected-dest-title {
-    font-family: var(--font-plaque);
-    font-size: 22px;
-    letter-spacing: 0.08em;
-    color: #fff;
-    text-transform: uppercase;
-    margin-bottom: 2px;
-  }
-  .selected-route-sub {
-    font-size: 13px;
-    opacity: 0.85;
-    margin-bottom: 12px;
-    font-weight: 500;
-  }
-  .cost-headline-label {
-    font-family: var(--font-plaque);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--hero-kicker);
-    font-weight: 700;
-  }
-  .cost-big-number {
-    font-family: var(--font-display);
-    font-size: clamp(34px, 9vw, 46px);
-    font-weight: 700;
-    line-height: 1;
-    color: var(--top-cost-number);
-    margin: 2px 0 4px;
-    transition: color var(--transition-speed) ease;
-  }
-  .cost-sub-details {
-    font-size: 13px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(255,255,255,0.12);
-  }
-  .cost-sub-details span b { color: #fff; }
-  .cost-includes {
-    font-size: 11px;
-    opacity: 0.75;
-    margin-top: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  .selected-tagline-badge {
-    display: inline-block;
-    background: var(--badge-bg);
-    color: var(--badge-text);
-    font-family: var(--font-plaque);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 4px;
-    margin-top: 12px;
-    transition: background-color var(--transition-speed) ease;
-  }
-  .selected-tagline-desc {
-    font-size: 13.5px;
-    margin-top: 6px;
-    line-height: 1.4;
-    opacity: 0.95;
-  }
-
-  /* HOME PAGE DESTINATION CARDS */
-  .home-hero-header {
-    text-align: center;
-    padding: 40px 10px 20px;
-  }
-  .home-hero-header h1 {
-    font-family: var(--font-display);
-    font-size: clamp(32px, 7vw, 48px);
-    color: #f8fafc;
-    margin: 0 0 8px;
-    line-height: 1.05;
-    white-space: nowrap;
-  }
-  @media (max-width: 650px) {
-    .home-hero-header h1 {
-      white-space: normal;
-      font-size: clamp(26px, 7vw, 36px);
-    }
-  }
-  .home-hero-header p {
-    font-size: 16px;
-    color: #94a3b8;
-    margin: 0 auto;
-    max-width: 500px;
-  }
-
-  .home-cards-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    margin-top: 24px;
-  }
-  @media (min-width: 550px) {
-    .home-cards-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  .home-country-card {
-    background: #1e293b;
-    border: 1px solid #334155;
-    border-radius: 14px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    position: relative;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-  }
-  .home-country-card:hover {
-    transform: translateY(-4px);
-    border-color: #38bdf8;
-    box-shadow: 0 8px 28px rgba(56, 189, 248, 0.25);
-  }
-
-  /* REUSABLE COLLAGE DESIGN SYSTEM */
-  .home-card-img-wrap {
-    height: 180px;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    background: #0f172a;
-  }
-  @media (min-width: 550px) {
-    .home-card-img-wrap { height: 195px; }
-  }
-
-  .home-card-collage {
-    display: grid;
-    width: 100%;
-    height: 100%;
-    gap: 2px;
-    background: #0f172a;
-  }
-  .home-card-collage img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease;
-  }
-  .home-country-card:hover .home-card-collage img {
-    transform: scale(1.05);
-  }
-
-  .home-card-collage.three-photo {
-    grid-template-columns: 1.8fr 1fr;
-    grid-template-rows: 1fr 1fr;
-  }
-  .home-card-collage.three-photo .home-card-photo-primary {
-    grid-row: 1 / 3;
-    grid-column: 1 / 2;
-  }
-
-  .home-card-collage.two-photo {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-  }
-
-  .home-card-collage.italy-photo {
-    grid-template-columns: 1.8fr 1fr;
-    grid-template-rows: 1fr;
-  }
-
-  .winter-hero-image {
-    width: 100%;
-    height: 180px;
-    overflow: hidden;
-    position: relative;
-    background: #0f172a;
-  }
-  @media (min-width: 550px) {
-    .winter-hero-image { height: 195px; }
-  }
-  .winter-hero-image img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transition: transform 0.4s ease;
-  }
-  .home-country-card:hover .winter-hero-image img {
-    transform: scale(1.05);
-  }
-
-  .home-card-emoji-badge {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(4px);
-    font-size: 20px;
-    padding: 6px 12px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    z-index: 2;
-  }
-  .home-card-fit-badge {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: rgba(56, 189, 248, 0.95);
-    color: #0f172a;
-    font-family: var(--font-plaque);
-    font-size: 9.5px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    padding: 4px 10px;
-    border-radius: 12px;
-    z-index: 2;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-  }
-  .home-card-content {
-    padding: 16px 18px 20px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-  .home-card-title {
-    font-family: var(--font-plaque);
-    font-size: 18px;
-    font-weight: 700;
-    color: #f8fafc;
-    margin-bottom: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  .home-card-route {
-    font-size: 12.5px;
-    color: #38bdf8;
-    font-weight: 600;
-    margin-bottom: 8px;
-  }
-  .home-card-desc {
-    font-size: 13px;
-    color: #cbd5e1;
-    line-height: 1.4;
-    margin-bottom: 12px;
-    flex: 1;
-  }
-  .home-card-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid #334155;
-    padding-top: 10px;
-    font-size: 12px;
-  }
-  .home-card-cost {
-    font-family: var(--font-display);
-    font-size: 16px;
-    font-weight: 700;
-    color: #fef3c7;
-  }
-  .home-card-cta {
-    font-family: var(--font-plaque);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: #38bdf8;
-    text-transform: uppercase;
-  }
-
-  /* NEW DUAL SURVEY STYLING FOR CON + ASHLEY */
-  .survey-card-box {
-    background: #1e293b;
-    border: 1px solid #334155;
-    border-radius: 12px;
-    padding: 22px 18px;
-    margin-top: 32px;
-    color: #f8fafc;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-  }
-  .survey-header {
-    text-align: center;
-    margin-bottom: 16px;
-  }
-  .survey-title {
-    font-family: var(--font-plaque);
-    font-size: 19px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: #38bdf8;
-    text-transform: uppercase;
-    margin: 0 0 6px;
-  }
-  .survey-subtitle {
-    font-size: 13.5px;
-    color: #94a3b8;
-    margin: 0 auto;
-    max-width: 520px;
-  }
-
-  /* PERSON TOGGLE TABS (CON | ASHLEY) */
-  .person-toggle-group {
-    display: flex;
-    background: #0f172a;
-    border: 1px solid #475569;
-    border-radius: 30px;
-    padding: 4px;
-    gap: 4px;
-    margin: 18px 0;
-  }
-  .person-btn {
-    flex: 1;
-    background: transparent;
-    border: none;
-    color: #cbd5e1;
-    font-family: var(--font-plaque);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    padding: 10px 8px;
-    border-radius: 24px;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: all 0.25s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-  }
-  .person-btn:hover { color: #ffffff; }
-  .person-btn.active {
-    background: #38bdf8;
-    color: #0f172a;
-    box-shadow: 0 2px 10px rgba(56, 189, 248, 0.4);
-  }
-  .person-status-pill {
-    font-size: 10px;
-    padding: 2px 8px;
-    border-radius: 10px;
-    background: rgba(255,255,255,0.15);
-  }
-  .person-btn.active .person-status-pill {
-    background: #0f172a;
-    color: #38bdf8;
-  }
-
-  .survey-progress-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 11px;
-    font-family: var(--font-plaque);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #94a3b8;
-    margin-bottom: 16px;
-  }
-  .survey-track {
-    flex: 1;
-    height: 6px;
-    background: #0f172a;
-    border-radius: 3px;
-    margin: 0 12px;
-    overflow: hidden;
-  }
-  .survey-fill {
-    height: 100%;
-    background: #38bdf8;
-    width: 0%;
-    transition: width 0.3s ease;
-  }
-
-  .q-card {
-    background: #0f172a;
-    border: 1px solid #334155;
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 14px;
-  }
-  .q-title {
-    font-size: 14.5px;
-    font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 12px;
-  }
-  .q-options-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-  @media (min-width: 480px) {
-    .q-options-grid.cols-2 { grid-template-columns: 1fr 1fr; }
-  }
-
-  .opt-chip {
-    background: #1e293b;
-    border: 1.5px solid #334155;
-    border-radius: 6px;
-    padding: 10px 12px;
-    font-size: 12.5px;
-    color: #cbd5e1;
-    cursor: pointer;
-    text-align: left;
-    transition: all 0.2s ease;
-  }
-  .opt-chip:hover {
-    border-color: #38bdf8;
-    color: #fff;
-  }
-  .opt-chip.selected {
-    background: rgba(56, 189, 248, 0.15);
-    border-color: #38bdf8;
-    color: #ffffff;
-    font-weight: 600;
-  }
-
-  .survey-actions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-    margin-top: 20px;
-    padding-top: 14px;
-    border-top: 1px dashed #334155;
-  }
-  .survey-btn-sec {
-    background: transparent;
-    border: 1px solid #475569;
-    color: #cbd5e1;
-    font-family: var(--font-plaque);
-    font-size: 9.5px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    padding: 6px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    text-transform: uppercase;
-  }
-  .survey-btn-sec:hover { background: #334155; color: #fff; }
-
-  /* DUAL TRIP PROFILE RESULTS BOX */
-  .trip-profile-box {
-    background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
-    border: 1.5px solid #6366f1;
-    border-radius: 10px;
-    padding: 18px;
-    margin-top: 20px;
-    color: #ffffff;
-  }
-  .tpb-title {
-    font-family: var(--font-plaque);
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: #a5b4fc;
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-  .tpb-summary {
-    font-size: 13.5px;
-    line-height: 1.45;
-    color: #e2e8f0;
-    margin-bottom: 12px;
-  }
-  .agree-differ-box {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin-bottom: 14px;
-    font-size: 12.5px;
-  }
-  @media (min-width: 500px) {
-    .agree-differ-box { grid-template-columns: 1fr 1fr; }
-  }
-  .ad-card {
-    background: rgba(255,255,255,0.05);
-    border-radius: 6px;
-    padding: 10px 12px;
-  }
-  .ad-title {
-    font-family: var(--font-plaque);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-  .ad-card.agree .ad-title { color: #86efac; }
-  .ad-card.differ .ad-title { color: #fde047; }
-  .ad-list { margin: 0; padding-left: 14px; }
-  .ad-list li { margin-bottom: 3px; }
-
-  /* SECTION HEADINGS */
-  .section-label {
-    font-family: var(--font-plaque);
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
-    color: var(--text-muted);
-    margin: 32px 0 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .section-label::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: var(--card-border);
-  }
-
-  /* CARD BOX CONTAINERS */
-  .card-box {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 8px;
-    padding: 18px;
-    margin-bottom: 14px;
-    transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
-  }
-  .card-box h3 {
-    font-family: var(--font-plaque);
-    font-size: 15px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin: 0 0 10px;
-    color: var(--text-dark);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  /* STRENGTHS & TRADEOFFS */
-  .st-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-  @media (min-width: 500px) {
-    .st-grid { grid-template-columns: 1fr 1fr; }
-  }
-  .st-card {
-    border-radius: 6px;
-    padding: 14px;
-    font-size: 13px;
-  }
-  .st-card.strengths {
-    background: var(--accent-light);
-    border: 1px solid var(--card-border);
-  }
-  .st-card.tradeoffs {
-    background: rgba(153, 27, 27, 0.1);
-    border: 1px solid #ef4444;
-  }
-  .st-card h5 {
-    font-family: var(--font-plaque);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin: 0 0 8px;
-  }
-  .st-card.strengths h5 { color: var(--accent-text); }
-  .st-card.tradeoffs h5 { color: #f87171; }
-  .st-card ul { margin: 0; padding-left: 16px; }
-  .st-card li { margin-bottom: 6px; line-height: 1.35; }
-
-  /* STATUS BADGES */
-  .badge-status {
-    display: inline-block;
-    font-size: 9.5px;
-    font-weight: 700;
-    padding: 2px 6px;
-    border-radius: 3px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-  .badge-status.confirmed { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
-  .badge-status.found { background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; }
-  .badge-status.options { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
-  .badge-status.working { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; }
-  .badge-status.pretax { background: #ffedd5; color: #9a3412; border: 1px solid #fed7aa; }
-
-  .badge-tag {
-    display: inline-block;
-    font-size: 9px;
-    font-weight: 700;
-    padding: 2px 6px;
-    border-radius: 3px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-left: 6px;
-  }
-  .badge-tag.free { background: #dcfce7; color: #166534; }
-  .badge-tag.cheap { background: #e0f2fe; color: #0369a1; }
-  .badge-tag.casual { background: #fef3c7; color: #92400e; }
-  .badge-tag.special { background: #fce7f3; color: #9d174d; }
-  .badge-tag.optional { background: #f3e8ff; color: #6b21a8; }
-
-  /* LODGING CARDS */
-  .lodging-item {
-    border-left: 3px solid var(--accent);
-    padding-left: 12px;
-    margin-bottom: 14px;
-    transition: border-color var(--transition-speed) ease;
-  }
-  .lodging-item:last-child { margin-bottom: 0; }
-  .lodging-name { font-weight: 700; font-size: 14.5px; color: var(--text-dark); display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
-  .lodging-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
-
-  /* BUDGET BREAKDOWN TABLE */
-  .budget-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-    margin-top: 8px;
-  }
-  .budget-table th, .budget-table td {
-    padding: 8px 6px;
-    text-align: left;
-    border-bottom: 1px solid var(--card-border);
-  }
-  .budget-table th {
-    font-family: var(--font-plaque);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-muted);
-  }
-  .budget-table tr.total-row {
-    font-weight: 700;
-    font-size: 13.5px;
-    border-top: 2px solid var(--text-dark);
-    color: var(--text-dark);
-  }
-
-  /* VISUAL BARS */
-  .bar-chart-container { margin-top: 10px; }
-  .bar-item { margin-bottom: 12px; }
-  .bar-label-group {
-    display: flex;
-    justify-content: space-around;
-    font-size: 12.5px;
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-  .bar-track {
-    background: var(--bg-main);
-    height: 12px;
-    border-radius: 6px;
-    overflow: hidden;
-  }
-  .bar-fill {
-    height: 100%;
-    background: var(--text-muted);
-    border-radius: 6px;
-    transition: width 0.4s ease, background-color var(--transition-speed) ease;
-  }
-  .bar-fill.highlight { background: var(--bar-highlight); }
-
-  /* PACE SEGMENTS */
-  .pace-bar {
-    display: flex;
-    height: 28px;
-    border-radius: 6px;
-    overflow: hidden;
-    margin-top: 8px;
-    font-size: 11px;
-    font-weight: 700;
-    color: #fff;
-    text-align: center;
-    line-height: 28px;
-  }
-  .pace-seg {
-    height: 100%;
-    padding: 0 4px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  /* FOOD TIMELINE */
-  .food-timeline { display: flex; flex-direction: column; gap: 10px; }
-  .food-step { display: flex; gap: 12px; align-items: flex-start; }
-  .food-time {
-    font-family: var(--font-plaque);
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--accent);
-    width: 75px;
-    flex-shrink: 0;
-    padding-top: 2px;
-    transition: color var(--transition-speed) ease;
-  }
-  .food-desc { font-size: 13px; line-height: 1.4; }
-  .food-desc b { color: var(--text-dark); }
-
-  /* WEEK RHYTHM LIST */
-  .rhythm-list { list-style: none; padding: 0; margin: 0; }
-  .rhythm-list li {
-    padding: 8px 0 8px 24px;
-    position: relative;
-    border-bottom: 1px dashed var(--card-border);
-    font-size: 13.5px;
-  }
-  .rhythm-list li:last-child { border-bottom: none; }
-  .rhythm-list li::before {
-    content: "•";
-    position: absolute;
-    left: 8px;
-    color: var(--accent);
-    font-size: 18px;
-    top: 4px;
-    transition: color var(--transition-speed) ease;
-  }
-
-  /* ACCORDION / EXPANDABLE SECTIONS */
-  details.italy-section {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 8px;
-    margin-bottom: 14px;
-    overflow: hidden;
-  }
-  details.italy-section summary {
-    padding: 14px 16px;
-    font-family: var(--font-plaque);
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    cursor: pointer;
-    background: rgba(0,0,0,0.03);
-    color: var(--text-dark);
-    user-select: none;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  details.italy-section summary:hover {
-    background: rgba(0,0,0,0.06);
-  }
-  details.italy-section .section-content {
-    padding: 16px;
-    border-top: 1px solid var(--card-border);
-  }
-
-  /* DAILY ITINERARY ITEM CARD */
-  .day-card {
-    background: rgba(0,0,0,0.02);
-    border: 1px solid var(--card-border);
-    border-radius: 6px;
-    padding: 12px;
-    margin-bottom: 12px;
-  }
-  .day-card:last-child { margin-bottom: 0; }
-  .day-title {
-    font-family: var(--font-plaque);
-    font-size: 12.5px;
-    font-weight: 700;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 8px;
-    border-bottom: 1px solid var(--card-border);
-    padding-bottom: 4px;
-  }
-  .day-detail {
-    font-size: 13px;
-    margin-bottom: 4px;
-    line-height: 1.4;
-  }
-  .day-detail b {
-    color: var(--text-dark);
-  }
-
-  /* INTERACTIVE "WHERE DOES FRANCE GO?" MODULE */
-  .unlock-module {
-    background: #0f172a;
-    color: #f8fafc;
-    border: 2px solid #334155;
-    border-radius: 12px;
-    padding: 22px 18px;
-    margin-top: 10px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-  }
-  .unlock-header {
-    text-align: center;
-    border-bottom: 1px solid #334155;
-    padding-bottom: 16px;
-    margin-bottom: 18px;
-  }
-  .unlock-title {
-    font-family: var(--font-plaque);
-    font-size: 18px;
-    letter-spacing: 0.12em;
-    color: #fef3c7;
-    text-transform: uppercase;
-    margin: 0 0 4px;
-  }
-  .unlock-subtitle {
-    font-size: 13px;
-    color: #94a3b8;
-    margin: 0;
-  }
-
-  /* MODE SWITCH BUTTONS (SUMMER FRANCE VS WINTER FRANCE) */
-  .france-switch-group {
-    display: flex;
-    background: #1e293b;
-    border: 1px solid #475569;
-    border-radius: 30px;
-    padding: 4px;
-    gap: 4px;
-    margin: 14px 0 18px;
-  }
-  .switch-btn {
-    flex: 1;
-    background: transparent;
-    border: none;
-    color: #cbd5e1;
-    font-family: var(--font-plaque);
-    font-size: 11.5px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    padding: 10px 8px;
-    border-radius: 24px;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: all 0.25s ease;
-  }
-  .switch-btn:hover { color: #ffffff; }
-  .switch-btn.active {
-    background: #2563eb;
-    color: #ffffff;
-    box-shadow: 0 2px 10px rgba(37, 99, 235, 0.4);
-  }
-  .switch-btn.active.winter {
-    background: #d97706;
-    box-shadow: 0 2px 10px rgba(217, 119, 6, 0.4);
-  }
-
-  /* CURRENT CHOICE PROMPT BANNER */
-  .unlock-prompt-box {
-    background: rgba(255,255,255,0.05);
-    border-left: 4px solid #38bdf8;
-    border-radius: 6px;
-    padding: 12px 14px;
-    margin-bottom: 18px;
-    font-size: 13.5px;
-    color: #e2e8f0;
-  }
-  .unlock-prompt-box b { color: #ffffff; }
-
-  /* DYNAMIC CARDS GRID */
-  .unlock-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-  @media (min-width: 520px) {
-    .unlock-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  .unlock-card {
-    background: #1e293b;
-    border: 2px solid #334155;
-    border-radius: 8px;
-    padding: 14px;
-    text-align: left;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    color: #f8fafc;
-    position: relative;
-  }
-  .unlock-card.backup-card {
-    border-style: dashed;
-    opacity: 0.9;
-  }
-  .unlock-card:hover {
-    border-color: #38bdf8;
-    transform: translateY(-2px);
-  }
-  .unlock-card.selected {
-    border-color: #38bdf8;
-    background: #0f2744;
-    box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25);
-  }
-  .unlock-card.selected::after {
-    content: "SELECTED";
-    position: absolute;
-    top: -9px;
-    right: 12px;
-    background: #38bdf8;
-    color: #0f172a;
-    font-family: var(--font-plaque);
-    font-size: 8.5px;
-    font-weight: 700;
-    padding: 2px 6px;
-    border-radius: 8px;
-    letter-spacing: 0.1em;
-  }
-
-  .uc-dest {
-    font-family: var(--font-plaque);
-    font-size: 14.5px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #ffffff;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  .uc-tier-tag {
-    font-size: 8.5px;
-    padding: 2px 5px;
-    border-radius: 3px;
-    letter-spacing: 0.05em;
-  }
-  .uc-tier-tag.primary { background: #0369a1; color: #e0f2fe; }
-  .uc-tier-tag.backup { background: #475569; color: #cbd5e1; }
-
-  .uc-cost {
-    font-family: var(--font-display);
-    font-size: 18px;
-    font-weight: 700;
-    color: #38bdf8;
-    margin: 2px 0;
-  }
-  .uc-nights {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #94a3b8;
-    margin-bottom: 8px;
-  }
-  .uc-vibe {
-    font-size: 12.5px;
-    line-height: 1.35;
-    color: #cbd5e1;
-    margin-bottom: 6px;
-  }
-  .uc-lodging {
-    font-size: 11.5px;
-    color: #fef3c7;
-    background: rgba(245, 158, 11, 0.12);
-    border: 1px solid rgba(245, 158, 11, 0.3);
-    padding: 4px 8px;
-    border-radius: 4px;
-    margin-top: 6px;
-  }
-
-  /* COMBINED 2027 COST CALCULATION BANNER */
-  .combined-calc-banner {
-    background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
-    border: 1.5px solid #6366f1;
-    border-radius: 8px;
-    padding: 18px 16px;
-    margin-top: 20px;
-    text-align: center;
-  }
-  .calc-label {
-    font-family: var(--font-plaque);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: #a5b4fc;
-  }
-  .calc-combo-title {
-    font-family: var(--font-display);
-    font-size: 21px;
-    font-weight: 700;
-    color: #ffffff;
-    margin: 2px 0 8px;
-  }
-  .calc-number-big {
-    font-family: var(--font-display);
-    font-size: clamp(28px, 7vw, 38px);
-    font-weight: 700;
-    color: #38bdf8;
-    line-height: 1.1;
-    margin-bottom: 8px;
-  }
-  .calc-breakdown {
-    font-size: 12.5px;
-    color: #cbd5e1;
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-    flex-wrap: wrap;
-    margin-bottom: 12px;
-  }
-  .calc-breakdown span b { color: #ffffff; }
-
-  /* ANNUAL CONTEXT COMPARISON PILS */
-  .annual-tier-badge {
-    display: inline-block;
-    font-family: var(--font-plaque);
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 3px 10px;
-    border-radius: 12px;
-    margin-bottom: 8px;
-  }
-  .annual-tier-badge.best { background: #166534; color: #bbf7d0; border: 1px solid #4ade80; }
-  .annual-tier-badge.balanced { background: #1e40af; color: #bfdbfe; border: 1px solid #60a5fa; }
-  .annual-tier-badge.highest { background: #991b1b; color: #fecaca; border: 1px solid #f87171; }
-
-  .calc-comparative-context {
-    font-size: 12px;
-    color: #94a3b8;
-    border-top: 1px dashed #334155;
-    padding-top: 10px;
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  /* CALIFORNIA 2028 FIXED ITEM */
-  .california-card {
-    background: #1e293b;
-    border: 1.5px dashed #64748b;
-    border-radius: 8px;
-    padding: 14px 16px;
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .cali-icon { font-size: 28px; }
-  .cali-title {
-    font-family: var(--font-plaque);
-    font-size: 12.5px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #facc15;
-    margin-bottom: 2px;
-  }
-  .cali-desc {
-    font-size: 12px;
-    color: #cbd5e1;
-    margin: 0;
-    line-height: 1.35;
-  }
-
-  /* DECISION SUMMARY CARD GRID */
-  .decision-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-    margin-top: 12px;
-  }
-  @media (min-width: 500px) {
-    .decision-grid { grid-template-columns: 1fr 1fr; }
-  }
-  .decision-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 8px;
-    padding: 14px;
-  }
-  .decision-prompt {
-    font-family: var(--font-plaque);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--text-muted);
-    margin-bottom: 4px;
-  }
-  .decision-dest {
-    font-family: var(--font-display);
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text-dark);
-  }
-  .decision-price {
-    font-size: 12.5px;
-    color: var(--accent);
-    font-weight: 600;
-    margin-bottom: 6px;
-  }
-  .decision-vibe {
-    font-size: 12.5px;
-    color: var(--text-muted);
-    line-height: 1.35;
-  }
-
-  /* FOOTER */
-  footer {
-    text-align: center; padding-top: 32px; border-top: 1px solid var(--card-border); margin-top: 40px;
-  }
-  .footer-signoff {
-    font-family: var(--font-display); font-size: 22px; font-weight: 700; letter-spacing: 0.05em; color: var(--text-dark); margin-bottom: 4px;
-  }
-  .footer-sub {
-    font-family: var(--font-plaque); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; }
-  }
+/* day cards */
+.day{position:relative;background:var(--card);border:1px solid var(--rule);border-radius:3px;margin-bottom:18px;
+  padding:0 0 4px;box-shadow:0 2px 0 var(--rule);overflow:hidden}
+.day .scene{display:block;width:100%;height:104px;background:var(--sky)}
+.day .inner{padding:16px 18px 0}
+.day header{display:flex;gap:14px;align-items:flex-start;border-bottom:1px solid var(--rule);padding-bottom:12px}
+.datechip{flex:0 0 auto;text-align:center;min-width:54px}
+.datechip b{display:block;font-family:"Bodoni Moda",serif;font-size:27px;line-height:1;font-weight:700}
+.datechip span{display:block;font-size:10.5px;letter-spacing:.12em;color:var(--ink-soft);margin-top:3px}
+.day h3{font-family:"Bodoni Moda",serif;font-size:20px;margin:0;font-weight:600;line-height:1.2}
+.where{font-size:12.5px;letter-spacing:.05em;color:var(--accent,var(--ink-soft));font-weight:700;margin-top:3px}
+.swapbar{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-top:14px;padding:10px 12px;
+  border:1px dashed var(--accent);border-radius:3px;background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.swaplabel{font-size:11.5px;letter-spacing:.08em;color:var(--ink-soft);margin-right:2px}
+.swap{font:inherit;font-size:13px;font-weight:700;padding:6px 14px;border-radius:2px;cursor:pointer;
+  background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.swap[aria-pressed="true"]{background:var(--accent);color:var(--card)}
+.swap:focus-visible{outline:2px solid var(--foil);outline-offset:2px}
+.timeline{list-style:none;margin:14px 0 0;padding:0}
+.timeline li{display:flex;gap:13px;padding:7px 0;font-size:14.5px;line-height:1.5}
+.timeline .when{flex:0 0 74px;font-size:11.5px;letter-spacing:.06em;color:var(--ink-soft);padding-top:3px}
+.meal{color:var(--stamp-red);font-weight:700}
+.day footer{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;padding:12px 0;border-top:1px dashed var(--rule)}
+.chip{font-size:12px;padding:4px 10px;border-radius:2px;border:1px solid var(--rule);color:var(--ink-soft)}
+.chip.money{border-color:var(--stamp-teal);color:var(--stamp-teal)}
+.chip.booked{border-color:var(--stamp-olive);color:var(--stamp-olive)}
+.chip.open{border-color:var(--stamp-red);color:var(--stamp-red)}
+footer.colophon{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--ink-soft);text-align:center;line-height:1.6}
+.hidden{display:none}
 </style>
 </head>
-<body data-theme="home">
+<body>
+<div class="book">
 
-<div class="wrap">
+<nav class="tabs" id="tabRow" role="tablist" aria-label="Trip sections"></nav>
 
-  <!-- TOP STICKY NAVIGATION TABS -->
-  <nav class="nav-header">
-    <div class="country-tabs" role="tablist" aria-label="Select Destination Country">
-      <button class="country-tab" id="tabHome" data-trip="home" role="tab" aria-selected="true">🏠 Home</button>
-      <button class="country-tab" id="tabFrance" data-trip="france" role="tab" aria-selected="false">🇫🇷 FR</button>
-      <button class="country-tab" id="tabGreece" data-trip="greece" role="tab" aria-selected="false">🇬🇷 GR</button>
-      <button class="country-tab" id="tabPortugal" data-trip="portugal" role="tab" aria-selected="false">🇵🇹🇪🇸 PT + ES</button>
-      <button class="country-tab" id="tabItaly" data-trip="italy" role="tab" aria-selected="false">🇮🇹 IT</button>
-      <button class="country-tab" id="tabCroatia" data-trip="croatia" role="tab" aria-selected="false">🇭🇷🇲🇪 HR + ME</button>
-      <button class="country-tab" id="tabNye" data-trip="nye" role="tab" aria-selected="false">🎆 2028</button>
+<!-- ===== PASSPORT ===== -->
+<section id="view_home">
+  <div class="cover">
+    <svg class="crest" viewBox="0 0 64 64" aria-hidden="true">
+      <circle cx="32" cy="32" r="29" fill="none" stroke="#C9A455" stroke-width="1.4"/>
+      <circle cx="32" cy="32" r="23" fill="none" stroke="#C9A455" stroke-width=".7"/>
+      <path d="M32 11c7 8 7 34 0 42-7-8-7-34 0-42z" fill="none" stroke="#C9A455" stroke-width=".9"/>
+      <path d="M11 32h42M14 21c11 5 25 5 36 0M14 43c11-5 25-5 36 0" fill="none" stroke="#C9A455" stroke-width=".9"/>
+    </svg>
+    <h1>Europe 2027<em>Paris · Rome · Taormina · Catania</em></h1>
+    <div class="holders">
+      <div class="field"><span>Travelers</span><b>Con &amp; Ashley</b></div>
+      <div class="field"><span>Nights</span><b>15</b></div>
+      <div class="field"><span>Departs</span><b>26 Aug 2027</b></div>
+      <div class="field"><span>Returns</span><b>11 Sep 2027</b></div>
     </div>
-  </nav>
-
-  <!-- HOME VIEW PAGE -->
-  <div id="viewHome">
-    <div class="home-hero-header">
-      <h1>Summer 2027 Decision Guide</h1>
-      <p>Select a destination below to explore the detailed itinerary, lodging options, budget breakdown, and annual travel strategy.</p>
-    </div>
-
-    <div class="home-cards-grid">
-      <!-- 1. France: Amboise -> Paris -> Cassis -->
-      <div class="home-country-card" onclick="updateSelectedTrip('france')">
-        <div class="home-card-img-wrap">
-          <div class="home-card-collage three-photo">
-            <img src="https://static.eldiario.es/clip/05f27ecc-a1fa-4ee8-890e-8c5111f5e30e_16-9-aspect-ratio_default_0.jpg" alt="Le Marais street in Paris" class="home-card-photo-primary">
-            <img src="https://www.eurobus.ch/tourtrader/pressmind/1049147.jpg" alt="Château de Chenonceau in the Loire Valley">
-            <img src="https://images.trvl-media.com/place/178745/946cf746-7f39-4185-aac2-48861b8afca4.jpg" alt="Calanque d'En-Vau near Cassis with turquoise Mediterranean water">
-          </div>
-          <div class="home-card-emoji-badge">🇫🇷</div>
-          <div class="home-card-fit-badge" id="fitBadgeFrance">WAITING FOR BOTH SURVEYS</div>
-        </div>
-        <div class="home-card-content">
-          <div class="home-card-title">France</div>
-          <div class="home-card-route">Amboise 3n · Paris 6n · Cassis 4n</div>
-          <div class="home-card-desc">Châteaux, Marais & Calanques. Loire countryside castles → living in the Marais → Mediterranean calanques.</div>
-          <div class="home-card-footer">
-            <span class="home-card-cost">~$7,050 likely</span>
-            <span class="home-card-cta">Explore Route →</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2. Greece: Naxos -> Hydra -> Athens -->
-      <div class="home-country-card" onclick="updateSelectedTrip('greece')">
-        <div class="home-card-img-wrap">
-          <div class="home-card-collage three-photo">
-            <img src="https://gangwaze.supabase.co/storage/v1/object/public/system/ports/naxos-greece.jpg" alt="Naxos Chora overlooking the Aegean" class="home-card-photo-primary">
-            <img src="https://images.squarespace-cdn.com/content/v1/6623feafcef0693caade2984/1744588576061-QHYEPNWYX59A7LZX2TMU/HydraB-027.jpg" alt="Hydra Town harbor">
-            <img src="https://thetourguy.com/wp-content/uploads/2021/08/WTS-Athens-feature-1440-675.jpg" alt="Acropolis above Athens">
-          </div>
-          <div class="home-card-emoji-badge">🇬🇷</div>
-          <div class="home-card-fit-badge" id="fitBadgeGreece">WAITING FOR BOTH SURVEYS</div>
-        </div>
-        <div class="home-card-content">
-          <div class="home-card-title">Greece</div>
-          <div class="home-card-route">Naxos 6n · Hydra 4n · Athens 3n</div>
-          <div class="home-card-desc">The Adventure. Pure Aegean island feeling, car-free Hydra relaxation, and ancient history in Athens.</div>
-          <div class="home-card-footer">
-            <span class="home-card-cost">~$6,300 likely</span>
-            <span class="home-card-cta">Explore Route →</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3. Portugal + Spain: Cascais -> Calpe -->
-      <div class="home-country-card" onclick="updateSelectedTrip('portugal')">
-        <div class="home-card-img-wrap">
-          <div class="home-card-collage two-photo">
-            <img src="https://www.goworldtravel.com/wp-content/uploads/2022/10/Cascais-Portugal-Image-from-Canva.jpg" alt="Cascais waterfront and beach">
-            <img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/6L7W62X5TVE5HD4HAAFVYF6TJM.jpg" alt="Calpe beach and Peñón de Ifach">
-          </div>
-          <div class="home-card-emoji-badge">🇵🇹🇪🇸</div>
-          <div class="home-card-fit-badge" id="fitBadgePortugal">WAITING FOR BOTH SURVEYS</div>
-        </div>
-        <div class="home-card-content">
-          <div class="home-card-title">Portugal + Spain</div>
-          <div class="home-card-route">Cascais 6n · Calpe 7n</div>
-          <div class="home-card-desc">The Vacation. Easiest, slowest vacation option — hotel pool value in Cascais + private sea-view terrace in Calpe.</div>
-          <div class="home-card-footer">
-            <span class="home-card-cost">~$6,500 likely</span>
-            <span class="home-card-cta">Explore Route →</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4. Italy: Rome -> Monopoli -->
-      <div class="home-country-card" onclick="updateSelectedTrip('italy')">
-        <div class="home-card-img-wrap">
-          <div class="home-card-collage italy-photo">
-            <img src="https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=800&q=80" alt="Monopoli old town on the Adriatic">
-            <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=600&q=80" alt="Roman street overlooking the Colosseum">
-          </div>
-          <div class="home-card-emoji-badge">🇮🇹</div>
-          <div class="home-card-fit-badge" id="fitBadgeItaly">WAITING FOR BOTH SURVEYS</div>
-        </div>
-        <div class="home-card-content">
-          <div class="home-card-title">Italy</div>
-          <div class="home-card-route">Rome 4n · Monopoli 9n</div>
-          <div class="home-card-desc">The Food + Culture Powerhouse. Four nights of Rome landmarks while fresh → nine slow nights in coastal Puglia coves.</div>
-          <div class="home-card-footer">
-            <span class="home-card-cost">~$6,700 likely</span>
-            <span class="home-card-cta">Explore Route →</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 5. Croatia + Montenegro: Dubrovnik -> Kotor Bay -->
-      <div class="home-country-card" onclick="updateSelectedTrip('croatia')">
-        <div class="home-card-img-wrap">
-          <div class="home-card-collage two-photo">
-            <img src="https://sight.kaytrip.com/uploads/sight/2024-03-19/1710819618.jpg" alt="Dubrovnik Old Town walls on the Adriatic">
-            <img src="https://putnikofer.hr/wp-content/uploads/2025/06/Kotor-Crna-Gora-1200x800.jpg" alt="Kotor Old Town and Bay of Kotor">
-          </div>
-          <div class="home-card-emoji-badge">🇭🇷🇲🇪</div>
-          <div class="home-card-fit-badge" id="fitBadgeCroatia">WAITING FOR BOTH SURVEYS</div>
-        </div>
-        <div class="home-card-content">
-          <div class="home-card-title">Croatia + Montenegro</div>
-          <div class="home-card-route">Dubrovnik 6n → Kotor Bay 7n</div>
-          <div class="home-card-desc">The Adriatic Escape & Value Play. Historic stone cities, dramatic mountain bay scenery, and clear water across two countries.</div>
-          <div class="home-card-footer">
-            <span class="home-card-cost">~$5,900 likely</span>
-            <span class="home-card-cta">Explore Route →</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 6. Winter 2028: NYE Strategy Tile -->
-      <div class="home-country-card" onclick="updateSelectedTrip('nye')">
-        <div class="winter-hero-image">
-          <img src="https://images.unsplash.com/photo-1467810563316-b5476525c0f9?auto=format&fit=crop&w=1200&q=80" alt="Fireworks exploding in the night sky">
-          <div class="home-card-emoji-badge">🎆</div>
-        </div>
-        <div class="home-card-content">
-          <div class="home-card-title">Winter 2028</div>
-          <div class="home-card-route">NYE 2027 → 2028</div>
-          <div class="home-card-desc">Where does France live? Choose whether France happens in Summer or Paris NYE, then see full annual travel spend.</div>
-          <div class="home-card-footer">
-            <span class="home-card-cost">Annual Strategy</span>
-            <span class="home-card-cta">Explore NYE →</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- DUAL INTERACTIVE TRIP SURVEY FOR CON + ASHLEY -->
-    <div class="survey-card-box" id="surveyBox">
-      <div class="survey-header">
-        <h2 class="survey-title">WHAT DO WE WANT FROM THIS TRIP?</h2>
-        <p class="survey-subtitle">Con + Ashley each complete your own survey below. The site will combine your priorities into a shared couple profile.</p>
-      </div>
-
-      <!-- PROFILE TOGGLE BUTTONS -->
-      <div class="person-toggle-group">
-        <button class="person-btn active" id="btnPersonCon" onclick="switchActivePerson('con')">
-          <span>CON</span>
-          <span class="person-status-pill" id="pillConStatus">0/10</span>
-        </button>
-        <button class="person-btn" id="btnPersonAshley" onclick="switchActivePerson('ashley')">
-          <span>ASHLEY</span>
-          <span class="person-status-pill" id="pillAshleyStatus">0/10</span>
-        </button>
-      </div>
-
-      <div class="survey-progress-bar">
-        <span id="surveyPersonLabel">CON'S SURVEY</span>
-        <div class="survey-track"><div class="survey-fill" id="surveyFill"></div></div>
-        <span id="surveyProgressText">0 OF 10 ANSWERED</span>
-      </div>
-
-      <div id="surveyQuestionsContainer">
-        <!-- Dynamically rendered survey questions for active person -->
-      </div>
-
-      <div class="survey-actions">
-        <button class="survey-btn-sec" onclick="resetActivePersonSurvey()">EDIT / RESET <span id="resetPersonLabel">CON'S</span> ANSWERS</button>
-        <button class="survey-btn-sec" onclick="resetBothSurveysWithConfirm()">RESET BOTH SURVEYS</button>
-      </div>
-
-      <!-- DYNAMIC COUPLE PROFILE SUMMARY BOX (SHOWN WHEN BOTH ARE COMPLETE) -->
-      <div id="tripProfileContainer" style="display:none;">
-        <div class="trip-profile-box">
-          <div class="tpb-title">OUR TRIP PROFILE (CON + ASHLEY)</div>
-          <div class="tpb-summary" id="tpbSummaryText"></div>
-
-          <div class="agree-differ-box">
-            <div class="ad-card agree">
-              <div class="ad-title">WHERE WE AGREE</div>
-              <ul class="ad-list" id="adAgreeList"></ul>
-            </div>
-            <div class="ad-card differ">
-              <div class="ad-title">WHERE WE DIFFER</div>
-              <ul class="ad-list" id="adDifferList"></ul>
-            </div>
-          </div>
-
-          <div id="tpbRankingsList" style="font-size:13px; line-height:1.6; border-top:1px solid rgba(255,255,255,0.15); padding-top:10px;"></div>
-        </div>
-      </div>
+    <svg class="entry-stamp" viewBox="0 0 120 120" aria-hidden="true">
+      <circle cx="60" cy="60" r="52" fill="none" stroke="#C9A455" stroke-width="3" opacity=".85"/>
+      <circle cx="60" cy="60" r="44" fill="none" stroke="#C9A455" stroke-width="1" opacity=".7"/>
+      <text x="60" y="46" text-anchor="middle" fill="#C9A455" font-family="Karla,sans-serif" font-size="11" letter-spacing="2">ADMITTED</text>
+      <text x="60" y="68" text-anchor="middle" fill="#C9A455" font-family="Bodoni Moda,serif" font-size="20" font-weight="700">15 NTS</text>
+      <text x="60" y="84" text-anchor="middle" fill="#C9A455" font-family="Karla,sans-serif" font-size="9.5" letter-spacing="1.5">FR · IT</text>
+    </svg>
+    <div class="mrz">
+      <div>P&lt;USAOROURKE&lt;&lt;CONOR&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</div>
+      <div>JFK270827CDG&lt;&lt;ORY290827FCO&lt;&lt;FCO020927CTA&lt;&lt;CTA110927JFK</div>
     </div>
   </div>
 
-  <!-- DESTINATION DETAIL VIEW PAGE -->
-  <div id="viewSummer" style="display:none;">
-    
-    <header class="hero">
-      <h1>Summer 2027 Decision Guide</h1>
-      <p class="hero-dates">July 2–15 · 13 nights · 2 adults</p>
-      <p class="hero-copy">“Five routes. One summer. Same travel philosophy.”</p>
+  <div class="countdown"><b id="cdNum">—</b><p id="cdText"></p></div>
 
-      <div class="selected-cost-banner" id="topCostBanner">
-        <!-- Dynamically filled by JS -->
-      </div>
-    </header>
+  <h2 class="sec">Four stamps, four moods</h2>
+  <p class="lede">Tap a page to open that city.</p>
+  <div class="stamps" id="stampGrid"></div>
 
-    <!-- SELECTED TRIP PROFILE -->
-    <div class="section-label">Selected Trip Overview</div>
-    <div class="card-box" id="tripProfileBox">
-      <!-- Dynamically loaded profile -->
-    </div>
-
-    <!-- PERSONALIZED FIT SECTION FOR SELECTED TRIP -->
-    <div class="section-label">Personalized Alignment</div>
-    <div class="card-box" id="ourFitContainer">
-      <!-- Dynamically filled personalized fit results -->
-    </div>
-
-    <!-- PACE VISUALIZATION -->
-    <div class="section-label">Trip Movement & Pace</div>
-    <div class="card-box">
-      <h3>Base Rhythm & Transfers</h3>
-      <p style="font-size:13px; color:var(--text-muted); margin-top:-6px;">Visually comparing hotel moves and stay lengths across the 13 nights:</p>
-      
-      <div id="dynamicPaceContainer">
-        <!-- Dynamically rendered and sorted by JS -->
-      </div>
-    </div>
-
-    <!-- DINING STRATEGY -->
-    <div class="section-label">Shared Dining Strategy & How We’ll Save</div>
-    <div class="card-box">
-      <h3>How We’ll Eat & Save Within Budget</h3>
-      <p style="font-size:13px; color:var(--text-muted); margin-top:-6px; margin-bottom:14px;">
-        Core Rule: Save on routine meals so we can spend on experiences and the meals that actually matter.
-      </p>
-
-      <div class="food-timeline" id="foodTimelineContainer">
-        <!-- Dynamically injected destination-specific dining strategy -->
-      </div>
-
-      <div style="margin-top:16px; padding-top:12px; border-top:1px solid var(--card-border); font-size:13px;" id="foodExamples">
-        <!-- Dynamic food examples -->
-      </div>
-
-      <h4 style="font-family:var(--font-plaque); font-size:12px; text-transform:uppercase; letter-spacing:0.1em; margin:18px 0 8px; color:var(--text-dark);">Destination-Specific Savings Tactics</h4>
-      <div style="padding:12px; background:rgba(255,255,255,0.05); border-left:3px solid var(--accent); border-radius:4px; font-size:13px; line-height:1.45;" id="howWeSaveBox">
-        <!-- Dynamic destination-specific savings tactics -->
-      </div>
-    </div>
-
-    <!-- DESTINATION-SPECIFIC MODULES CONTAINER (E.G. ITALY ITINERARY & CALCULATOR) -->
-    <div id="destCustomModules"></div>
-
-    <!-- BUDGET COMPARISON BARS -->
-    <div class="section-label">The Money & Cost Breakdown</div>
-    <div class="card-box">
-      <h3>Planning Budget Comparison</h3>
-      <p style="font-size:13px; color:var(--text-muted); margin-top:-6px;">Total estimated planning cost for 2 adults (Likely → Ceiling):</p>
-
-      <div class="bar-chart-container">
-        <div class="bar-item">
-          <div class="bar-label-group">
-            <span>Croatia + Montenegro 🇭🇷🇲🇪 (Value Play)</span>
-            <span id="barLabelCroatia">~$5,900 likely / $6,500 ceiling</span>
-          </div>
-          <div class="bar-track">
-            <div class="bar-fill" id="barCroatia" style="width: 75.2%;"></div>
-          </div>
-        </div>
-
-        <div class="bar-item">
-          <div class="bar-label-group">
-            <span>Greece 🇬🇷 (The Adventure)</span>
-            <span id="barLabelGreece">~$6,300 likely / $6,800 ceiling</span>
-          </div>
-          <div class="bar-track">
-            <div class="bar-fill" id="barGreece" style="width: 80.3%;"></div>
-          </div>
-        </div>
-
-        <div class="bar-item">
-          <div class="bar-label-group">
-            <span>Portugal + Spain 🇵🇹🇪🇸 (The Vacation)</span>
-            <span id="barLabelPortugal">~$6,500 likely / $7,000 ceiling</span>
-          </div>
-          <div class="bar-track">
-            <div class="bar-fill" id="barPortugal" style="width: 82.8%;"></div>
-          </div>
-        </div>
-
-        <div class="bar-item">
-          <div class="bar-label-group">
-            <span>Italy 🇮🇹 (Food & Culture)</span>
-            <span id="barLabelItaly">~$6,700 likely / $7,000 ceiling</span>
-          </div>
-          <div class="bar-track">
-            <div class="bar-fill" id="barItaly" style="width: 85.3%;"></div>
-          </div>
-        </div>
-
-        <div class="bar-item">
-          <div class="bar-label-group">
-            <span>France 🇫🇷 (Châteaux & Marais)</span>
-            <span id="barLabelFrance">~$7,050 likely / $7,850 ceiling</span>
-          </div>
-          <div class="bar-track">
-            <div class="bar-fill" id="barFrance" style="width: 100%;"></div>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top:14px; padding:12px; background:rgba(56, 189, 248, 0.08); border-left:3px solid var(--accent); border-radius:4px; font-size:12.5px;">
-        <b>Core Cost Takeaway:</b> Croatia + Montenegro is the clear value play. At <b>~$5,900 likely</b>, it saves approx. <b>~$400 vs Greece</b>, <b>~$600 vs Portugal + Spain</b>, and <b>~$800 vs Italy</b>. Montenegro’s lower everyday dining and waterfront accommodation costs help offset Dubrovnik’s peak July pricing.
-      </div>
-
-      <h4 style="font-family:var(--font-plaque); font-size:12px; text-transform:uppercase; letter-spacing:0.1em; margin:18px 0 8px; color:var(--text-dark);">Selected Trip Itemized Estimate</h4>
-      <div id="budgetTableContainer">
-        <!-- Dynamically filled budget table -->
-      </div>
-    </div>
-
-    <!-- RHYTHM -->
-    <div class="section-label">Trip Rhythm & Feel</div>
-    <div class="card-box">
-      <h3>What a Week Feels Like</h3>
-      <p style="font-size:13px; color:var(--text-muted); margin-top:-6px; margin-bottom:12px;">Representative flow (not a rigid schedule):</p>
-      <ul class="rhythm-list" id="rhythmList">
-        <!-- Dynamic rhythm list -->
-      </ul>
-    </div>
-
-    <!-- CORE SUMMARY / DECISION MATRIX -->
-    <div class="section-label">Final Choice Framework</div>
-    <div class="card-box">
-      <h3>Personalized Decision Summary</h3>
-      <div class="decision-grid" id="decisionGrid">
-        <!-- Dynamically generated based on user survey priorities -->
-      </div>
-    </div>
-
+  <h2 class="sec">Declaration of expected spend</h2>
+  <p class="lede">For two, in USD. Working numbers — only lodging and two excursions are reserved.</p>
+  <div class="declaration">
+    <table class="ledger">
+      <tr><td>Flights (AF · easyJet · Ryanair · ITA 12:45 p.m. home)</td><td>$2,911</td></tr>
+      <tr><td>Lodging, 15 nights across four bases</td><td>$3,507</td></tr>
+      <tr><td id="ledgerDayLabel">Food, drinks, tickets, beaches, trains, taxis</td><td id="ledgerDay">$3,616</td></tr>
+      <tr><td>Bags, shopping, contingency</td><td>$775</td></tr>
+      <tr><td>Working total against an $11,000 target</td><td id="ledgerTotal">$10,565</td></tr>
+    </table>
+    <p class="note" id="ledgerNote"></p>
   </div>
 
-  <!-- DEDICATED NYE VIEW PAGE -->
-  <div id="viewNye" style="display:none;">
-    <header class="hero" style="background: var(--hero-bg); border-bottom: 5px solid var(--accent);">
-      <h1>Winter 2028</h1>
-      <p class="hero-dates">NYE 2027 → 2028 · Annual Strategy Guide</p>
-      <p class="hero-copy">“Mapping out the full annual travel equation.”</p>
-    </header>
+  <h2 class="sec">Where things actually stand</h2>
+  <ul class="checklist" id="statusList"></ul>
 
-    <!-- DYNAMIC INTERACTIVE MODULE: WHERE DOES FRANCE GO? -->
-    <div class="section-label">Annual Strategy & Unlock Calculator</div>
-    <div class="unlock-module" id="unlockModule">
-      <div class="unlock-header">
-        <h2 class="unlock-title">Where Does France Go?</h2>
-        <p class="unlock-subtitle">Interactive module: Select France's season to unlock companion trip options and dynamically calculate the combined 2027 annual travel spend.</p>
-      </div>
+  <footer class="colophon">Built 22 Sept 2026 · prices are 2026 references, not 2027 quotes<br>Nothing here is booked unless the page says it is.</footer>
+</section>
 
-      <!-- SEASON SWITCH BUTTONS -->
-      <div class="france-switch-group">
-        <button class="switch-btn active" id="btnFranceSummerMode">☀️ Summer France 2027</button>
-        <button class="switch-btn winter" id="btnFranceWinterMode">🎄 Winter France (Paris NYE)</button>
-      </div>
-
-      <!-- PROMPT TEXT -->
-      <div class="unlock-prompt-box" id="unlockPromptText">
-        <!-- Dynamically injected prompt -->
-      </div>
-
-      <!-- SELECTABLE CARDS GRID -->
-      <div class="unlock-grid" id="unlockCardsGrid">
-        <!-- Dynamically injected cards -->
-      </div>
-
-      <!-- COMBINED TOTAL DISPLAY -->
-      <div class="combined-calc-banner" id="combinedCalcBanner">
-        <!-- Dynamically calculated combo total -->
-      </div>
-
-      <!-- FIXED CALIFORNIA 2028 -->
-      <div class="california-card">
-        <div class="cali-icon">🌴</div>
-        <div>
-          <div class="cali-title">Next Up: California 2028 (Fixed Milestone)</div>
-          <p class="cali-desc">LAX arrival → Santa Barbara → Monterey → San Francisco (Outside Lands Fri/Sat) → Napa Valley. Fixed next milestone. <i>(Explicitly excluded from all 2027 annual totals).</i></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <div class="footer-signoff">FIVE ROUTES. ONE SUMMER.</div>
-    <div class="footer-sub">Croatia + Montenegro · Greece · Portugal/Spain · Italy · France</div>
-  </footer>
+<section id="view_paris" class="hidden"></section>
+<section id="view_rome" class="hidden"></section>
+<section id="view_taormina" class="hidden"></section>
+<section id="view_catania" class="hidden"></section>
 
 </div>
 
 <script>
-const EUR_TO_USD = 1.17;
+/* ---------------- city data ---------------- */
+const CITIES = {
+  paris:{name:"Paris",color:"var(--stamp-violet)",dates:"Aug 27–29 · 2 nights",base:"Le Petit Beaumarchais, Bastille",
+    blurb:"Two romantic, unhurried days. Sainte-Chapelle, the Seine, one grand department store, and dinner within walking distance of bed.",
+    facts:["2 nights","€648 booked","Dinners near Bastille","No Eiffel ascent"],
+    art:`<svg class="art" viewBox="0 0 400 150" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6E77B5"/><stop offset="1" stop-color="#C9A9B8"/></linearGradient></defs><rect width="400" height="150" fill="url(#pg)"/><circle cx="332" cy="36" r="15" fill="#F6E7C4" opacity=".85"/><path d="M0 120h400v30H0z" fill="#3B4470" opacity=".55"/><path d="M92 126 118 34l26 92z" fill="#2E3660"/><path d="M101 96h34M96 110h44" stroke="#F0E3C6" stroke-width="2" opacity=".5"/><path d="M118 34v-16" stroke="#2E3660" stroke-width="3"/><path d="M186 126V78h56v48z" fill="#2E3660"/><path d="M196 126v-26h12v26zM218 126v-26h12v26z" fill="#F0E3C6" opacity=".45"/><path d="M186 78 214 58l28 20z" fill="#242B4F"/><path d="M264 126V88h46v38z" fill="#2E3660" opacity=".8"/><path d="M0 126c60-18 120 8 180-4s160-14 220 6v22H0z" fill="#232A4E" opacity=".5"/></svg>`},
+  rome:{name:"Rome",color:"var(--stamp-red)",dates:"Aug 29–Sept 2 · 4 nights",base:"Residenza Maritti, Monti",
+    blurb:"The culture stop. Colosseum underground, the Vatican, a day in Florence, and three dinners you have already argued about.",
+    facts:["4 nights","~€880 booked","Roscioli · Bar della Musa · Alle Carrette","Florence is Plan A"],
+    art:`<svg class="art" viewBox="0 0 400 150" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="rg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E0A96D"/><stop offset="1" stop-color="#B5654A"/></linearGradient></defs><rect width="400" height="150" fill="url(#rg)"/><circle cx="64" cy="40" r="17" fill="#FBEBC8" opacity=".8"/><path d="M0 132h400v18H0z" fill="#6E3B2E" opacity=".6"/><path d="M148 132V50h136v82z" fill="#7E4433"/><g fill="#F3DDB4" opacity=".55"><rect x="160" y="64" width="16" height="24" rx="8"/><rect x="190" y="64" width="16" height="24" rx="8"/><rect x="220" y="64" width="16" height="24" rx="8"/><rect x="250" y="64" width="16" height="24" rx="8"/><rect x="160" y="98" width="16" height="24" rx="8"/><rect x="190" y="98" width="16" height="24" rx="8"/><rect x="220" y="98" width="16" height="24" rx="8"/><rect x="250" y="98" width="16" height="24" rx="8"/></g><path d="M148 50h136v9H148z" fill="#8F5039"/><path d="M304 132V82h22v50zM332 132V96h15v36z" fill="#7E4433" opacity=".8"/><path d="M56 132v-28h50v28z" fill="#7E4433" opacity=".75"/><path d="M81 104c0-11 9-18 9-18s9 7 9 18z" fill="#7E4433" opacity=".75"/></svg>`},
+  taormina:{name:"Taormina",color:"var(--stamp-teal)",dates:"Sept 2–7 · 5 nights",base:"Villa des Arts",
+    blurb:"The vacation inside the vacation. Cable car to Mazzarò, granita on the Corso, the rooftop pool, Ashley's celebration dinner and a boat.",
+    facts:["5 nights","$1,400 booked","Two prearranged taxi trips","Rooftop is the point"],
+    art:`<svg class="art" viewBox="0 0 400 150" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="tg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FD3D8"/><stop offset=".55" stop-color="#4FA8A1"/><stop offset="1" stop-color="#1C6B66"/></linearGradient></defs><rect width="400" height="150" fill="url(#tg)"/><circle cx="58" cy="34" r="14" fill="#FDF0C9" opacity=".85"/><path d="M228 88 292 24l70 64z" fill="#5E6B70"/><path d="M276 38c8-6 20-6 28 0-6 6-22 6-28 0z" fill="#E9E4DA" opacity=".8"/><path d="M0 94c50-8 90 6 140 2s120-16 260 4v50H0z" fill="#1B5E5A"/><path d="M0 114h400v36H0z" fill="#12474A" opacity=".75"/><g fill="#EFE3C6" opacity=".9"><rect x="50" y="66" width="9" height="32"/><rect x="68" y="62" width="9" height="36"/><rect x="86" y="66" width="9" height="32"/><rect x="104" y="60" width="9" height="38"/><rect x="44" y="53" width="76" height="8"/></g><path d="M38 132c18-8 40-8 58 0M150 138c20-8 44-8 64 0" stroke="#8FD3D8" stroke-width="2" fill="none" opacity=".6"/></svg>`},
+  catania:{name:"Catania",color:"var(--stamp-olive)",dates:"Sept 7–11 · 4 nights",base:"Baroque Houses",
+    blurb:"The local finale. Aci Trezza seafood, Etna wine, Ortigia by train, one last beach and dinner at U Fucularu.",
+    facts:["4 nights","$423 booked","Etna day reserved","Bag drop confirmed"],
+    art:`<svg class="art" viewBox="0 0 400 150" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D9C27E"/><stop offset="1" stop-color="#6B7A2F"/></linearGradient></defs><rect width="400" height="150" fill="url(#cg)"/><path d="M34 106 130 24l96 82z" fill="#4A4438"/><path d="M118 32c6 4 14 4 20 0-4 8-16 8-20 0z" fill="#EDE6D2" opacity=".8"/><path d="M126 24c-4-8 0-14 4-16 2 6 6 8 4 16z" fill="#E8E2D0" opacity=".55"/><path d="M0 110h400v40H0z" fill="#3E4A24"/><g fill="#EFE7D2"><path d="M230 110V64h100v46z"/><path d="M230 64 280 38l50 26z" fill="#DCCFA8"/><rect x="248" y="80" width="15" height="30" fill="#3E4A24" opacity=".6"/><rect x="296" y="80" width="15" height="30" fill="#3E4A24" opacity=".6"/><rect x="273" y="74" width="12" height="36" fill="#3E4A24" opacity=".45"/></g><path d="M346 110V78h32v32z" fill="#EFE7D2" opacity=".75"/><path d="M0 122c46-10 92 10 138 2s100-12 146-2 78 4 116-4v32H0z" fill="#33401E" opacity=".7"/></svg>`}
+};
 
-// ITALY DYNAMIC CALCULATOR STATE
-let italyAirfare = 1800;
-let italyFood = 1800;
-let italyTrans = 325;
-let italyBdayOption = 'boat'; // 'boat' ($200) or 'lido' ($90)
-
-// 10 CONCISE SURVEY QUESTIONS WITH CONTEXTUAL CHOICES
-const SURVEY_QUESTIONS = [
-  {
-    id: "beaches",
-    category: "Beaches / Swimming",
-    title: "1. How important is getting in the water on this trip?",
-    options: [
-      { text: "Nice bonus", weight: 1 },
-      { text: "A few great swim days", weight: 3 },
-      { text: "Major part of the trip", weight: 4 },
-      { text: "Give us spectacular water", weight: 5 }
-    ]
-  },
-  {
-    id: "food",
-    category: "Food Quality",
-    title: "2. What role should food play?",
-    options: [
-      { text: "Eat well without planning around it", weight: 2 },
-      { text: "A few memorable meals", weight: 3 },
-      { text: "Food is one of the trip's main events", weight: 4 },
-      { text: "Build the trip around eating", weight: 5 }
-    ]
-  },
-  {
-    id: "drinks",
-    category: "Wine / Drinks",
-    title: "3. What does our ideal drinking scene look like?",
-    options: [
-      { text: "Not important", weight: 1 },
-      { text: "Casual wine / aperitivo", weight: 3 },
-      { text: "Great cocktail bars + wine", weight: 4 },
-      { text: "Drinks are a major part of our nights", weight: 5 }
-    ]
-  },
-  {
-    id: "culture",
-    category: "History / Culture",
-    title: "4. How much history and culture do we want?",
-    options: [
-      { text: "Mostly scenery + vacation", weight: 1 },
-      { text: "A little between beach days", weight: 2.5 },
-      { text: "Several meaningful cultural days", weight: 4 },
-      { text: "Give us castles, ruins, museums and history", weight: 5 }
-    ]
-  },
-  {
-    id: "towns",
-    category: "Towns / Architecture",
-    title: "5. How much do beautiful towns and neighborhoods matter?",
-    options: [
-      { text: "Nice backdrop", weight: 2 },
-      { text: "Definitely part of the appeal", weight: 3.5 },
-      { text: "Very important", weight: 4.5 },
-      { text: "I want to wander somewhere gorgeous every day", weight: 5 }
-    ]
-  },
-  {
-    id: "relaxation",
-    category: "Relaxation",
-    title: "6. What pace sounds best?",
-    options: [
-      { text: "Keep us moving", weight: 1 },
-      { text: "Balanced", weight: 3 },
-      { text: "Mostly slow", weight: 4.5 },
-      { text: "Pool / beach / terrace mode", weight: 5 }
-    ]
-  },
-  {
-    id: "daytrips",
-    category: "Day Trips",
-    title: "7. How much exploring outside our bases do we want?",
-    options: [
-      { text: "Almost none", weight: 1 },
-      { text: "One or two", weight: 2.5 },
-      { text: "Several easy day trips", weight: 4 },
-      { text: "Give us lots of optional adventures", weight: 5 }
-    ]
-  },
-  {
-    id: "nightlife",
-    category: "Nightlife / Atmosphere",
-    title: "8. What should nights feel like?",
-    options: [
-      { text: "Quiet dinners + wine", weight: 1.5 },
-      { text: "Lively streets and bars", weight: 3 },
-      { text: "Cocktails + late nights sometimes", weight: 4 },
-      { text: "Strong nightlife matters", weight: 5 }
-    ]
-  },
-  {
-    id: "variety",
-    category: "Variety",
-    title: "9. Do we want the trip to change character as we move?",
-    options: [
-      { text: "One consistent vacation vibe", weight: 1 },
-      { text: "Some contrast", weight: 3 },
-      { text: "Distinctly different stops", weight: 4 },
-      { text: "I want multiple trips in one", weight: 5 }
-    ]
-  },
-  {
-    id: "ease",
-    category: "Ease / Logistics",
-    title: "10. How much do we care about keeping logistics easy?",
-    options: [
-      { text: "Adventure is worth the hassle", weight: 1 },
-      { text: "Some transfers are fine", weight: 3 },
-      { text: "Keep it pretty easy", weight: 4 },
-      { text: "Minimum friction, please", weight: 5 }
-    ]
-  }
+const STATUS = [
+  ["done","Paris and Rome lodging booked. Sicily date changes submitted to Airbnb."],
+  ["done","Private boat reserved for Sept 6; payment not due until Sept 3, 2027."],
+  ["done","Etna winery day reserved; $266.98 balance due Sept 6, 2027."],
+  ["open","No flights bought yet. Watch for a Catania–JFK nonstop appearing for Sept 11."],
+  ["open","Sicily transfers unquoted. Ask the Villa des Arts host for a trusted driver."],
+  ["open","Still to pick: Rome's Centro dinner, the Aci Trezza lunch spot, SVRGO or Deliziosa."],
+  ["open","Dates hinge on Ashley's October work calendar. July remains Plan B."]
 ];
 
-// REAL ITINERARY CHARACTERISTIC RATINGS (1 to 5 Scale)
-const DESTINATION_CHARACTERISTICS = {
-  croatia: {
-    beaches: 4.0, food: 4.0, drinks: 4.0, culture: 4.5, towns: 4.8, relaxation: 4.5, daytrips: 4.8, nightlife: 3.8, variety: 4.8, ease: 4.2,
-    fits: ["Unbeatable value play combining two distinct countries", "Spectacular mountain fjord scenery in Kotor Bay + Old Town Dubrovnik walls", "Outstanding island and bay day-trip potential"],
-    compromises: ["Pebble beaches rather than long sandy stretches", "Border crossing between Croatia and Montenegro can experience summer delays"]
-  },
-  greece: {
-    beaches: 5.0, food: 4.5, drinks: 4.2, culture: 5.0, towns: 4.6, relaxation: 4.2, daytrips: 4.0, nightlife: 4.2, variety: 5.0, ease: 3.0,
-    fits: ["Strongest pure Aegean swimming and crystal-clear water", "Iconic car-free island relaxation on Hydra", "High-impact ancient history & rooftop dining finish in Athens"],
-    compromises: ["3 bases with ferry transfers create higher logistical friction", "Hydra requires staircase walking and boat connections"]
-  },
-  portugal: {
-    beaches: 4.5, food: 4.2, drinks: 3.8, culture: 3.5, towns: 4.0, relaxation: 5.0, daytrips: 3.8, nightlife: 3.2, variety: 3.2, ease: 5.0,
-    fits: ["Lowest friction trip — only 2 bases and 1 effortless move", "Vila Galé hotel pool amenities + confirmed private sea-view terrace in Calpe", "Slow, relaxing pace perfect for effortless unpacking"],
-    compromises: ["Less ancient monumental history than Greece or Italy", "Lower variety between stops than multi-region France"]
-  },
-  italy: {
-    beaches: 4.2, food: 5.0, drinks: 4.5, culture: 5.0, towns: 4.8, relaxation: 4.4, daytrips: 4.5, nightlife: 4.0, variety: 4.5, ease: 4.2,
-    fits: ["Peak culinary experience (Puglia seafood & focaccia → classic Rome trattorias)", "Four nights in Rome while fresh followed by 9 slow nights in coastal Puglia coves", "Unmatched monumental Roman history and city atmosphere"],
-    compromises: ["Rome in early July is warm and busy", "Requires a train journey from Rome south to Apulia"]
-  },
-  france: {
-    beaches: 3.8, food: 5.0, drinks: 4.5, culture: 4.8, towns: 5.0, relaxation: 3.8, daytrips: 4.5, nightlife: 4.0, variety: 5.0, ease: 3.5,
-    fits: ["Seamless blend of Loire châteaux, Parisian urban living, and Mediterranean coast", "Six full nights in the Marais allows 'living in Paris' feel", "Michele conditionally joins Paris portion (July 6–11)", "High culinary value with iconic bistro dining & bakery picnics"],
-    compromises: ["Higher overall cost tier (~$7,050 likely)", "3 bases and TGV transfers across 3 distinct French regions"]
-  }
-};
+/* ---------------- little cartoons, one per day ---------------- */
+const S = {}; // scene library
 
-const DATA = {
-  croatia: {
-    id: "croatia",
-    countryName: "Croatia + Montenegro 🇭🇷🇲🇪",
-    route: "Dubrovnik, Croatia 6n → Kotor Bay, Montenegro 7n",
-    subtitle: "The Adriatic Escape",
-    tagline: "Historic stone cities, dramatic mountains, clear Adriatic water and two countries — without turning the trip into a constant sightseeing marathon.",
-    
-    budget: {
-      lodgingLow: 2100, lodgingHigh: 2500,
-      airfareLow: 1500, airfareHigh: 1900,
-      transitLow: 250, transitHigh: 350,
-      foodLow: 1250, foodHigh: 1500,
-      activitiesLow: 250, activitiesHigh: 400,
-      likelyLow: 5600, likelyHigh: 6200,
-      likely: 5900,
-      ceiling: 6500
-    },
+S.takeoff = `<svg class="scene" viewBox="0 0 400 104" preserveAspectRatio="xMidYMid slice"><rect width="400" height="104" fill="#1B2A44"/><circle cx="62" cy="30" r="11" fill="#F5E6C0" opacity=".9"/><g fill="#FFF" opacity=".8"><circle cx="150" cy="18" r="1.6"/><circle cx="210" cy="32" r="1.3"/><circle cx="300" cy="16" r="1.7"/><circle cx="350" cy="44" r="1.2"/></g><g fill="#2E4468"><rect x="20" y="62" width="16" height="42"/><rect x="44" y="50" width="12" height="54"/><rect x="64" y="70" width="20" height="34"/><rect x="92" y="44" width="14" height="60"/><rect x="114" y="66" width="18" height="38"/></g><path d="M0 96h400v8H0z" fill="#16233A"/><g transform="translate(236 46) rotate(-16)"><path d="M0 12c24-6 52-10 78-8l14-10 10 2-7 10 18 1-2 7-108 4z" fill="#EDE3CE"/><path d="M26 16l-20 16-9-2 14-15z" fill="#C9A455"/></g><path d="M196 74c30-10 58-18 88-30" stroke="#C9A455" stroke-width="2" fill="none" stroke-dasharray="6 7" opacity=".7"/></svg>`;
 
-    lodgingTotalText: "~$2,100–$2,500 rough planning target",
-    lodgingItems: [
-      { name: "Dubrovnik (Croatia): Old Town / Pile / Ploče / Lapad", status: "ROUGH TARGET", statusClass: "working", details: "6 nights (July 2–8) · ~$1,200–$1,400 planning target. Old Town in the morning, Adriatic swimming in the afternoon." },
-      { name: "Kotor Bay (Montenegro): Kotor / Dobrota / Perast", status: "ROUGH TARGET", statusClass: "working", details: "7 nights (July 8–15) · ~$900–$1,100 planning target. Slower second base with water access, mountain fjord scenery, and waterfront dining." }
-    ],
+S.chapelle = `<svg class="scene" viewBox="0 0 400 104" preserveAspectRatio="xMidYMid slice"><rect width="400" height="104" fill="#8C93C6"/><g transform="translate(150 6)"><path d="M50 4 96 52v46H4V52z" fill="#3A406E"/><g opacity=".92"><path d="M50 16 80 50v40H20V50z" fill="#C43B4A"/><path d="M50 22 74 52v32H26V52z" fill="#2B6BA8"/><path d="M50 30 66 54v24H34V54z" fill="#E4B93F"/></g></g><g fill="#F0E6CE" opacity=".95"><path d="M42 84c0-10 9-16 20-16s20 6 20 16z"/><rect x="40" y="84" width="44" height="6" rx="3"/></g><path d="M52 66c2-8 10-10 12-4" stroke="#C88B4A" stroke-width="3" fill="none"/><g transform="translate(300 52)"><path d="M0 26c6-20 30-28 46-16 10 8 6 22-6 26z" fill="#D9A45B"/><path d="M8 22c8-10 22-12 32-6" stroke="#B57F3C" stroke-width="2" fill="none"/></g><path d="M0 92h400v12H0z" fill="#4E5590"/><path d="M0 96c40-8 80 6 120 0s80-10 140-2 100 2 140-4" stroke="#B9C6E4" stroke-width="3" fill="none" opacity=".7"/></svg>`;
 
-    strengths: [
-      "Potentially the best value mix of swimming, scenery, and historic towns",
-      "Two distinct countries with only two bases and one easy transfer (80–90km direct bus/driver)",
-      "Kotor Bay delivers dramatic mountain fjord scenery alongside casual waterfront dining",
-      "Dubrovnik provides iconic medieval architecture, city walls, and cliffside drinks",
-      "Montenegro helps lower food and lodging costs compared to peak EU coastal rates",
-      "Outstanding boat day potential (Elaphiti Islands or Bay of Kotor / Blue Cave)",
-      "Strong contrast with winter Paris"
-    ],
-    tradeoffs: [
-      "Dubrovnik Old Town is crowded and expensive during peak July hours",
-      "Croatia/Montenegro border crossing at Karasovići can experience summer delays (best to cross early morning)",
-      "Beaches are mostly pebble, rock, or paved swim platforms rather than long sandy stretches",
-      "Lodging totals are realistic placeholders and still need final confirmation with taxes/fees"
-    ],
+S.eiffel = `<svg class="scene" viewBox="0 0 400 104" preserveAspectRatio="xMidYMid slice"><rect width="400" height="104" fill="#A9B4DC"/><circle cx="330" cy="26" r="13" fill="#F7E9C6" opacity=".9"/><path d="M60 100 94 10l34 90z" fill="#3A406E"/><path d="M74 76h40M66 90h56" stroke="#E9DFC4" stroke-width="3" opacity=".55"/><path d="M94 10V0" stroke="#3A406E" stroke-width="3"/><g transform="translate(212 40)"><rect x="0" y="16" width="44" height="46" rx="4" fill="#C0485A"/><path d="M8 16c0-12 6-18 14-18s14 6 14 18" stroke="#8E2F41" stroke-width="3" fill="none"/><path d="M10 30h24M10 42h24" stroke="#EFE0C2" stroke-width="2" opacity=".6"/></g><g transform="translate(272 48)"><rect x="0" y="12" width="36" height="40" rx="4" fill="#3F6E8C"/><path d="M6 12c0-10 5-14 12-14s12 4 12 14" stroke="#2A4E68" stroke-width="3" fill="none"/></g><path d="M0 92h400v12H0z" fill="#6E76A8"/></svg>`;
 
-    diningStrategy: {
-      morning: "<b>Easy & Inexpensive.</b> Bakery/café/simple breakfast pastries and apartment coffee.",
-      lunch: "<b>Main Savings Lever.</b> Bakery food, grilled food, or casual seafood.",
-      afternoon: "<b>Flexible.</b> Relaxed waterfront drinks and sunset aperitifs.",
-      dinner: "<b>Spend Selectively.</b> Local konobas, Dubrovnik/Kotor seafood, plus an optional home-cooked terrace dinner in Montenegro."
-    },
+S.spritz = `<svg class="scene" viewBox="0 0 400 104" preserveAspectRatio="xMidYMid slice"><rect width="400" height="104" fill="#E5AE74"/><path d="M0 84h400v20H0z" fill="#9A5B3F"/><g transform="translate(40 18)"><path d="M0 0h72L52 32v28h10v8H20v-8h10V32z" fill="#F0E3C6" opacity=".35"/><path d="M6 6h60L50 30H22z" fill="#E4622F"/><circle cx="36" cy="18" r="5" fill="#F7C64B"/></g><g transform="translate(150 22)"><rect x="0" y="10" width="40" height="52" rx="5" fill="#7D3A2E"/><path d="M6 24h28M6 36h28M6 48h20" stroke="#F0E3C6" stroke-width="2.5" opacity=".65"/><path d="M0 10 20 0l20 10z" fill="#5E2A21"/></g><g transform="translate(252 14)"><rect x="0" y="22" width="9" height="62" fill="#4E3227"/><circle cx="4.5" cy="18" r="10" fill="#F7E2A8"/><path d="M-14 84h38" stroke="#4E3227" stroke-width="4"/></g><g transform="translate(310 36)"><path d="M0 0h54l-14 20v22h12v6H2v-6h12V20z" fill="#EFE3C6"/><path d="M6 4h42L36 18H18z" fill="#D9453B"/></g></svg>`;
 
-    foodExamples: "<b>Croatia + Montenegro Food Vibe:</b> Apartment coffee & bakery pastries, casual lunches (black risotto, burek, pizza, seafood sandwiches), atmospheric dinner in Dubrovnik Old Town, waterfront konoba dinners in Kotor Bay with local Vranac wine.",
-    howWeSave: "<b>Croatia + Montenegro Savings Strategy:</b> Rely on simple bakery or market lunches, utilize apartment kitchens for light breakfasts and terrace drinks, take public buses or organized drivers instead of unnecessary private cars, enjoy swimming and Old Town wandering as free daily activities, and let lower Montenegro meal/lodging prices balance out Dubrovnik's peak July rates.",
-    rhythm: [
-      "Morning walk through Dubrovnik's stone alleyways before daytime crowds arrive",
-      "Midday swim off Banje Beach or Lokrum Island rocks",
-      "Scenic 2-hour coastal drive or bus around the Bay of Kotor into Montenegro",
-      "Unstructured waterfront mornings in Dobrota with mountain views",
-      "Private boat tour through the Bay of Kotor to Perast & Our Lady of the Rocks",
-      "Sunset drinks on the rocks followed by casual Montenegrin grilled seafood"
-    ]
-  },
+S.colosseum = `<svg class="scene" viewBox="0 0 400 104" preserveAspectRatio="xMidYMid slice"><rect width="400" height="104" fill="#EBBE86"/><circle cx="48" cy="26" r="13" fill="#FBEBC8" opacity=".85"/><g transform="translate(120 12)"><path d="M0 76V20h150v56z" fill="#A66A46"/><g fill="#F4DDB6" opacity=".6"><rect x="12" y="30" width="16" height="22" rx="8"/><rect x="42" y="30" width="16" height="22" rx="8"/><rect x="72" y="30" width="16" height="22" rx="8"/><rect x="102" y="30" width="16" height="22" rx="8"/><rect x="12" y="58" width="16" height="18" rx="8"/><rect x="42" y="58" width="16" height="18" rx="8"/><rect x="72" y="58" width="16" height="18" rx="8"/><rect x="102" y="58" width="16" height="18" rx="8"/></g><path d="M0 20h150v8H0z" fill="#BE7C52"/><path d="M128 20v56h22V34z" fill="#8F5A3B"/></g><g transform="translate(28 56)"><ellipse cx="34" cy="26" rx="34" ry="16" fill="#F2E6CB"/><ellipse cx="34" cy="22" rx="27" ry="11" fill="#D9453B" opacity=".85"/><path d="M14 20c10-6 32-6 42 2" stroke="#F7C64B" stroke-width="3" fill="none"/><path d="M60 8c8 2 12 10 8 16" stroke="#8C5A3A" stroke-width="3" fill="none"/></g><path d="M0 94h400v10H0z" fill="#8F5A3B" opacity=".7"/></svg>`;
 
-  greece: {
-    id: "greece",
-    countryName: "Greece 🇬🇷",
-    route: "Naxos 6n · Hydra 4n · Athens 3n",
-    subtitle: "The Adventure",
-    tagline: "The strongest pure island feeling, Aegean swimming, car-free Hydra, and ancient history in Athens.",
-    
-    budget: {
-      lodgingLow: 2240, lodgingHigh: 2400,
-      airfareLow: 1600, airfareHigh: 1900,
-      transitLow: 400, transitHigh: 500,
-      foodLow: 1500, foodHigh: 1750,
-      activitiesLow: 300, activitiesHigh: 400,
-      likelyLow: 6040, likelyHigh: 6950,
-      likely: 6300,
-      ceiling: 6800
-    },
+S.vatican = `<svg class="scene" viewBox="0 0 400 104" preserveAspectRatio="xMidYMid slice"><rect width="400" height="104" fill="#BFD0E0"/><g transform="translate(110 4)"><path d="M56 22c18 0 30 14 30 30H26c0-16 12-30 30-30z" fill="#E7E0CE"/><rect x="18" y="52" width="76" height="44" fill="#EFE8D6"/><path d="M56 12v10M50 16h12" stroke="#B49A5E" stroke-width="3"/><rect x="34" y="70" width="14" height="26" fill="#C2B592"/><rect x="64" y="70" width="14" height="26" fill="#C2B592"/><path d="M18 52h76v6H18z" fill="#D4CAAC"/></g><g transform="translate(262 34)"><path d="M0 34c14-18 40-20 56-6" stroke="#E8C9A0" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M20 30c8-8 20-8 28-2" stroke="#C99A6A" stroke-width="3" fill="none"/></g><g transform="translate(36 40)"><path d="M0 0h34l-9 16v20h8v5H1v-5h8V16z" fill="#F4EEDC"/><path d="M4 4h26l-7 10H11z" fill="#D9453B" opacity=".8"/></g><path d="M0 96h400v8H0z" fill="#98A9BC"/></svg>`;
 
-    lodgingTotalText: "~$2,240–$2,400",
-    lodgingItems: [
-      { name: "Naxos: Hotel Grotta", status: "FOUND RATE · BREAKFAST INCLUDED", statusClass: "found", details: "6 nights · €970.50 total (~$1,135 at 1.17 EUR/USD) · Breakfast included · Pay at property" },
-      { name: "Hydra: Town Apartment", status: "WORKING ESTIMATE", statusClass: "working", details: "4 nights · ~$500 working estimate (earlier 3n rate found was $473.67)" },
-      { name: "Athens: Stanley Hotel", status: "PAY AT PROPERTY", statusClass: "found", details: "3 nights · $605 total confirmed rate" }
-    ],
+S.florence = `<svg class="scene" viewBox="0 0 400 104" preserveAspectRatio="xMidYMid slice"><rect width="400" height="104" fill="#D9CDA8"/><g transform="translate(150 8)"><path d="M48 14c16 8 26 20 26 34H22c0-14 10-26 26-34z" fill="#B44C3A"/><path d="M48 8v8" stroke="#C7A24E" stroke-width="4"/><rect x="22" y="48" width="52" height="44" fill="#F0E8D2"/><path d="M22 48h52v6H22z" fill="#D8CDAE"/><rect x="32" y="62" width="10" height="30" fill="#8FA07E" opacity=".7"/><rect x="54" y="62" width="10" height="30" fill="#8FA07E" opacity=".7"/><rect x="84" y="28" width="16" height="64" fill="#F0E8D2"/><path d="M84 28h16v6H84z" fill="#B44C3A"/></g><g transform="translate(12 52)"><rect x="0" y="10" width="92" height="26" rx="6" fill="#5C6B7A"/><rect x="8" y="16" width="18" height="12" rx="2" fill="#CBD9E4"/><rect x="34" y="16" width="18" height="12" rx="2" fill="#CBD9E4"/><rect x="60" y="16" width="18" height="12" rx="2" fill="#CBD9E4"/><circle cx="20" cy="40" r="6" fill="#33414F"/><circle cx="70" cy="40" r="6" fill="#33414F"/><path d="M92 16h14l-6 14H92z" fill="#8494A2"/></g><path d="M0 96h400v8H0z" fill="#B7A87F"/></svg>`;
 
-    strengths: [
-      "Strongest pure island feeling & Aegean swimming",
-      "Naxos provides 6 full nights for genuine island relaxation",
-      "Hydra offers a unique car-free island atmosphere",
-      "Athens provides an epic ancient history & rooftop dining finale"
-    ],
-    tradeoffs: [
-      "Three bases (2 moves) require island ferries & logistics",
-      "Hydra 4-night lodging pricing subject to final reconfirmation"
-    ],
+S.transfer_sicily = `<svg class="scene" viewBox="0 0 400 104" preserveAspectRatio="xMidYMid slice"><rect width="400" height="104" fill="#9FD2D6"/><path d="M0 70c60-10 120 4 180 0s160-12 220 4v30H0z" fill="#3E8F8B"/><path d="M0 88h400v16H0z" fill="#2A6F6C"/><g transform="translate(40 18)"><path d="M0 20c20-8 46-12 70-10l12-9 9 2-6 9 16 1-2 7-99 4z" fill="#EDE3CE"/><path d="M22 24 6 38l-8-2 12-13z" fill="#C9A455"/></g><g transform="translate(232 24)"><path d="M0 46 24 8l26 38z" fill="#5E6B70"/><path d="M14 20c6-4 14-4 20 0-4 5-16 5-20 0z" fill="#EFE7D2" opacity=".85"/></g><g transform="translate(300 52)"><rect x="0" y="0" width="70" height="30" rx="4" fill="#EFE3C6"/><path d="M0 8h70" stroke="#3E8F8B" stroke-width="2"/><rect x="8" y="14" width="26" height="8" rx="2" fill="#C9A455"/></g><g transform="translate(120 52)"><rect x="0" y="14" width="30" height="22" rx="3" fill="#D9453B"/><rect x="36" y="6" width="22" height="30" rx="3" fill="#3E5C7A"/><path d="M10 14V8h12v6" stroke="#8E2F41" stroke-width="3" fill="none"/></g></svg>`;
 
-    diningStrategy: {
-      morning: "<b>Easy & Inexpensive.</b> Legendary Hotel Grotta included breakfast on Naxos; simple breakfasts elsewhere.",
-      lunch: "<b>Main Savings Lever.</b> Gyros, bakery food, and casual beach lunches.",
-      afternoon: "<b>Flexible.</b> Iced coffee, local wine, or harbor drinks.",
-      dinner: "<b>Spend Selectively.</b> Authentic island tavernas, fresh seafood, and a selective nicer meal in Athens."
-    },
+S.beach = `<svg class="scene" viewBox="0 0 400 104" preserveAspectRatio="xMidYMid slice"><rect width="400" height="104" fill="#96D8DE"/><circle cx="346" cy="24" r="14" fill="#FBEDC4"/><path d="M0 52c60-8 120 6 180 2s160-10 220 2v48H0z" fill="#3FA09B"/><path d="M0 74h400v30H0z" fill="#E7D7AE"/><g transform="translate(60 22)"><path d="M6 52V22" stroke="#7A5C3A" stroke-width="4"/><path d="M-32 24c8-20 44-20 60-4-16-4-44-4-60 4z" fill="#D9453B"/><path d="M-30 24c16-8 44-8 58-4" stroke="#F0E3C6" stroke-width="3" fill="none"/></g><g transform="translate(96 62)"><rect x="0" y="6" width="56" height="8" rx="4" fill="#EFE3C6"/><path d="M4 14v8M50 14v8" stroke="#C6B58E" stroke-width="3"/><circle cx="14" cy="2" r="6" fill="#E8B87C"/></g><g transform="translate(180 60)"><rect x="0" y="8" width="56" height="8" rx="4" fill="#EFE3C6"/><path d="M4 16v8M50 16v8" stroke="#C6B58E" stroke-width="3"/><circle cx="14" cy="4" r="6" fill="#E8B87C"/></g><path d="M250 92c14-10 34-10 48 0" stroke="#3FA09B" stroke-width="3" fill="none" opacity=".6"/><g transform="translate(300 40)"><path d="M0 0h30l-8 14v16h7v4H1v-4h7V14z" fill="#F4EEDC"/><path d="M3 3h24l-6 9H9z" fill="#E4622F"/></g></svg>`;
 
-    foodExamples: "<b>Greece Food Vibe:</b> Bakery breakfasts, gyros/souvlaki lunches, beachside tavernas, fresh octopus, local white wine, sunset drinks in Hydra.",
-    howWeSave: "<b>Greece Savings Strategy:</b> Maximize the legendary included breakfast spread at Hotel Grotta in Naxos, grab quick casual gyros, bakeries, or beach spot lunches, stick to authentic family-run island tavernas for dinner, minimize unnecessary taxi rides on walkable or car-free islands like Hydra, and purchase ferry tickets early.",
-    rhythm: [
-      "Hotel Grotta breakfast overlooking Naxos coastline",
-      "Naxos beach/swim day along golden Aegean sands",
-      "Chora evening wandering + traditional island taverna dinner",
-      "Ferry arrival into car-free Hydra harbor",
-      "Hydra harbor/swim slow day off coastal rocks",
-      "Acropolis exploration + Athens rooftop/dinner night"
-    ]
-  },
+S.theatre = `<svg class="scene" viewBox="0 0 400 104" preserveAspectRatio="xMidYMid slice"><rect width="400" height="104" fill="#BFE0D8"/><path d="M0 62c70-10 130 4 200 0s130-10 200 4v38H0z" fill="#69A99B" opacity=".65"/><g transform="translate(130 16)" fill="#E3D8BE"><rect x="0" y="16" width="12" height="50"/><rect x="24" y="10" width="12" height="56"/><rect x="48" y="16" width="12" height="50"/><rect x="72" y="6" width="12" height="60"/><rect x="-6" y="2" width="98" height="10"/><rect x="-10" y="66" width="106" height="8"/></g><g transform="translate(276 22)"><path d="M0 44 26 4l28 40z" fill="#7A8890"/><path d="M14 18c6-4 14-4 20 0-4 5-16 5-20 0z" fill="#F0E8D6" opacity=".8"/></g><g transform="translate(32 40)"><path d="M4 16h36l-4 34c-1 6-6 10-14 10s-13-4-14-10z" fill="#EFE3C6"/><path d="M6 20h32l-2 16H8z" fill="#C0485A"/><path d="M22 6v10M16 8l6 8M28 8l-6 8" stroke="#8C5A3A" stroke-width="3"/></g><path d="M0 94h400v10H0z" fill="#9CC3B7"/></svg>`;
 
-  portugal: {
-    id: "portugal",
-    countryName: "Portugal + Spain 🇵🇹🇪🇸",
-    route: "Cascais 6n · Calpe 7n",
-    subtitle: "The Vacation",
-    tagline: "The easiest, slowest, most conventional vacation option — long stays, pool, beach, terrace, and 1 move.",
-    
-    budget: {
-      lodgingLow: 2498, lodgingHigh: 2498,
-      airfareLow: 1600, airfareHigh: 1900,
-      transitLow: 400, transitHigh: 500,
-      foodLow: 1550, foodHigh: 1750,
-      activitiesLow: 300, activitiesHigh: 400,
-      likelyLow: 6348, likelyHigh: 7048,
-      likely: 6500,
-      ceiling: 7000
-    },
+S.dinner_special = `<svg class="scene" viewBox="0 0 400 104" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3B3F73"/><stop offset=".55" stop-color="#C4667A"/><stop offset="1" stop-color="#E8A05F"/></linearGradient></defs><rect width="400" height="104" fill="url(#dusk)"/><circle cx="318" cy="52" r="18" fill="#F7D98C" opacity=".95"/><path d="M0 74c70-6 130 6 200 2s130-8 200 2v26H0z" fill="#2E4160"/><path d="M0 88h400v16H0z" fill="#22314A"/><g transform="translate(58 26)"><path d="M0 0h34l-8 18v22h8v5H0v-5h8V18z" fill="#F6ECD2"/><path d="M3 3h28l-6 12H9z" fill="#E7C15F" opacity=".9"/><circle cx="17" cy="9" r="2.5" fill="#FFF" opacity=".7"/></g><g transform="translate(108 26)"><path d="M0 0h34l-8 18v22h8v5H0v-5h8V18z" fill="#F6ECD2"/><path d="M3 3h28l-6 12H9z" fill="#E7C15F" opacity=".9"/></g><g transform="translate(170 54)"><ellipse cx="40" cy="20" rx="40" ry="14" fill="#F6ECD2" opacity=".95"/><ellipse cx="40" cy="17" rx="30" ry="9" fill="#D97C63" opacity=".8"/></g><g stroke="#F7D98C" stroke-width="2" opacity=".8"><path d="M250 20l4 8 8 4-8 4-4 8-4-8-8-4 8-4z"/><path d="M356 28l3 6 6 3-6 3-3 6-3-6-6-3 6-3z"/></g></svg>`;
 
-    lodgingTotalText: "$2,497.54 Exact",
-    lodgingItems: [
-      { name: "Cascais: Vila Galé Cascais", status: "CONFIRMED RATE", statusClass: "confirmed", details: "6 nights · $1,412.54 total · Breakfast included, hotel pool" },
-      { name: "Calpe: Sea-View Airbnb Apartment", status: "CONFIRMED RATE", statusClass: "confirmed", details: "7 nights · $1,085.00 total · Private terrace, sea view, full kitchen" }
-    ],
+S.boat = `<svg class="scene" viewBox="0 0 400 104" preserveAspectRatio="xMidYMid slice"><rect width="400" height="104" fill="#8FD2DC"/><circle cx="60" cy="24" r="14" fill="#FBEDC4"/><path d="M0 56c70-8 130 4 200 0s130-8 200 2v46H0z" fill="#3E9FA6"/><path d="M0 78h400v26H0z" fill="#2C7E8A"/><g transform="translate(150 34)"><path d="M0 34h108l-16 20H16z" fill="#EFE3C6"/><rect x="26" y="14" width="56" height="20" rx="4" fill="#DCCDA8"/><path d="M54 14V-4" stroke="#7A5C3A" stroke-width="3"/><path d="M56 -4c14 4 20 10 22 16H56z" fill="#D9453B"/></g><path d="M120 88c12-8 26-8 38 0M244 90c12-8 26-8 38 0" stroke="#8FD2DC" stroke-width="3" fill="none" opacity=".7"/><g transform="translate(300 24)"><path d="M0 0h30l-7 14v14h6v4H1v-4h6V14z" fill="#F4EEDC"/><path d="M3 3h24l-5 9H8z" fill="#E9B44C"/></g><g transform="translate(60 62)"><circle cx="14" cy="14" r="12" fill="none" stroke="#EFE3C6" stroke-width="5"/><path d="M14 2v24M2 14h24" stroke="#D9453B" stroke-width="3"/></g></svg>`;
 
-    strengths: [
-      "Only two bases — effortless 'unpack and live there' pace",
-      "Hotel pool + included breakfast value in Cascais",
-      "Private terrace & ocean-view apartment lifestyle in Spain",
-      "100% confirmed lodging prices locked in"
-    ],
-    tradeoffs: [
-      "Less major ancient history/culture than Greece or Italy",
-      "No large-scale capital finale like Athens or Rome"
-    ],
+S.acitrezza = `<svg class="scene" viewBox="0 0 400 104" preserveAspectRatio="xMidYMid slice"><rect width="400" height="104" fill="#A6D8D2"/><path d="M0 60c70-8 130 4 200 0s130-8 200 2v42H0z" fill="#3E8E86"/><path d="M0 80h400v24H0z" fill="#2B6F69"/><g fill="#5E5A50"><path d="M212 62 232 14l20 48z"/><path d="M256 64 272 30l18 34z"/><path d="M296 66 308 42l14 24z"/></g><g transform="translate(40 44)"><ellipse cx="42" cy="24" rx="42" ry="16" fill="#F2E6CB"/><ellipse cx="42" cy="21" rx="32" ry="11" fill="#9FC7D6" opacity=".8"/><path d="M24 20c8-8 26-8 34 0-8 7-26 7-34 0z" fill="#E5E0D0"/><circle cx="34" cy="19" r="2" fill="#4A5A6B"/><path d="M58 20 72 12v16z" fill="#E5E0D0"/><path d="M14 8c6 2 8 8 6 12" stroke="#8C5A3A" stroke-width="3" fill="none"/></g><path d="M140 92c12-8 26-8 38 0" stroke="#A6D8D2" stroke-width="3" fill="none" opacity=".6"/></svg>`;
 
-    diningStrategy: {
-      morning: "<b>Easy & Inexpensive.</b> Included hotel breakfast, café espresso, or simple apartment groceries.",
-      lunch: "<b>Main Savings Lever.</b> Casual beach lunches, simple seafood, and sandwiches.",
-      afternoon: "<b>Flexible.</b> Terrace wine, beach drinks, or café relaxation.",
-      dinner: "<b>Spend Selectively.</b> Fresh seafood, tapas, casual local meals, plus an occasional home-cooked Calpe terrace meal."
-    },
+S.etna = `<svg class="scene" viewBox="0 0 400 104" preserveAspectRatio="xMidYMid slice"><rect width="400" height="104" fill="#D8CE9E"/><path d="M96 92 206 8l112 84z" fill="#5A5344"/><path d="M190 18c8 6 20 6 28 0-6 10-22 10-28 0z" fill="#EFE7D2" opacity=".8"/><path d="M202 8c-5-10 0-16 4-18 3 7 8 9 5 18z" fill="#E8E2D0" opacity=".6"/><path d="M0 84c60-10 120 8 180 2s160-10 220 2v16H0z" fill="#6E7A3A"/><path d="M0 94h400v10H0z" fill="#55602C"/><g transform="translate(28 40)"><path d="M0 0h36l-9 18v20h9v5H0v-5h9V18z" fill="#F4EEDC"/><path d="M4 4h28l-7 12H11z" fill="#7B2D3B"/></g><g transform="translate(300 44)"><circle cx="10" cy="10" r="7" fill="#7B2D3B"/><circle cx="24" cy="8" r="7" fill="#8E3547"/><circle cx="17" cy="22" r="7" fill="#7B2D3B"/><circle cx="31" cy="20" r="7" fill="#8E3547"/><circle cx="24" cy="34" r="7" fill="#7B2D3B"/><path d="M26 2c4-8 12-10 16-6" stroke="#5A6B2C" stroke-width="3" fill="none"/></g></svg>`;
 
-    foodExamples: "<b>Portugal + Spain Food Vibe:</b> Pastel de nata, bifana sandwiches, fresh seafood, Spanish rice dishes, tapas, sangria.",
-    howWeSave: "<b>Portugal + Spain Savings Strategy:</b> Take full advantage of the included hotel breakfast and pool amenities in Cascais, stock up on groceries for casual lunches and sunset drinks on your private ocean-view Calpe terrace, focus dining spend on casual local seafood and tapas, and use reliable regional train connections for day trips.",
-    rhythm: [
-      "Cascais hotel/pool morning + included breakfast",
-      "Atlantic beach relaxation + casual seafood lunch",
-      "Easy Lisbon/culture day trip by train",
-      "Arrival in Calpe + unpacking on the sea-view terrace",
-      "Mediterranean beach/swim day near Peñón de Ifach",
-      "Sunset terrace drinks + casual Spanish dinner"
-    ]
-  },
+S.ortigia = `<svg class="scene" viewBox="0 0 400 104" preserveAspectRatio="xMidYMid slice"><rect width="400" height="104" fill="#E4D6AE"/><g transform="translate(206 14)" fill="#F3ECD8"><rect x="0" y="18" width="12" height="52"/><rect x="24" y="18" width="12" height="52"/><rect x="48" y="18" width="12" height="52"/><rect x="72" y="18" width="12" height="52"/><rect x="-6" y="8" width="96" height="10"/><path d="M-8 8 42 -8 92 8z" fill="#E0D2AE"/><rect x="-10" y="70" width="104" height="8"/></g><g transform="translate(24 40)"><path d="M0 14h84l-8 40H8z" fill="#C88B4A"/><path d="M6 14c0-8 8-12 36-12s36 4 36 12z" fill="#A96F39"/><circle cx="24" cy="30" r="8" fill="#D9453B"/><circle cx="44" cy="28" r="8" fill="#E8A33C"/><circle cx="62" cy="32" r="8" fill="#6E8F3C"/><path d="M14 44h56" stroke="#8E5B2E" stroke-width="3"/></g><g transform="translate(130 56)"><rect x="0" y="0" width="46" height="30" rx="4" fill="#5C6B7A"/><rect x="6" y="6" width="14" height="10" rx="2" fill="#CBD9E4"/><rect x="26" y="6" width="14" height="10" rx="2" fill="#CBD9E4"/><circle cx="12" cy="32" r="5" fill="#33414F"/><circle cx="36" cy="32" r="5" fill="#33414F"/></g><path d="M0 94h400v10H0z" fill="#C9B88C"/></svg>`;
 
-  italy: {
-    id: "italy",
-    countryName: "Italy 🇮🇹",
-    route: "Rome 4n → Monopoli/Puglia 9n",
-    subtitle: "The Food + Culture Powerhouse",
-    tagline: "Rome comes first while Conor and Ashley are fresh, followed by nine slower nights in Puglia. The trip ends with beaches, seafood, local wine and deliberately unstructured time.",
-    
-    budget: {
-      lodgingLow: 2490, lodgingHigh: 2490,
-      airfareLow: 1600, airfareHigh: 2000,
-      transitLow: 275, transitHigh: 350,
-      foodLow: 1700, foodHigh: 1900,
-      activitiesLow: 110, activitiesHigh: 290,
-      likelyLow: 6450, likelyHigh: 6750,
-      likely: 6665.04,
-      ceiling: 7000
-    },
+S.finale = `<svg class="scene" viewBox="0 0 400 104" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="fin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3E4470"/><stop offset=".6" stop-color="#C77A63"/><stop offset="1" stop-color="#E7B46B"/></linearGradient></defs><rect width="400" height="104" fill="url(#fin)"/><path d="M262 62 312 16l48 46z" fill="#4A4438" opacity=".8"/><path d="M0 66c60-8 120 6 180 2s160-8 220 2v34H0z" fill="#33405C"/><path d="M0 86h400v18H0z" fill="#27334B"/><g transform="translate(40 30)"><rect x="0" y="22" width="80" height="8" rx="3" fill="#EFE3C6"/><path d="M8 22V8h64v14z" fill="#3E5C7A" opacity=".8"/><circle cx="24" cy="4" r="6" fill="#F7D98C"/><circle cx="56" cy="4" r="6" fill="#F7D98C"/></g><g transform="translate(150 42)"><path d="M0 0h32l-8 16v18h8v4H0v-4h8V16z" fill="#F6ECD2"/><path d="M3 3h26l-6 11H9z" fill="#E4622F"/></g><g transform="translate(196 42)"><path d="M0 0h32l-8 16v18h8v4H0v-4h8V16z" fill="#F6ECD2"/><path d="M3 3h26l-6 11H9z" fill="#E4622F"/></g><g transform="translate(300 58)"><ellipse cx="34" cy="18" rx="34" ry="13" fill="#F2E6CB"/><ellipse cx="34" cy="15" rx="25" ry="8" fill="#B9553F" opacity=".8"/></g></svg>`;
 
-    lodgingTotalText: "$2,490.04 Exact Total",
-    lodgingItems: [
-      { name: "Rome: Relais Forus Inn, Monti (Via Cavour 194)", status: "CURRENT PAY-LATER QUOTE", statusClass: "found", details: "$795.86 total · $0 due today · due at property · 4 nights (July 2–6) · Approx. €681.50 · Monti neighborhood base" },
-      { name: "Monopoli (Puglia): The Seagull Airbnb", status: "CURRENT AIRBNB OPTION", statusClass: "found", details: "$1,694.18 total · kitchen · nine-night Monopoli base · 9 nights (July 6–15) · Coastal Puglia base" }
-    ],
+S.homeward = `<svg class="scene" viewBox="0 0 400 104" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="dawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2C3A5E"/><stop offset=".6" stop-color="#E29A6A"/><stop offset="1" stop-color="#F3D39A"/></linearGradient></defs><rect width="400" height="104" fill="url(#dawn)"/><circle cx="74" cy="70" r="20" fill="#F8E3A8" opacity=".9"/><path d="M0 84h400v20H0z" fill="#2B3A50"/><g transform="translate(200 20) rotate(-12)"><path d="M0 14c26-8 56-12 84-10l14-11 10 2-7 11 18 1-2 8-117 5z" fill="#EDE3CE"/><path d="M28 18 8 34l-9-2 14-15z" fill="#C9A455"/></g><path d="M150 62c34-12 70-22 106-34" stroke="#F8E3A8" stroke-width="2" fill="none" stroke-dasharray="6 8" opacity=".8"/><g transform="translate(36 34)"><path d="M0 10h34c0 14-8 22-17 22S0 24 0 10z" fill="#F4EEDC"/><path d="M34 14c8 0 10 10 2 12" stroke="#F4EEDC" stroke-width="3" fill="none"/><path d="M8 4c2-6 8-6 10 0M20 2c2-6 8-6 10 0" stroke="#EFE3C6" stroke-width="2" fill="none" opacity=".7"/><rect x="-4" y="34" width="44" height="5" rx="2" fill="#D8CBA8"/></g></svg>`;
 
-    strengths: [
-      "Rome comes first while fresh for maximum cultural impact, followed by 9 slow nights in Puglia coves",
-      "Zero rental car required — relies strictly on walkable old towns, trains, and occasional taxis",
-      "Deep 9-night base in Monopoli reduces lodging movement friction and hotel turnover costs",
-      "Exceptional food balance with distinct nightly dinners, cheap casual lunches, and local grocery living",
-      "Average lodging rate of ~$192/night across 13 peak July nights"
-    ],
-    tradeoffs: [
-      "Rome in early July is warm for afternoon sightseeing (mitigated by midday hotel resets)",
-      "High-speed train transfer required from Rome south to Monopoli"
-    ],
+/* ---------------- days ---------------- */
+const DAYS = [
+  {city:"paris",d:"26",dow:"Thu",scene:S.takeoff,title:"Wheels up",where:"New York → Paris",
+   items:[["Afternoon","Head to JFK. Cars to the airport take longer than you think on a Thursday."],
+          ["5:30 p.m.","Air France AF3, JFK → CDG. Overnight, so sleep is the assignment."]],
+   chips:[["money","$1,007 for two"],["open","Not booked"]]},
+  {city:"paris",d:"27",dow:"Fri",scene:S.chapelle,title:"Landing, and the island",where:"Paris",
+   items:[["7:00 a.m.","Land at CDG. Taxi to Le Petit Beaumarchais, drop bags."],
+          ["Morning","Coffee and a pastry standing at the bar. Walk the Seine."],
+          ["12:30 p.m.","Sainte-Chapelle, then Notre-Dame from outside."],
+          ["Lunch","Boulangerie sandwiches. Nothing seated."],
+          ["3:00 p.m.","Check in. A real reset, not a cat nap."],
+          ["7:15 p.m.","Dinner at <b>Chez Janou</b>, Marais.","meal"],
+          ["After","One drink in the neighborhood. Home on foot."]],
+   chips:[["money","Taxi €62–72"],["money","Sainte-Chapelle ~€20 pp"]]},
+  {city:"paris",d:"28",dow:"Sat",scene:S.eiffel,title:"The tower, then the shops",where:"Paris",
+   items:[["Morning","Espresso and pastry, then the Champ de Mars and the Eiffel Tower grounds. No ascent."],
+          ["11:30 a.m.","Lunch at <b>Francette</b> on the river — one of the trip's four seated lunches.","meal"],
+          ["Afternoon","Galeries Lafayette, and Printemps if the mood holds."],
+          ["4–6:30 p.m.","Back to the hotel. Feet up."],
+          ["7:45 p.m.","Dinner at <b>Le Rempart</b>, Bastille.","meal"]],
+   chips:[["money","Shopping allowance $300"],["open","Confirm August closures"]]},
 
-    diningStrategy: {
-      morning: "espresso/cornetto or simple apartment breakfast; hotel breakfast in Rome",
-      lunch: "focaccia, panzerotti, pizza al taglio",
-      afternoon: "aperitivo, coffee, wine",
-      dinner: "Puglia seafood/trattorias/pizza + selective Rome dinners"
-    },
+  {city:"rome",d:"29",dow:"Sun",scene:S.spritz,title:"Paris to Monti",where:"Paris → Rome",
+   items:[["Morning","Breakfast, check out, taxi to Orly."],
+          ["12:20 p.m.","easyJet to Fiumicino, landing 2:25 p.m. Fixed-fare taxi into town, €55."],
+          ["Afternoon","Check in at Residenza Maritti. Wander Monti and Via del Boschetto."],
+          ["Aperitivo","<b>Fáfiuché</b>.","meal"],
+          ["Dinner","<b>Dar Bruttone</b>.","meal"]],
+   chips:[["money","Flight $150 · taxi €55"],["open","Shops may close Sunday"]]},
+  {city:"rome",d:"30",dow:"Mon",scene:S.colosseum,title:"Ancient Rome, all of it",where:"Rome",
+   items:[["Early","Coffee and cornetto, then the <b>Colosseum</b> — Full Experience with the underground and arena."],
+          ["Late morning","Roman Forum and Palatine Hill on the same ticket."],
+          ["Lunch","Casual, on foot. Mizio's or a slice."],
+          ["Afternoon","Hotel reset through the worst of the heat."],
+          ["7:00 p.m.","<b>Roscioli</b> — the pasta-and-wine evening.","meal"],
+          ["After","<b>Vino e Vinili</b> if there's room for one more glass."]],
+   chips:[["money","Tickets ~€52 for two"],["booked","Reserve Roscioli early"]]},
+  {city:"rome",d:"31",dow:"Tue",scene:S.vatican,title:"Vatican, then cocktails",where:"Rome",
+   items:[["Morning","Vatican Museums and the Sistine Chapel, booked online. Give it more time than feels necessary."],
+          ["Midday","St. Peter's Basilica if the queue is civilized. It's free."],
+          ["Lunch","<b>200 Gradi</b>, near the Vatican.","meal"],
+          ["Afternoon","Doria Pamphilj if energy allows — first thing to drop. Then reset."],
+          ["Evening","Cocktails at <b>Bar della Musa</b>, then dinner at <b>Poldo e Gianna</b> or Taverna Boccaccio.","meal"],
+          ["After","Trevi Fountain on the walk back."]],
+   chips:[["money","Vatican €50 for two"],["open","Pick one Centro dinner"]]},
+  {city:"rome",d:"1",dow:"Wed",choice:"sep1",title:"An open Wednesday",where:"Rome",
+   variants:{
+     florence:{label:"Florence",scene:S.florence,title:"Florence for the day",where:"Rome → Florence → Rome",
+       items:[["Early","High-speed train from Termini. Book ahead for the cheap fares."],
+              ["Morning","Medici Chapels, then the Duomo from outside."],
+              ["Lunch","Tuscan, seated, still to choose."],
+              ["Afternoon","Piazza della Signoria, Ponte Vecchio, then wander without a list."],
+              ["Evening","Train back. Pizza at <b>Alle Carrette</b> — deliberately easy.","meal"]],
+       chips:[["money","Trains €100–200 for two"],["money","Medici Chapels ~€24"],["open","Long day before Sicily"]]},
+     trastevere:{label:"Trastevere",scene:S.spritz,title:"A slow day in Trastevere",where:"Rome",
+       items:[["Late morning","No alarm. Coffee in Monti, then walk over the river."],
+              ["Midday","Trastevere's lanes, Santa Maria, the Sunday-market end of the neighborhood."],
+              ["Lunch","Supplì and a Trapizzino, eaten standing up.","meal"],
+              ["Afternoon","Back for a long reset. This is the day that pays for the Vatican."],
+              ["Evening","Pizza at <b>Alle Carrette</b>, then an early night before Sicily.","meal"]],
+       chips:[["money","Saves $140–200"],["booked","Nothing to book"],["open","AS Roma match if the fixture lands"]]}
+   }},
+  {city:"taormina",d:"2",dow:"Thu",scene:S.transfer_sicily,title:"South to Sicily",where:"Rome → Taormina",
+   items:[["Morning","Breakfast, check out, taxi to Fiumicino."],
+          ["12:30 p.m.","Ryanair to Catania, landing 1:50 p.m. Prebooked driver to Taormina."],
+          ["3:30–4:15 p.m.","Into Villa des Arts. Rooftop, unpack, breathe."],
+          ["Early evening","First walk down Corso Umberto."],
+          ["Dinner","<b>Trattoria Don Ciccio</b>.","meal"]],
+   chips:[["money","Transfer €110 target"],["open","Transfeero quoted €174"]]},
+  {city:"taormina",d:"3",dow:"Fri",scene:S.beach,title:"Mazzarò and Isola Bella",where:"Taormina",
+   items:[["Morning","Cable car down to the bay — €10 return each, last ride 1:30 a.m."],
+          ["All day","<b>Lido La Pigna</b>: two loungers and an umbrella, swimming, lunch brought to the beach."],
+          ["Afternoon","Short walk to Isola Bella, then back up for the pool and a siesta."],
+          ["Dinner","<b>Taverna Don Nino</b>.","meal"],
+          ["After","Cocktails at Morgana, optional."]],
+   chips:[["money","Loungers €50–60"],["booked","Call +39 0942 24464"]]},
+  {city:"taormina",d:"4",dow:"Sat",scene:S.theatre,title:"Theatre, then Giardini Naxos",where:"Taormina",
+   items:[["Morning","Greek Theatre while it's cool."],
+          ["Mid-morning","Granita and brioche at <b>Bam Bar</b>. Shops along the Corso."],
+          ["Afternoon","Bus down to Giardini Naxos for <b>La Romantica</b>. Swim, read, late beach lunch."],
+          ["Evening","Back up for the rooftop."],
+          ["Dinner","<b>Da Cristina</b> takeaway with wine at the apartment.","meal"]],
+   chips:[["money","Bus ~€2 pp"],["open","Note the bus stop for Monday"]]},
+  {city:"taormina",d:"5",dow:"Sun",scene:S.dinner_special,title:"Ashley's night",where:"Taormina · Mazzarò",
+   items:[["Morning","Sleep in. Corso Umberto for shopping and a casual lunch."],
+          ["Afternoon","A look at San Domenico Palace, then groceries and wine for tomorrow's dinner. Rooftop and getting ready."],
+          ["7:00 p.m.","Cable car down to Mazzarò — cheaper and prettier than a taxi."],
+          ["7:30 p.m.","<b>Armònia</b> at Mazzarò Sea Palace. The celebration dinner.","meal"],
+          ["After","Walk the waterfront, ride back up."]],
+   chips:[["money","~$300 for two"],["booked","Season runs to early Nov"]]},
+  {city:"taormina",d:"6",dow:"Mon",scene:S.boat,title:"Out on the water",where:"Taormina · Giardini Naxos",
+   items:[["Slow morning","Breakfast, rooftop, a proper lunch before you go."],
+          ["12:45 p.m.","Be at the meeting point on Via Calcide Eubea."],
+          ["1:00–3:00 p.m.","Two hours on the water: Isola Bella, the Blue Grotto, swimming and an aperitif."],
+          ["Late afternoon","Back by 4:45. Rooftop, shower, pack for Catania."],
+          ["Dinner","Cook at the apartment with Sunday's groceries and Sicilian wine.","meal"]],
+   chips:[["booked","Private boat $343.92 reserved"],["open","Shared cruise $119 under review"]]},
 
-    foodExamples: "<b>Italy Food Vibe:</b> Espresso & cornetti, fresh focaccia barese, panzerotti, pizza al taglio, Trapizzino, classic Roman pasta (La Taverna dei Fori Imperiali), modern Italian (Cuoco & Camicia), fresh Puglian seafood, and evening aperitivi.",
-    howWeSave: "<b>How Italy Stays Under $7,000:</b> Savings come from zero rental car fees/parking/fuel, 9 nights in one Puglia apartment with grocery breakfasts & homemade beach sandwiches, one intentional local Airbnb dinner, mostly casual bakery lunches, free public beaches, only one planned cocktail night (Club Derrière), shared boat OR lido (never both), and no expensive cooking classes.",
-    rhythm: [
-      "Espresso + pastry in Monopoli old town",
-      "Swim in a Puglia cove",
-      "Focaccia/panzerotti lunch",
-      "Polignano or Ostuni day trip",
-      "Aperitivo + seafood dinner in Monopoli",
-      "Rome historic center/Colosseum + Roman dinner"
-    ]
-  },
-
-  france: {
-    id: "france",
-    countryName: "France 🇫🇷",
-    route: "Amboise 3n · Paris 6n · Cassis 4n",
-    subtitle: "Châteaux, Marais & Calanques",
-    tagline: "Loire countryside castles → living in the Marais → Mediterranean calanques of Cassis.",
-    
-    budget: {
-      lodgingLow: 2978, lodgingHigh: 3776,
-      airfareLow: 1700, airfareHigh: 2000,
-      transitLow: 350, transitHigh: 450,
-      foodLow: 1550, foodHigh: 1800,
-      activitiesLow: 320, activitiesHigh: 420,
-      likelyLow: 6898, likelyHigh: 8446,
-      likely: 7050,
-      ceiling: 7850
-    },
-
-    lodgingTotalText: "~$2,978 couple lodging (with Paris split 3 ways)",
-    lodgingItems: [
-      { name: "Amboise: Hôtel Le Blason", status: "FOUND RATE", statusClass: "found", details: "3 nights (July 2–5) · €320.40 total (~$375 USD at 1.17 EUR/USD) · Loire base" },
-      { name: "Paris: 48 Rue des Francs-Bourgeois", status: "CONDITIONAL 3-WAY SPLIT", statusClass: "working", details: "6 nights (July 5–11) · $2,394.85 TOTAL apartment cost. If Michele joins, 3-way split is $798.28 pp ($1,596.57 couple share). If she does NOT join, couple bears full $2,394.85." },
-      { name: "Cassis: Coastal Airbnb", status: "FOUND RATE", statusClass: "found", details: "4 nights (July 11–15) · $1,006.48 total · Private balcony / terrace" }
-    ],
-
-    strengths: [
-      "Seamless blend of Loire châteaux, Parisian urban living, and Mediterranean coast",
-      "Six full nights in the Marais allows 'living in Paris' feel",
-      "Michele conditionally joins Paris portion (July 6–11)",
-      "High culinary value with iconic bistro dining & bakery picnics"
-    ],
-    tradeoffs: [
-      "Higher overall cost tier (~$7,050 likely with 3-way split / ~$7,850 ceiling without)",
-      "3 bases / 2 TGV transit moves across 3 regions",
-      "If Michele does not join Paris, couple bears full $2,395 Paris Airbnb"
-    ],
-
-    diningStrategy: {
-      morning: "pastries, café, simple breakfast/market groceries",
-      lunch: "bakery sandwiches, baguettes, markets, picnics, Seine/park/Cassis takeaway",
-      afternoon: "café, wine bar, apéro, Cassis waterfront drink",
-      dinner: "selective Paris bistros/restaurants, casual pizza/neighborhood meals, Cassis seafood"
-    },
-
-    foodExamples: "<b>France Food Vibe:</b> Bakery baguettes, market picnics, Oobatz, Parcelles, Bistrot Paul Bert, wine on the Champ-de-Mars, Cassis seafood.",
-    howWeSave: "<b>France Savings Strategy:</b> Prioritize bakery, market, and neighborhood charcuterie picnics for lunch over expensive sit-down restaurants every day, save dinner splurges for selected iconic bistros, walk or use the Metro in Paris rather than taxis, enjoy relaxed takeaway wine and cheese along the Seine or Cassis beaches, and rent bikes for Loire exploration.",
-    rhythm: [
-      "Château/bike morning around Amboise or Chenonceau",
-      "Loire bakery/market picnic",
-      "Marais wandering + café/wine bar",
-      "Paris dinner/cocktails/neighborhood night",
-      "Calanques swim or boat day",
-      "Cassis harbor/terrace evening"
-    ]
-  }
-};
-
-const PACE_DATA = [
-  { id: "croatia", name: "CROATIA + MONTENEGRO (2 Bases · 1 Move · 2 Countries)", segments: [{ text: "Dubrovnik 🇭🇷 (6n)", width: "46%", bg: "#0284c7" }, { text: "Kotor Bay 🇲🇪 (7n)", width: "54%", bg: "#075985" }] },
-  { id: "greece", name: "GREECE (3 Bases · 2 Moves)", segments: [{ text: "Naxos (6n)", width: "46%", bg: "#1d4ed8" }, { text: "Hydra (4n)", width: "31%", bg: "#0f3b7e" }, { text: "Athens (3n)", width: "23%", bg: "#0284c7" }] },
-  { id: "portugal", name: "PORTUGAL + SPAIN (2 Bases · 1 Move)", segments: [{ text: "Cascais (6n)", width: "46%", bg: "#1b4332" }, { text: "Calpe (7n)", width: "54%", bg: "#c8372d" }] },
-  { id: "italy", name: "ITALY (2 Bases · 1 Move)", segments: [{ text: "Rome (4n)", width: "31%", bg: "#b91c1c" }, { text: "Monopoli, Puglia (9n)", width: "69%", bg: "#184e28" }] },
-  { id: "france", name: "FRANCE (3 Bases · 2 Moves)", segments: [{ text: "Amboise (3n)", width: "23%", bg: "#1e3a8a" }, { text: "Paris (6n)", width: "46%", bg: "#002395" }, { text: "Cassis (4n)", width: "31%", bg: "#ED2939" }] }
+  {city:"catania",d:"7",dow:"Tue",scene:S.acitrezza,title:"Sea stacks and a new base",where:"Taormina → Catania",
+   items:[["Morning","Check out. One driver: Villa des Arts → Baroque Houses to drop bags → Aci Trezza."],
+          ["Lunch","Long seafood lunch on the waterfront, restaurant still to pick.","meal"],
+          ["Afternoon","The Faraglioni, the harbor, two or three unhurried hours. Prearranged taxi back."],
+          ["Evening","Check in properly and reset."],
+          ["Dinner","<b>Trattoria del Cavaliere</b> — first proper Catania dinner.","meal"]],
+   chips:[["money","Transfer €110–130 · return €35"],["open","Aci Trezza lunch spot TBD"]]},
+  {city:"catania",d:"8",dow:"Wed",scene:S.etna,title:"Etna in a glass",where:"Catania · Mount Etna",
+   items:[["9:00 a.m.","Minibus pickup for the winery day — Zafferana Etnea, two estates, tastings and a full lunch with Etna DOC pours."],
+          ["~5:00 p.m.","Back in town. Downtime, because that lunch will be enormous."],
+          ["Dinner","Genuinely open. Light, late, or skipped — that lunch decides. <b>SVRGO</b>, <b>Deliziosa</b> and Carlito's are the saved candidates.","meal"],
+          ["After","A drink at Lettera 82."]],
+   chips:[["booked","Balance $266.98 due Sept 6"],["open","Dinner TBD on the night"],["open","Confirm the pickup point"]]},
+  {city:"catania",d:"9",dow:"Thu",scene:S.ortigia,title:"Ortigia by train",where:"Catania → Syracuse",
+   items:[["Morning","Train from Catania Centrale, about an hour. Walk into Ortigia."],
+          ["First stop","The market, while it's still busy. Buy tonight's dinner."],
+          ["Midday","Temple of Apollo, the lanes, Piazza Duomo, the waterfront."],
+          ["Lunch","<b>Schiticchio</b> or <b>Scirocco</b>.","meal"],
+          ["Evening","Train back. Market haul and wine at the apartment.","meal"],
+          ["After","<b>BarnAut</b> for cocktails if you're up for it."]],
+   chips:[["money","Train ~€25–45 for two"]]},
+  {city:"catania",d:"10",dow:"Fri",scene:S.finale,title:"Last swim, last feast",where:"Catania · La Playa",
+   items:[["Morning","San Nicolò l'Arena and its rooftop walk, €3 each."],
+          ["Midday","Taxi to La Playa. <b>Lido SableSalè</b>, loungers, lunch, swimming."],
+          ["Late afternoon","Home to shower, reset and pack."],
+          ["Aperitivo","<b>Palace Catania</b> rooftop, with Etna in the distance.","meal"],
+          ["Dinner","<b>U Fucularu</b>. Keep this order — the rooftop first, always.","meal"],
+          ["Note","Early alarm tomorrow. Don't make it a late one."]],
+   chips:[["money","Loungers €25–40"],["booked","Reserve U Fucularu"]]},
+  {city:"catania",d:"11",dow:"Sat",scene:S.homeward,title:"Home the same day",where:"Catania → New York",
+   items:[["8–9 a.m.","Breakfast, check out, prearranged taxi to Catania Airport."],
+          ["9 a.m.–noon","At the airport. No dawn alarm, no rushing."],
+          ["12:45 p.m.","ITA Airways: Catania → Rome → JFK."],
+          ["~6:55 p.m.","Land at JFK, New York time."]],
+   chips:[["money","$1,622 for two"],["money","Taxi ~€27"],["open","Working fare, not booked"],["open","Recheck nonstops in November"]]}
 ];
 
-const UNLOCK_DATA = {
-  summerFrance: {
-    fixedSummer: { name: "🇫🇷 France (Summer)", costRangeText: "~$7,050–$7,850", lowVal: 7050, highVal: 7850 },
-    prompt: "<b>SUMMER: 2 TRAVELERS | NYE: 2 TRAVELERS</b><br>France in summer leaves NYE open. Where should the year's remaining travel money go?",
-    options: [
-      { id: "cdmx", tier: "PRIMARY", name: "🇲🇽 Mexico City (CDMX)", nights: "~4–5 nights · Roma / Condesa", costRangeText: "~$2,300–$3,000 couple", lowVal: 2300, highVal: 3000, vibe: "Food + cocktails + culture. Strongest 'second real trip' option without doing Europe twice.", lodging: "Condesa / Casa Oliva lodging: ~$800–$1,000 + NYC flights (~$800–$1,100) + dining/NYE." },
-      { id: "sanjuan", tier: "PRIMARY", name: "🇵🇷 San Juan, Puerto Rico", nights: "~4 nights · Condado / Old San Juan", costRangeText: "~$2,400–$3,200 couple", lowVal: 2400, highVal: 3200, vibe: "Warm-weather beach reset + Old San Juan + nightlife. Easier than another transatlantic flight.", lodging: "Condado stay: ~$840–$950 + flights (~$900–$1,200) + food/drinks." },
-      { id: "nola", tier: "BACKUP", name: "⚜️ New Orleans", nights: "3–4 nights · French Quarter / nearby", costRangeText: "~$2,000–$2,700 couple", lowVal: 2000, highVal: 2700, vibe: "Food + jazz + nightlife NYE. Domestic backup, compact and relatively easy non-stop from NYC.", lodging: "French Quarter stay: ~$750 + NYC flights + dining/activities." },
-      { id: "austin", tier: "BACKUP", name: "🤠 Austin, Texas", nights: "3–4 nights · South Congress / Central", costRangeText: "~$1,900–$2,600 couple", lowVal: 1900, highVal: 2600, vibe: "BBQ + tacos + bars + live music. Lowest-complexity warm-ish city backup.", lodging: "South Congress stay: ~$700 + flights + food/activities." }
-    ]
-  },
-  winterFrance: {
-    prompt: "<b>SUMMER: 2 TRAVELERS | PARIS NYE: 3 TRAVELERS (CON + ASHLEY + MICHELE · 5 NIGHTS)</b><br>Paris owns NYE — which Mediterranean/European summer route do you want instead?",
-    parisFixed: { name: "Paris NYE (3p · 5n)", partySize: "3 Travelers (Con + Ashley + Michele)", lodgingText: "Apartment Total: $1,589.06 (23 Rue Vieille du Temple) | 3-way lodging share: ~$529.69 pp | Con + Ashley Share: ~$1,059.37", lowVal: 4500, highVal: 5500, rangeText: "~$4,500–$5,500 total 3-person trip planning range" },
-    options: [
-      { id: "croatia_summer", name: "🇭🇷🇲🇪 Croatia + Montenegro (Summer)", nights: "13 nights · Dubrovnik 6n → Kotor Bay 7n", costRangeText: "~$5,900–$6,500 couple", lowVal: 5900, highVal: 6500, vibe: "The Value Play. Old Town Dubrovnik history + Kotor Bay mountain fjord scenery across two countries.", lodging: "Dubrovnik target ($1.2K–$1.4K) + Kotor Bay target ($900–$1.1K): ~$2.3K lodging target." },
-      { id: "greece_summer", name: "🇬🇷 Greece (Summer)", nights: "13 nights · Naxos → Hydra → Athens", costRangeText: "~$6,300–$6,800 couple", lowVal: 6300, highVal: 6800, vibe: "Pure Aegean island adventure, car-free Hydra relaxation, and ancient history in Athens.", lodging: "Hotel Grotta (€970.50 ≈ $1,135) + Hydra Town + Stanley Athens: ~$2,240 lodging." },
-      { id: "portugal_summer", name: "🇵🇹🇪🇸 Portugal + Spain (Summer)", nights: "13 nights · Cascais → Calpe", costRangeText: "~$6,500–$7,000 couple", lowVal: 6500, highVal: 7000, vibe: "The slowest, easiest 2-week vacation. Hotel pool value in Cascais + private sea-view terrace in Spain.", lodging: "Vila Galé + Calpe Sea-View Airbnb: $2,498 confirmed." },
-      { id: "italy_summer", name: "🇮🇹 Italy (Summer)", nights: "13 nights · Rome → Monopoli", costRangeText: "~$6,450–$6,750 couple", lowVal: 6450, highVal: 6750, vibe: "Four nights of Rome landmarks while fresh followed by nine slow nights in coastal Puglia coves.", lodging: "Relais Forus Inn Monti + Monopoli Airbnb: $2,490 total." }
-    ]
-  }
-};
+const AUG = ["26","27","28","29","30","31"];
+const MONTH = d => AUG.includes(d) ? "AUG" : "SEP";
 
-// STATE MANAGEMENT
-let currentTripKey = 'home';
-let activePerson = 'con'; // 'con' or 'ashley'
-let conAnswers = {};
-let ashleyAnswers = {};
-let franceSeasonMode = 'summer';
-let selectedNyeOptionId = 'cdmx';
-let selectedWinterSummerOptionId = 'croatia_summer';
+/* ---------------- render ---------------- */
+document.getElementById("tabRow").innerHTML =
+  `<button role="tab" id="tab_home" aria-selected="true" onclick="showView('home')">Passport</button>` +
+  Object.entries(CITIES).map(([k,c])=>
+    `<button role="tab" id="tab_${k}" aria-selected="false" style="--tabcol:${c.color}" onclick="showView('${k}')">${c.name}</button>`).join("") +
+  `<button class="theme-flip" onclick="flipTheme()" aria-label="Switch light or dark">◐</button>`;
 
-async function saveState() {
-  try {
-    const state = { currentTripKey, activePerson, conAnswers, ashleyAnswers, franceSeasonMode, selectedNyeOptionId, selectedWinterSummerOptionId, italyAirfare, italyFood, italyTrans, italyBdayOption };
-    if (window.storage && window.storage.set) {
-      await window.storage.set("summer2027_dual_state_v25", JSON.stringify(state));
-    } else {
-      localStorage.setItem("summer2027_dual_state_v25", JSON.stringify(state));
-    }
-  } catch(e) {}
+document.getElementById("stampGrid").innerHTML = Object.entries(CITIES).map(([k,c])=>`
+  <button class="visa" onclick="showView('${k}')" style="--accent:${c.color}">
+    ${c.art}
+    <svg class="roundel" viewBox="0 0 80 80" aria-hidden="true">
+      <circle cx="40" cy="40" r="34" fill="none" stroke="${c.color}" stroke-width="2.5" opacity=".75"/>
+      <circle cx="40" cy="40" r="27" fill="none" stroke="${c.color}" stroke-width="1" opacity=".6"/>
+      <text x="40" y="37" text-anchor="middle" fill="${c.color}" font-family="Karla,sans-serif" font-size="9" letter-spacing="1.2">ENTRY</text>
+      <text x="40" y="52" text-anchor="middle" fill="${c.color}" font-family="Bodoni Moda,serif" font-size="13" font-weight="700">${c.name.slice(0,3).toUpperCase()}</text>
+    </svg>
+    <div class="body"><h3>${c.name}</h3><div class="meta">${c.dates} · ${c.base}</div><p>${c.blurb}</p></div>
+  </button>`).join("");
+
+document.getElementById("statusList").innerHTML = STATUS.map(([kind,text])=>`
+  <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true">${
+    kind==="done"
+      ? `<circle cx="10" cy="10" r="9" fill="none" stroke="var(--stamp-olive)" stroke-width="1.6"/><path d="M5.5 10.4l3 3 6-6.6" fill="none" stroke="var(--stamp-olive)" stroke-width="2" stroke-linecap="round"/>`
+      : `<circle cx="10" cy="10" r="9" fill="none" stroke="var(--stamp-red)" stroke-width="1.6" stroke-dasharray="3 2.6"/><path d="M10 5.5v6" stroke="var(--stamp-red)" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="14.4" r="1.1" fill="var(--stamp-red)"/>`
+  }</svg><span>${text}</span></li>`).join("");
+
+let sep1 = "florence";
+try{ const v = localStorage.getItem("eu27_sep1"); if(v==="trastevere"||v==="florence") sep1 = v; }catch(e){}
+
+function pickSep1(v){
+  sep1 = v;
+  try{ localStorage.setItem("eu27_sep1", v); }catch(e){}
+  renderCity("rome");
+  updateLedger();
 }
 
-async function loadState() {
-  try {
-    let raw = null;
-    if (window.storage && window.storage.get) {
-      const res = await window.storage.get("summer2027_dual_state_v25");
-      if (res && res.value) raw = res.value;
-    } else {
-      raw = localStorage.getItem("summer2027_dual_state_v25");
-    }
-    if (raw) {
-      const parsed = JSON.parse(raw);
-      if (parsed.currentTripKey) currentTripKey = parsed.currentTripKey;
-      if (parsed.activePerson) activePerson = parsed.activePerson;
-      if (parsed.conAnswers) conAnswers = parsed.conAnswers;
-      if (parsed.ashleyAnswers) ashleyAnswers = parsed.ashleyAnswers;
-      if (parsed.franceSeasonMode) franceSeasonMode = parsed.franceSeasonMode;
-      if (parsed.selectedNyeOptionId) selectedNyeOptionId = parsed.selectedNyeOptionId;
-      if (parsed.selectedWinterSummerOptionId) selectedWinterSummerOptionId = parsed.selectedWinterSummerOptionId;
-      if (parsed.italyAirfare !== undefined) italyAirfare = parsed.italyAirfare;
-      if (parsed.italyFood !== undefined) italyFood = parsed.italyFood;
-      if (parsed.italyTrans !== undefined) italyTrans = parsed.italyTrans;
-      if (parsed.italyBdayOption) italyBdayOption = parsed.italyBdayOption;
-    }
-  } catch(e) {}
+function updateLedger(){
+  const florence = sep1 === "florence";
+  document.getElementById("ledgerDay").textContent = florence ? "$3,536" : "$3,366";
+  document.getElementById("ledgerTotal").textContent = florence ? "$10,729" : "$10,559";
+  document.getElementById("ledgerNote").innerHTML = florence
+    ? "Includes the Florence day trip, the 12:45 p.m. flight home, and the shared mini-cruise on Sept 6. Swapping Sept 1 to Trastevere frees up $140–200 — enough to put the private charter back."
+    : "Sept 1 is set to Trastevere, so the Florence trains and Medici tickets come out. That freed cash covers the private charter on Sept 6 with room to spare.";
 }
 
-// SCORE CALCULATION LOGIC
-function calculateIndividualMatch(destKey, personAnswers) {
-  const chars = DESTINATION_CHARACTERISTICS[destKey];
-  if (!chars) return null;
-
-  let totalWeightedAchieved = 0;
-  let totalMaxWeight = 0;
-
-  SURVEY_QUESTIONS.forEach(q => {
-    const userW = personAnswers[q.id];
-    if (userW !== undefined) {
-      const destRating = chars[q.id] || 3.5;
-      totalWeightedAchieved += (destRating / 5) * userW;
-      totalMaxWeight += userW;
-    }
-  });
-
-  if (totalMaxWeight === 0) return null;
-  return Math.round((totalWeightedAchieved / totalMaxWeight) * 100);
-}
-
-function calculateCoupleMatch(destKey) {
-  const conComplete = Object.keys(conAnswers).length === 10;
-  const ashleyComplete = Object.keys(ashleyAnswers).length === 10;
-
-  if (!conComplete || !ashleyComplete) return null;
-
-  const chars = DESTINATION_CHARACTERISTICS[destKey];
-  if (!chars) return null;
-
-  let totalWeightedAchieved = 0;
-  let totalMaxWeight = 0;
-
-  SURVEY_QUESTIONS.forEach(q => {
-    const cW = conAnswers[q.id] || 3;
-    const aW = ashleyAnswers[q.id] || 3;
-    const sharedW = (cW + aW) / 2; // 50/50 exact average
-    const destRating = chars[q.id] || 3.5;
-
-    totalWeightedAchieved += (destRating / 5) * sharedW;
-    totalMaxWeight += sharedW;
-  });
-
-  return Math.round((totalWeightedAchieved / totalMaxWeight) * 100);
-}
-
-function switchActivePerson(person) {
-  activePerson = person;
-  renderSurveyUI();
-  saveState();
-}
-
-function renderSurveyUI() {
-  const btnCon = document.getElementById("btnPersonCon");
-  const btnAshley = document.getElementById("btnPersonAshley");
-  const pillCon = document.getElementById("pillConStatus");
-  const pillAshley = document.getElementById("pillAshleyStatus");
-  const personLabel = document.getElementById("surveyPersonLabel");
-  const resetLabel = document.getElementById("resetPersonLabel");
-  const container = document.getElementById("surveyQuestionsContainer");
-
-  const conCount = Object.keys(conAnswers).length;
-  const ashleyCount = Object.keys(ashleyAnswers).length;
-
-  if (pillCon) pillCon.innerText = `${conCount}/10`;
-  if (pillAshley) pillAshley.innerText = `${ashleyCount}/10`;
-
-  if (activePerson === 'con') {
-    btnCon?.classList.add("active");
-    btnAshley?.classList.remove("active");
-    if (personLabel) personLabel.innerText = "CON'S SURVEY";
-    if (resetLabel) resetLabel.innerText = "CON'S";
-  } else {
-    btnAshley?.classList.add("active");
-    btnCon?.classList.remove("active");
-    if (personLabel) personLabel.innerText = "ASHLEY'S SURVEY";
-    if (resetLabel) resetLabel.innerText = "ASHLEY'S";
-  }
-
-  const activeAnswers = activePerson === 'con' ? conAnswers : ashleyAnswers;
-  const activeCount = Object.keys(activeAnswers).length;
-  const fillPct = Math.round((activeCount / 10) * 100);
-
-  const fillEl = document.getElementById("surveyFill");
-  const textEl = document.getElementById("surveyProgressText");
-  if (fillEl) fillEl.style.width = `${fillPct}%`;
-  if (textEl) textEl.innerText = `${activeCount} OF 10 ANSWERED`;
-
-  if (container) {
-    container.innerHTML = SURVEY_QUESTIONS.map(q => {
-      const selectedW = activeAnswers[q.id];
-      const chipsHTML = q.options.map(opt => {
-        const isSel = selectedW === opt.weight;
-        return `
-          <button class="opt-chip ${isSel ? 'selected' : ''}" onclick="selectSurveyAnswer('${q.id}', ${opt.weight})">
-            ${opt.text}
-          </button>
-        `;
-      }).join("");
-
-      return `
-        <div class="q-card">
-          <div class="q-title">${q.title}</div>
-          <div class="q-options-grid ${q.options.length <= 4 ? 'cols-2' : ''}">${chipsHTML}</div>
-        </div>
-      `;
-    }).join("");
-  }
-
-  renderCoupleProfileSummary();
-  updateAllHomeBadges();
-}
-
-function selectSurveyAnswer(questionId, weight) {
-  if (activePerson === 'con') {
-    conAnswers[questionId] = weight;
-  } else {
-    ashleyAnswers[questionId] = weight;
-  }
-  renderSurveyUI();
-  saveState();
-}
-
-function resetActivePersonSurvey() {
-  const name = activePerson === 'con' ? "Con's" : "Ashley's";
-  if (confirm(`Reset ${name} survey answers?`)) {
-    if (activePerson === 'con') conAnswers = {};
-    else ashleyAnswers = {};
-    renderSurveyUI();
-    saveState();
-  }
-}
-
-function resetBothSurveysWithConfirm() {
-  if (confirm("Reset BOTH Con's and Ashley's surveys back to empty?")) {
-    conAnswers = {};
-    ashleyAnswers = {};
-    renderSurveyUI();
-    saveState();
-  }
-}
-
-function renderCoupleProfileSummary() {
-  const profileBox = document.getElementById("tripProfileContainer");
-  const summaryText = document.getElementById("tpbSummaryText");
-  const agreeList = document.getElementById("adAgreeList");
-  const differList = document.getElementById("adDifferList");
-  const rankingsList = document.getElementById("tpbRankingsList");
-
-  const conComplete = Object.keys(conAnswers).length === 10;
-  const ashleyComplete = Object.keys(ashleyAnswers).length === 10;
-
-  if (!profileBox) return;
-
-  if (!conComplete || !ashleyComplete) {
-    profileBox.style.display = "none";
-    return;
-  }
-
-  profileBox.style.display = "block";
-
-  // AGREE / DIFFER LOGIC
-  const agrees = [];
-  const differs = [];
-
-  SURVEY_QUESTIONS.forEach(q => {
-    const cW = conAnswers[q.id];
-    const aW = ashleyAnswers[q.id];
-    const diff = Math.abs(cW - aW);
-
-    if (diff >= 1.8) {
-      if (cW > aW) {
-        differs.push(`Con prioritizes ${q.category} more than Ashley.`);
-      } else {
-        differs.push(`Ashley prioritizes ${q.category} more than Con.`);
-      }
-    } else if (cW >= 3.5 && aW >= 3.5) {
-      agrees.push(`Both care strongly about ${q.category}.`);
-    } else if (cW <= 2.0 && aW <= 2.0) {
-      agrees.push(`Neither is focused heavily on ${q.category}.`);
-    }
-  });
-
-  if (agreeList) {
-    agreeList.innerHTML = agrees.length > 0 
-      ? agrees.map(a => `<li>${a}</li>`).join("") 
-      : `<li>Both value a balanced mix across categories.</li>`;
-  }
-
-  if (differList) {
-    differList.innerHTML = differs.length > 0 
-      ? differs.map(d => `<li>${d}</li>`).join("") 
-      : `<li>No major preference gaps — your priorities are very closely aligned!</li>`;
-  }
-
-  if (summaryText) {
-    summaryText.innerHTML = `Together, you're building a balanced Summer 2027 priority list. Your shared preferences are combined 50/50 below to rank all five routes.`;
-  }
-
-  // RANKED DESTINATIONS LIST
-  const ranked = ['croatia', 'greece', 'portugal', 'italy', 'france'].map(k => {
-    const cScore = calculateIndividualMatch(k, conAnswers);
-    const aScore = calculateIndividualMatch(k, ashleyAnswers);
-    const coupleScore = calculateCoupleMatch(k);
-    return {
-      key: k,
-      name: DATA[k].countryName,
-      coupleScore,
-      cScore,
-      aScore
-    };
-  }).sort((a, b) => b.coupleScore - a.coupleScore);
-
-  if (rankingsList) {
-    rankingsList.innerHTML = ranked.map((r, idx) => `
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; background:rgba(255,255,255,0.04); padding:6px 10px; border-radius:6px;">
-        <div>
-          <span style="font-weight:700;">${idx === 0 ? '🏆 1. ' : `${idx + 1}. `}${r.name}</span>
-          <span style="font-size:11px; opacity:0.75; margin-left:8px;">(Con: ${r.cScore}% · Ashley: ${r.aScore}%)</span>
-        </div>
-        <b style="color:#38bdf8; font-size:15px;">${r.coupleScore}% TOGETHER</b>
+function dayCard(day,color){
+  if(day.variants){
+    const v = day.variants[sep1];
+    const buttons = Object.entries(day.variants).map(([k,o])=>
+      `<button class="swap" aria-pressed="${k===sep1}" onclick="pickSep1('${k}')">${o.label}</button>`).join("");
+    return `<article class="day choice" style="--accent:${color}">
+      ${v.scene}
+      <div class="inner">
+        <header>
+          <div class="datechip"><b>${day.d}</b><span>${MONTH(day.d)} · ${day.dow}</span></div>
+          <div><h3>${v.title}</h3><div class="where">${v.where}</div></div>
+        </header>
+        <div class="swapbar"><span class="swaplabel">Pick one</span>${buttons}</div>
+        <ul class="timeline">${v.items.map(([when,text,cls])=>
+          `<li><span class="when">${when}</span><span class="${cls==='meal'?'meal':''}">${text}</span></li>`).join("")}</ul>
+        <footer>${v.chips.map(([k,t])=>`<span class="chip ${k}">${t}</span>`).join("")}</footer>
       </div>
-    `).join("");
+    </article>`;
   }
-}
-
-function updateAllHomeBadges() {
-  const conComplete = Object.keys(conAnswers).length === 10;
-  const ashleyComplete = Object.keys(ashleyAnswers).length === 10;
-
-  const conCount = Object.keys(conAnswers).length;
-  const ashleyCount = Object.keys(ashleyAnswers).length;
-
-  const keys = ['croatia', 'greece', 'portugal', 'italy', 'france'];
-  keys.forEach(k => {
-    const badge = document.getElementById(`fitBadge${k.charAt(0).toUpperCase() + k.slice(1)}`);
-    if (badge) {
-      if (conComplete && ashleyComplete) {
-        const coupleScore = calculateCoupleMatch(k);
-        badge.innerText = `OUR FIT · ${coupleScore}%`;
-      } else {
-        let status = "WAITING FOR BOTH SURVEYS";
-        if (conComplete && !ashleyComplete) status = `CON ✓ · ASHLEY ${ashleyCount}/10`;
-        else if (!conComplete && ashleyComplete) status = `CON ${conCount}/10 · ASHLEY ✓`;
-        else if (conCount > 0 || ashleyCount > 0) status = `CON ${conCount}/10 · ASHLEY ${ashleyCount}/10`;
-        badge.innerText = status;
-      }
-    }
-  });
-
-  renderPersonalizedFitSection();
-  renderDecisionSummary();
-}
-
-function renderPersonalizedFitSection() {
-  const container = document.getElementById("ourFitContainer");
-  if (!container || !DATA[currentTripKey]) return;
-
-  const conComplete = Object.keys(conAnswers).length === 10;
-  const ashleyComplete = Object.keys(ashleyAnswers).length === 10;
-
-  if (!conComplete || !ashleyComplete) {
-    const cCount = Object.keys(conAnswers).length;
-    const aCount = Object.keys(ashleyAnswers).length;
-    container.innerHTML = `
-      <h3>OUR FIT FOR THIS TRIP</h3>
-      <p style="font-size:13.5px; color:var(--text-muted);">
-        Complete both surveys on the Home page to unlock custom couple alignment for ${DATA[currentTripKey].countryName}.<br>
-        <b>Current Progress:</b> Con: ${cCount}/10 answered · Ashley: ${aCount}/10 answered.
-      </p>
-    `;
-    return;
-  }
-
-  const coupleScore = calculateCoupleMatch(currentTripKey);
-  const conScore = calculateIndividualMatch(currentTripKey, conAnswers);
-  const ashleyScore = calculateIndividualMatch(currentTripKey, ashleyAnswers);
-  const chars = DESTINATION_CHARACTERISTICS[currentTripKey];
-
-  const fitsHTML = chars.fits.map(f => `<li>${f}</li>`).join("");
-  const compHTML = chars.compromises.map(c => `<li>${c}</li>`).join("");
-
-  // GENERATE "WHERE WE MAY FEEL IT DIFFERENTLY" DYNAMICALLY IF GAP >= 2.0
-  let differSectionHTML = "";
-  let differBullets = [];
-  SURVEY_QUESTIONS.forEach(q => {
-    const cVal = conAnswers[q.id];
-    const aVal = ashleyAnswers[q.id];
-    const gap = cVal - aVal; // positive means Con higher, negative means Ashley higher
-
-    if (Math.abs(gap) >= 2.0) {
-      const ratingInTrip = chars[q.id] || 3.5;
-      if (q.id === 'ease') {
-        if (gap < 0 && ratingInTrip <= 3.5) {
-          differBullets.push(`Ashley prioritizes easy logistics much more than Con, so she may feel the transfer friction in this route more strongly.`);
-        } else if (gap > 0) {
-          differBullets.push(`Con is much more willing to accept transfer complexity here than Ashley.`);
-        }
-      } else if (q.id === 'culture' || q.id === 'towns') {
-        if (gap > 0 && ratingInTrip >= 4.5) {
-          differBullets.push(`Con's higher emphasis on ${q.category.toLowerCase()} means this destination's depth is a bigger positive for him than for Ashley.`);
-        } else if (gap < 0 && ratingInTrip >= 4.5) {
-          differBullets.push(`Ashley's higher emphasis on ${q.category.toLowerCase()} means this destination's depth is a bigger positive for her than for Con.`);
-        }
-      } else if (q.id === 'beaches' || q.id === 'relaxation') {
-        if (gap < 0 && ratingInTrip >= 4.5) {
-          differBullets.push(`Ashley values ${q.category.toLowerCase()} more heavily, making this spot's downtime especially rewarding for her.`);
-        } else if (gap > 0 && ratingInTrip >= 4.5) {
-          differBullets.push(`Con values ${q.category.toLowerCase()} more heavily, making this spot's downtime especially rewarding for him.`);
-        }
-      }
-    }
-  });
-
-  if (differBullets.length > 0) {
-    differSectionHTML = `
-      <h4 style="font-family:var(--font-plaque); font-size:12px; text-transform:uppercase; letter-spacing:0.1em; margin:18px 0 8px; color:var(--text-dark);">Where We May Feel It Differently</h4>
-      <ul style="margin:0; padding-left:16px; font-size:13px; line-height:1.45;">
-        ${differBullets.map(b => `<li style="margin-bottom:6px;">${b}</li>`).join("")}
-      </ul>
-    `;
-  }
-
-  container.innerHTML = `
-    <h3>OUR FIT FOR THIS TRIP: <span style="color:var(--accent);">${coupleScore}% COUPLE MATCH</span></h3>
-    <div style="font-size:12px; color:var(--text-muted); margin-top:-4px; margin-bottom:12px;">
-      Individual Breakdown: <b>Con ${conScore}%</b> · <b>Ashley ${ashleyScore}%</b>
+  return `<article class="day" style="--accent:${color}">
+    ${day.scene}
+    <div class="inner">
+      <header>
+        <div class="datechip"><b>${day.d}</b><span>${MONTH(day.d)} · ${day.dow}</span></div>
+        <div><h3>${day.title}</h3><div class="where">${day.where}</div></div>
+      </header>
+      <ul class="timeline">${day.items.map(([when,text,cls])=>
+        `<li><span class="when">${when}</span><span class="${cls==='meal'?'meal':''}">${text}</span></li>`).join("")}</ul>
+      ${day.chips?`<footer>${day.chips.map(([k,t])=>`<span class="chip ${k}">${t}</span>`).join("")}</footer>`:""}
     </div>
-    <div class="st-grid">
-      <div class="st-card strengths">
-        <h5>WHY IT FITS US</h5>
-        <ul>${fitsHTML}</ul>
-      </div>
-      <div class="st-card tradeoffs">
-        <h5>WHERE IT COMPROMISES</h5>
-        <ul>${compHTML}</ul>
+  </article>`;
+}
+
+function renderCity(k){
+  const c = CITIES[k];
+  document.getElementById("view_"+k).innerHTML = `
+    <div class="cityhead" style="--accent:${c.color}">
+      ${c.art}
+      <div class="body">
+        <h2>${c.name}</h2>
+        <div class="meta">${c.dates} · ${c.base}</div>
+        <p>${c.blurb}</p>
       </div>
     </div>
-    ${differSectionHTML}
-  `;
+    <div class="citybar">${c.facts.map(f=>`<span class="chip">${f}</span>`).join("")}</div>
+    ${DAYS.filter(d=>d.city===k).map(d=>dayCard(d,c.color)).join("")}
+    <footer class="colophon">Times are working plans, not reservations.</footer>`;
 }
+Object.keys(CITIES).forEach(renderCity);
+updateLedger();
 
-function renderTopBanner(trip) {
-  const banner = document.getElementById("topCostBanner");
-  if (!banner) return;
-
-  let likely = trip.budget.likely;
-  let ceiling = trip.budget.ceiling;
-
-  if (trip.id === 'italy') {
-    const actVal = italyBdayOption === 'boat' ? 250 : 140;
-    likely = Math.round(2490.04 + italyAirfare + italyTrans + italyFood + actVal);
-    ceiling = 7000;
-  }
-
-  const ppLow = Math.round(likely / 2);
-  const ppHigh = Math.round(ceiling / 2);
-
-  banner.innerHTML = `
-    <div class="selected-dest-title">${trip.countryName}</div>
-    <div class="selected-route-sub">${trip.route}</div>
-    <div class="cost-headline-label">Estimated Couple Planning Cost</div>
-    <div class="cost-big-number">~$${likely.toLocaleString()} likely</div>
-    <div class="cost-sub-details">
-      <span>Planning Range: <b>$${likely.toLocaleString()} likely / $${ceiling.toLocaleString()} ceiling</b></span>
-      <span>Per Person: <b>~$${ppLow.toLocaleString()}–$${ppHigh.toLocaleString()} pp</b></span>
-    </div>
-    <div class="cost-includes">Includes: Flights · Lodging · Food + drinks · Ground transport · Activities</div>
-    <div class="selected-tagline-badge">${trip.subtitle}</div>
-    <div class="selected-tagline-desc">${trip.tagline}</div>
-  `;
-}
-
-function renderItalySpecificModules() {
-  const container = document.getElementById("destCustomModules");
-  if (!container) return;
-
-  if (currentTripKey !== 'italy') {
-    container.innerHTML = "";
-    return;
-  }
-
-  const actVal = italyBdayOption === 'boat' ? 250 : 140;
-  const calcTotal = 2490.04 + Number(italyAirfare) + Number(italyTrans) + Number(italyFood) + actVal;
-  const roundedHeadline = Math.round(calcTotal / 50) * 50;
-
-  container.innerHTML = `
-    <!-- ITALY DAILY ITINERARY ACCORDIONS -->
-    <div class="section-label">Detailed Italy Itinerary (July 2–15)</div>
-    
-    <details class="italy-section" open>
-      <summary>🏛️ Rome — July 2–6 (4 Nights)</summary>
-      <div class="section-content">
-        <div class="day-card">
-          <div class="day-title">Friday, July 2 — Arrival and Monti</div>
-          <div class="day-detail"><b>Activities:</b> Arrive in Rome, check in at Relais Forus Inn (Monti), easy Monti orientation walk, Piazza della Madonna dei Monti. Optional Trevi Fountain after dark if energy permits.</div>
-          <div class="day-detail"><b>Breakfast:</b> Travel day</div>
-          <div class="day-detail"><b>Lunch:</b> Fuorinorma panino if arrival timing works <span class="badge-tag cheap">Cheap Casual TBD</span></div>
-          <div class="day-detail"><b>Dinner:</b> Pizzeria della Madonna dei Monti <span class="badge-tag casual">Casual</span></div>
-          <div class="day-detail"><b>Drinks:</b> One inexpensive neighborhood spritz or glass of wine</div>
-        </div>
-
-        <div class="day-card">
-          <div class="day-title">Saturday, July 3 — Ancient Rome</div>
-          <div class="day-detail"><b>Activities:</b> Colosseum interior, Roman Forum and Palatine Hill. Afternoon hotel reset during hottest hours.</div>
-          <div class="day-detail"><b>Breakfast:</b> Relais Forus breakfast if included in final rate</div>
-          <div class="day-detail"><b>Lunch:</b> Ce Stamo a Pensà — Casual seated lunch (pasta, fried pizza or daily plates, ~€30–40 for two) <span class="badge-tag casual">Casual Seated</span></div>
-          <div class="day-detail"><b>Dinner:</b> La Taverna dei Fori Imperiali — Primary classic Roman dinner <span class="badge-tag special">Reserve Ahead</span></div>
-          <div class="day-detail"><b>Drinks:</b> Casual wine only; no destination cocktail bar</div>
-        </div>
-
-        <div class="day-card">
-          <div class="day-title">Sunday, July 4 — Roaming, Shopping and Eating</div>
-          <div class="day-detail"><b>Activities:</b> Spanish Steps, Via Condotti & Via del Corso, Trevi Fountain, Pantheon (admired outside), Piazza Navona. Open roaming/shopping/eating day.</div>
-          <div class="day-detail"><b>Breakfast:</b> Er Baretto (cappuccino & cornetto) <span class="badge-tag cheap">Cheap</span></div>
-          <div class="day-detail"><b>Lunch:</b> Antico Forno Roscioli — Pizza bianca, bakery items, pizza by the slice or supplì <span class="badge-tag cheap">Cheap Casual</span></div>
-          <div class="day-detail"><b>Coffee/Gelato:</b> Sant’Eustachio Caffè espresso & Giolitti gelato</div>
-          <div class="day-detail"><b>Dinner:</b> Osteria delle Coppelle — Casual seated dinner convenient to route <span class="badge-tag casual">Casual Seated</span></div>
-          <div class="day-detail"><b>Cocktails:</b> Club Derrière — One planned cocktail-bar night (one cocktail each) <span class="badge-tag special">Special Night</span></div>
-        </div>
-
-        <div class="day-card">
-          <div class="day-title">Monday, July 5 — Vatican and Prati</div>
-          <div class="day-detail"><b>Activities:</b> St. Peter’s Square, optional St. Peter’s Basilica interior if security line is reasonable. Wander Prati, return to Monti for final evening.</div>
-          <div class="day-detail"><b>Breakfast:</b> Relais Forus breakfast if included</div>
-          <div class="day-detail"><b>Lunch:</b> 200 Gradi — Made-to-order hot panino near Vatican <span class="badge-tag cheap">Cheap Casual</span></div>
-          <div class="day-detail"><b>Dinner:</b> Cuoco & Camicia — Modern, creative Italian cooking <span class="badge-tag special">Reserve Ahead</span></div>
-          <div class="day-detail"><b>After Dinner:</b> Final Monti passeggiata and optional glass of wine</div>
-        </div>
-
-        <div class="day-card">
-          <div class="day-title">Tuesday, July 6 — Rome to Monopoli (Transfer Day)</div>
-          <div class="day-detail"><b>Activities:</b> Check out, high-speed train from Rome to Monopoli, check in at The Seagull Airbnb — current nine-night Monopoli option, arrival grocery run.</div>
-          <div class="day-detail"><b>Breakfast:</b> Quick hotel breakfast or café stop</div>
-          <div class="day-detail"><b>Lunch:</b> Trapizzino at Mercato Centrale if timing works <span class="badge-tag cheap">Cheap Casual TBD</span></div>
-          <div class="day-detail"><b>Dinner:</b> Vico Fish Bar in Monopoli <span class="badge-tag casual">Casual Seafood</span></div>
-        </div>
-      </div>
-    </details>
-
-    <details class="italy-section" open>
-      <summary>🌊 Puglia — July 6–15 (9 Nights · No Car · Monopoli Base)</summary>
-      <div class="section-content">
-        <p style="font-size:12px; color:var(--text-muted); margin-top:0; margin-bottom:12px;"><i>No car · Monopoli is the single base · trains, walking and occasional taxis</i></p>
-        
-        <div class="day-card">
-          <div class="day-title">Wednesday, July 7 — Monopoli and Free Beach</div>
-          <div class="day-detail"><b>Activities:</b> Monopoli old town, Cala Porta Vecchia, free beach day <span class="badge-tag free">Free</span></div>
-          <div class="day-detail"><b>Breakfast:</b> Airbnb breakfast</div>
-          <div class="day-detail"><b>Lunch:</b> Airbnb-made Italian sandwiches #1 <span class="badge-tag cheap">Cheap / Groceries</span></div>
-          <div class="day-detail"><b>Dinner:</b> Trattoria San Domenico <span class="badge-tag casual">Casual</span></div>
-        </div>
-
-        <div class="day-card">
-          <div class="day-title">Thursday, July 8 — Polignano a Mare Day Trip</div>
-          <div class="day-detail"><b>Activities:</b> Short train to Polignano a Mare, viewpoints, old town, swim if conditions permit, return to Monopoli.</div>
-          <div class="day-detail"><b>Breakfast:</b> Airbnb breakfast</div>
-          <div class="day-detail"><b>Lunch:</b> Pescaria seafood sandwich <span class="badge-tag cheap">Cheap Casual</span></div>
-          <div class="day-detail"><b>Dinner:</b> Al Vicoletto — Cucina di Casa <span class="badge-tag casual">Casual Home Cooking</span></div>
-        </div>
-
-        <div class="day-card">
-          <div class="day-title">Friday, July 9 — Free Beach and Casual Food</div>
-          <div class="day-detail"><b>Activities:</b> Porto Bianco or Porto Rosso, relaxed Monopoli afternoon <span class="badge-tag free">Free</span></div>
-          <div class="day-detail"><b>Breakfast:</b> Cappuccino and cornetto out <span class="badge-tag cheap">Cheap</span></div>
-          <div class="day-detail"><b>Lunch:</b> Gustavo salumeria sandwich <span class="badge-tag cheap">Cheap Casual</span></div>
-          <div class="day-detail"><b>Dinner:</b> Pinsotti <span class="badge-tag casual">Casual Pizza</span></div>
-        </div>
-
-        <div class="day-card" style="border: 1.5px solid #ec4899; background: rgba(236,72,153,0.04);">
-          <div class="day-title" style="color: #db2777;">Saturday, July 10 — Ashley’s Birthday 🎉</div>
-          <div class="day-detail"><b>Birthday Experience:</b> ${italyBdayOption === 'boat' ? 'Shared Small-Group Boat Excursion (~$150–225 total)' : 'Lido Beach Day Lounge & Umbrella (~$60–120 total)'} <span class="badge-tag special">Birthday Highlight</span></div>
-          <div class="day-detail"><b>Breakfast:</b> Simple Airbnb breakfast</div>
-          <div class="day-detail"><b>Lunch:</b> Light beach, boat or lido lunch</div>
-          <div class="day-detail"><b>Dinner:</b> Atypical Restaurant — Ashley’s special birthday dinner <span class="badge-tag special">Reserve Ahead</span></div>
-        </div>
-
-        <div class="day-card">
-          <div class="day-title">Sunday, July 11 — Lecce Day Trip</div>
-          <div class="day-detail"><b>Activities:</b> Train to Lecce, Baroque architecture, Piazza del Duomo, Basilica di Santa Croce, historic-center wandering.</div>
-          <div class="day-detail"><b>Breakfast:</b> Airbnb breakfast</div>
-          <div class="day-detail"><b>Lunch:</b> Doppiozero — Casual seated lunch (~€35–50 for two: burrata, salumi, local vegetables, salads) <span class="badge-tag casual">Casual Seated</span></div>
-          <div class="day-detail"><b>Snack:</b> Shared rustico leccese or panzerotto <span class="badge-tag cheap">Optional Snack</span></div>
-          <div class="day-detail"><b>Dinner:</b> Light spontaneous dinner in Lecce or Monopoli <span class="badge-tag casual">Casual</span></div>
-        </div>
-
-        <div class="day-card">
-          <div class="day-title">Monday, July 12 — Empty Free-Beach Day</div>
-          <div class="day-detail"><b>Activities:</b> Deliberately unstructured, free beach, swimming, reading and resting <span class="badge-tag free">Free</span></div>
-          <div class="day-detail"><b>Breakfast:</b> Airbnb breakfast</div>
-          <div class="day-detail"><b>Lunch:</b> Airbnb-made Italian sandwiches #2 <span class="badge-tag cheap">Cheap / Groceries</span></div>
-          <div class="day-detail"><b>Dinner:</b> Intentional Airbnb dinner cooking local pasta, fresh tomatoes, cheese and wine <span class="badge-tag cheap">Local Grocery Experience</span></div>
-        </div>
-
-        <div class="day-card">
-          <div class="day-title">Tuesday, July 13 — Slow Monopoli Day</div>
-          <div class="day-detail"><b>Activities:</b> Slow morning, swimming, shopping or wandering. No major excursion required.</div>
-          <div class="day-detail"><b>Breakfast/Lunch:</b> Cortino brunch (replaces both breakfast & lunch) <span class="badge-tag casual">Casual Seated Brunch</span></div>
-          <div class="day-detail"><b>Dinner:</b> Café Machiavelli <span class="badge-tag casual">Casual</span></div>
-        </div>
-
-        <div class="day-card">
-          <div class="day-title">Wednesday, July 14 — Final Beach and Farewell Dinner</div>
-          <div class="day-detail"><b>Activities:</b> Final free beach, old-town shopping, pack and enjoy final evening.</div>
-          <div class="day-detail"><b>Breakfast:</b> Second cappuccino and cornetto morning out <span class="badge-tag cheap">Cheap</span></div>
-          <div class="day-detail"><b>Lunch:</b> Pick up puccia or sandwiches from Magnapulia <span class="badge-tag cheap">Cheap Casual</span></div>
-          <div class="day-detail"><b>Dinner:</b> Il Guazzetto — Farewell seafood dinner <span class="badge-tag special">Reserve Ahead</span></div>
-        </div>
-
-        <div class="day-card">
-          <div class="day-title">Thursday, July 15 — Departure Day</div>
-          <div class="day-detail"><b>Activities:</b> Check out, travel to Bari Airport, depart.</div>
-          <div class="day-detail"><b>Breakfast:</b> Airbnb or airport breakfast</div>
-        </div>
-      </div>
-    </details>
-
-    <!-- PUGLIA GROCERY CARD -->
-    <div class="card-box">
-      <h3>🛒 Puglia Arrival Grocery Plan (Monopoli Base)</h3>
-      <p style="font-size:12.5px; color:var(--text-muted); margin-top:-6px;">A simple Italian home breakfast consists of coffee, cornetto/pastry, yogurt, fruit, and bread/fette biscottate with jam. Stocking up on arrival makes mornings effortless:</p>
-      <div style="font-size:13px; line-height:1.45; display:grid; grid-template-columns: 1fr 1fr; gap:8px; background:rgba(0,0,0,0.03); padding:10px; border-radius:6px; border:1px solid var(--card-border);">
-        <div>• Fresh Fruit & Yogurt<br>• Cornetti & Pastries<br>• Fette Biscottate, Jam, Nutella<br>• Coffee & Fresh Water</div>
-        <div>• Fresh Bread, Cheese & Salumi<br>• Ripe Local Tomatoes<br>• Wine, Beer & Snacks<br>• Sandwich Supplies</div>
-      </div>
-    </div>
-
-    <!-- FOOD BALANCE & SAVINGS EXPLANATION CARDS -->
-    <div class="st-grid" style="margin-bottom:14px;">
-      <div class="st-card strengths">
-        <h5>🍽️ Food Balance & Quality</h5>
-        <ul>
-          <li><b>Dinner is planned for all 13 nights:</b> 11 named restaurant experiences, one light spontaneous Lecce/Monopoli dinner and one intentional Airbnb dinner.</li>
-          <li><b>3 Daytime Seated Meals:</b> Ce Stamo a Pensà, Doppiozero, and Cortino brunch.</li>
-          <li><b>Casual Daytime Favorites:</b> Panini, pizza by the slice, Pescaria seafood sandwiches, bakery items, or Airbnb beach sandwiches.</li>
-          <li><b>Special Highlights:</b> Club Derrière cocktails in Rome, Ashley’s birthday dinner at Atypical, and farewell seafood at Il Guazzetto.</li>
-        </ul>
-      </div>
-      <div class="st-card tradeoffs" style="background:rgba(56, 189, 248, 0.08); border-color:var(--accent);">
-        <h5 style="color:var(--accent-text);">💡 How Italy Stays Under $7,000</h5>
-        <ul>
-          <li><b>No Rental Car:</b> $0 car rental, $0 parking, $0 fuel, $0 deposit credit hold. Walk & train default.</li>
-          <li><b>Lodging Efficiency:</b> Only 1 hotel move (Rome → Puglia) with 9 nights in 1 coastal Airbnb.</li>
-          <li><b>Grocery & Meal Tactics:</b> Airbnb breakfasts, 2 homemade beach sandwich lunches, and 1 local pasta night in.</li>
-          <li><b>Focused Splurges:</b> Free beaches, 1 cocktail night, shared boat OR lido (never both), and zero expensive cooking classes.</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- INCLUDED / OPTIONAL / NOT INCLUDED MATRIX -->
-    <div class="card-box">
-      <h3>📋 Scope & Inclusions Matrix</h3>
-      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px; font-size:12.5px; margin-top:8px;">
-        <div style="background:rgba(34, 197, 94, 0.08); border:1px solid #86efac; padding:10px; border-radius:6px;">
-          <b style="color:#166534; font-family:var(--font-plaque); font-size:10px; letter-spacing:0.1em; display:block; margin-bottom:6px;">INCLUDED IN BASELINE</b>
-          • Colosseum + Forum/Palatine tickets<br>
-          • Shared birthday boat OR lido day<br>
-          • Atypical birthday dinner<br>
-          • Club Derrière cocktail night<br>
-          • 2 casual seated lunches + Cortino brunch<br>
-          • Public transportation & occasional taxis<br>
-          • All listed dinners & grocery supplies
-        </div>
-        <div style="background:rgba(234, 179, 8, 0.08); border:1px solid #fde047; padding:10px; border-radius:6px;">
-          <b style="color:#854d0e; font-family:var(--font-plaque); font-size:10px; letter-spacing:0.1em; display:block; margin-bottom:6px;">OPTIONAL / SPONTANEOUS</b>
-          • St. Peter’s Basilica interior (if security line permits)<br>
-          • One additional spontaneous taxi<br>
-          • Extra cocktails beyond baseline<br>
-          • Shared rustico or panzerotto in Lecce<br>
-          • Trapizzino on transfer day
-        </div>
-        <div style="background:rgba(239, 68, 68, 0.08); border:1px solid #fca5a5; padding:10px; border-radius:6px;">
-          <b style="color:#991b1b; font-family:var(--font-plaque); font-size:10px; letter-spacing:0.1em; display:block; margin-bottom:6px;">NOT INCLUDED / EXCLUDED</b>
-          • Rental car, fuel & parking<br>
-          • Private boat charter (not in baseline)<br>
-          • Both boat AND lido simultaneously<br>
-          • Puglia cooking class<br>
-          • Vatican Museums & Sistine Chapel<br>
-          • Hotel Quirinale, Casa Coppelle, Retrobottega<br>
-          • Daily paid beach clubs
-        </div>
-      </div>
-    </div>
-
-    <!-- INTERACTIVE ITALY CALCULATOR & BIRTHDAY SELECTOR -->
-    <div class="card-box" style="border: 2px solid var(--accent);">
-      <h3>🧮 Interactive Italy Budget Calculator</h3>
-      <p style="font-size:12.5px; color:var(--text-muted); margin-top:-6px; margin-bottom:14px;">Adjust variables below to recalculate the expected Italy planning total in real time:</p>
-
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; font-size:13px; margin-bottom:16px;">
-        <div>
-          <label style="font-weight:600; display:block; margin-bottom:4px;">Flights for Two ($1,600–$2,000):</label>
-          <input type="range" min="1600" max="2000" step="50" value="${italyAirfare}" oninput="updateItalyCalc('airfare', this.value)" style="width:100%;">
-          <div style="text-align:right; font-weight:700; color:var(--accent);">$${Number(italyAirfare).toLocaleString()}</div>
-        </div>
-
-        <div>
-          <label style="font-weight:600; display:block; margin-bottom:4px;">Food & Drinks ($1,700–$1,900):</label>
-          <input type="range" min="1700" max="1900" step="25" value="${italyFood}" oninput="updateItalyCalc('food', this.value)" style="width:100%;">
-          <div style="text-align:right; font-weight:700; color:var(--accent);">$${Number(italyFood).toLocaleString()}</div>
-        </div>
-
-        <div>
-          <label style="font-weight:600; display:block; margin-bottom:4px;">Transit ($275–$350):</label>
-          <input type="range" min="275" max="350" step="25" value="${italyTrans}" oninput="updateItalyCalc('trans', this.value)" style="width:100%;">
-          <div style="text-align:right; font-weight:700; color:var(--accent);">$${Number(italyTrans).toLocaleString()}</div>
-        </div>
-
-        <div>
-          <label style="font-weight:600; display:block; margin-bottom:4px;">Ashley's Birthday Experience (Boat OR Lido):</label>
-          <select onchange="updateItalyCalc('bday', this.value)" style="width:100%; padding:6px; border-radius:4px; background:var(--card-bg); color:var(--text-dark); border:1px solid var(--card-border);">
-            <option value="boat" ${italyBdayOption === 'boat' ? 'selected' : ''}>Option A: Shared Boat Excursion (~$200 midpoint)</option>
-            <option value="lido" ${italyBdayOption === 'lido' ? 'selected' : ''}>Option B: Lido Beach Day (~$90 midpoint)</option>
-          </select>
-          <div style="text-align:right; font-size:11px; color:var(--text-muted); margin-top:2px;">Rome Tickets ($55) + Selected Bday</div>
-        </div>
-      </div>
-
-      <div style="background:var(--accent-light); border:1px solid var(--card-border); padding:14px; border-radius:6px; text-align:center;">
-        <div style="font-family:var(--font-plaque); font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-muted);">Dynamically Calculated Italy Expected Total</div>
-        <div style="font-family:var(--font-display); font-size:32px; font-weight:700; color:var(--accent); margin:2px 0;">~$${roundedHeadline.toLocaleString()} for two</div>
-        <div style="font-size:12.5px; color:var(--text-dark);">
-          Exact Default Expected Total: <b>$6,665.04</b> | Per Person: <b>~$${Math.round(calcTotal/2).toLocaleString()} pp</b> | Safe Planning Target: <b>$7,000</b> (Absolute max slider combo: ~$7,030)
-        </div>
-        <div style="font-size:11.5px; color:var(--text-muted); margin-top:6px;">
-          Realistic likely booking outcome: <b>$6,450–$6,750</b> | Full adjustable calculator range: <b>$6,175–$7,030</b>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-function updateItalyCalc(key, val) {
-  if (key === 'airfare') italyAirfare = Number(val);
-  if (key === 'food') italyFood = Number(val);
-  if (key === 'trans') italyTrans = Number(val);
-  if (key === 'bday') italyBdayOption = val;
-
-  renderItalySpecificModules();
-  renderTopBanner(DATA.italy);
-  renderTripProfile(DATA.italy);
-  saveState();
-}
-
-function renderTripProfile(trip) {
-  const container = document.getElementById("tripProfileBox");
-  if (!container) return;
-
-  const lodgingHTML = trip.lodgingItems.map(item => `
-    <div class="lodging-item">
-      <div class="lodging-name">${item.name} <span class="badge-status ${item.statusClass}">${item.status}</span></div>
-      <div class="lodging-meta">${item.details}</div>
-    </div>
-  `).join("");
-
-  const strengthsHTML = trip.strengths.map(s => `<li>${s}</li>`).join("");
-  const tradeoffsHTML = trip.tradeoffs.map(t => `<li>${t}</li>`).join("");
-
-  container.innerHTML = `
-    <h3>${trip.countryName} — ${trip.subtitle}</h3>
-    <div class="st-grid">
-      <div class="st-card strengths">
-        <h5>Key Benefits & Advantages</h5>
-        <ul>${strengthsHTML}</ul>
-      </div>
-      <div class="st-card tradeoffs">
-        <h5>Tradeoffs / Considerations</h5>
-        <ul>${tradeoffsHTML}</ul>
-      </div>
-    </div>
-
-    <h4 style="font-family:var(--font-plaque); font-size:12px; text-transform:uppercase; letter-spacing:0.1em; margin:18px 0 8px; color:var(--text-dark);">Lodging & Planning Alignment (${trip.lodgingTotalText})</h4>
-    <div>${lodgingHTML}</div>
-  `;
-
-  // Dynamic Dining Strategy Timeline Injection
-  const diningContainer = document.getElementById("foodTimelineContainer");
-  if (diningContainer && trip.diningStrategy) {
-    diningContainer.innerHTML = `
-      <div class="food-step">
-        <div class="food-time">Morning</div>
-        <div class="food-desc">${trip.diningStrategy.morning}</div>
-      </div>
-      <div class="food-step">
-        <div class="food-time">Lunch</div>
-        <div class="food-desc">${trip.diningStrategy.lunch}</div>
-      </div>
-      <div class="food-step">
-        <div class="food-time">Afternoon</div>
-        <div class="food-desc">${trip.diningStrategy.afternoon}</div>
-      </div>
-      <div class="food-step">
-        <div class="food-time">Dinner</div>
-        <div class="food-desc">${trip.diningStrategy.dinner}</div>
-      </div>
-    `;
-  }
-
-  document.getElementById("foodExamples").innerHTML = trip.foodExamples;
-  document.getElementById("howWeSaveBox").innerHTML = trip.howWeSave;
-
-  const rhythmHTML = trip.rhythm.map(r => `<li>${r}</li>`).join("");
-  document.getElementById("rhythmList").innerHTML = rhythmHTML;
-
-  if (trip.id === 'italy') {
-    const actVal = italyBdayOption === 'boat' ? 250 : 140;
-    const calcTotal = 2490.04 + Number(italyAirfare) + Number(italyTrans) + Number(italyFood) + actVal;
-    
-    document.getElementById("budgetTableContainer").innerHTML = `
-      <table class="budget-table">
-        <thead>
-          <tr>
-            <th>Category</th>
-            <th style="text-align:right;">Estimated Amount (2 Adults)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Lodging (Relais Forus Inn $795.86 + The Seagull Airbnb $1,694.18)</td><td style="text-align:right;">$2,490.04</td></tr>
-          <tr><td>International Airfare for Two (Adjustable)</td><td style="text-align:right;">$${Number(italyAirfare).toLocaleString()}</td></tr>
-          <tr><td>Transportation (Trains, Transit, Airport Transfers, Taxis)</td><td style="text-align:right;">$${Number(italyTrans).toLocaleString()}</td></tr>
-          <tr><td>Food & Drinks (Dining Strategy, Groceries, Aperitivi)</td><td style="text-align:right;">$${Number(italyFood).toLocaleString()}</td></tr>
-          <tr><td>Activities (Colosseum/Forum $55 + ${italyBdayOption === 'boat' ? 'Shared Birthday Boat ~$195' : 'Lido Day ~$85'})</td><td style="text-align:right;">$${actVal}</td></tr>
-          <tr class="total-row"><td>EXPECTED TOTAL / SAFE CEILING</td><td style="text-align:right;">~$${Math.round(calcTotal).toLocaleString()} expected / $7,000 ceiling</td></tr>
-        </tbody>
-      </table>
-    `;
-  } else {
-    const b = trip.budget;
-    document.getElementById("budgetTableContainer").innerHTML = `
-      <table class="budget-table">
-        <thead>
-          <tr>
-            <th>Category</th>
-            <th style="text-align:right;">Estimated Range (2 Adults)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Lodging</td><td style="text-align:right;">$${b.lodgingLow.toLocaleString()} ${b.lodgingHigh !== b.lodgingLow ? '– $' + b.lodgingHigh.toLocaleString() : ''}</td></tr>
-          <tr><td>International Airfare (from NYC)</td><td style="text-align:right;">$${b.airfareLow.toLocaleString()} – $${b.airfareHigh.toLocaleString()}</td></tr>
-          <tr><td>Intercity Trains / Ferries / Local Transit</td><td style="text-align:right;">$${b.transitLow.toLocaleString()} – $${b.transitHigh.toLocaleString()}</td></tr>
-          <tr><td>Food & Dining (Shared Dining Strategy)</td><td style="text-align:right;">$${b.foodLow.toLocaleString()} – $${b.foodHigh.toLocaleString()}</td></tr>
-          <tr><td>Activities & Sightseeing</td><td style="text-align:right;">$${b.activitiesLow.toLocaleString()} – $${b.activitiesHigh.toLocaleString()}</td></tr>
-          <tr class="total-row"><td>LIKELY PLAN TOTAL / CEILING</td><td style="text-align:right;">~$${b.likely.toLocaleString()} likely / $${b.ceiling.toLocaleString()} ceiling</td></tr>
-        </tbody>
-      </table>
-    `;
-  }
-}
-
-function renderDynamicPace() {
-  const container = document.getElementById("dynamicPaceContainer");
-  if (!container) return;
-
-  const sortedPace = [...PACE_DATA].sort((a, b) => {
-    if (a.id === currentTripKey) return -1;
-    if (b.id === currentTripKey) return 1;
-    return 0;
+const VIEWS = ["home"].concat(Object.keys(CITIES));
+function showView(v){
+  VIEWS.forEach(k=>{
+    document.getElementById("view_"+k).classList.toggle("hidden", k!==v);
+    document.getElementById("tab_"+k).setAttribute("aria-selected", k===v);
   });
-
-  container.innerHTML = sortedPace.map(item => {
-    const isSelected = item.id === currentTripKey;
-    const segmentsHTML = item.segments.map(s => `
-      <div class="pace-seg" style="width: ${s.width}; background: ${s.bg};">${s.text}</div>
-    `).join("");
-
-    return `
-      <div style="margin-top:14px;">
-        <div style="font-size:12px; font-weight:700; color:${isSelected ? 'var(--accent)' : 'var(--text-dark)'};">
-          ${item.name} ${isSelected ? '★ SELECTED' : ''}
-        </div>
-        <div class="pace-bar" style="${isSelected ? 'outline: 2px solid var(--accent);' : ''}">
-          ${segmentsHTML}
-        </div>
-      </div>
-    `;
-  }).join("");
+  window.scrollTo({top:0});
+  try{ localStorage.setItem("eu27_view", v); }catch(e){}
 }
 
-function renderDecisionSummary() {
-  const container = document.getElementById("decisionGrid");
-  if (!container) return;
-
-  const conComplete = Object.keys(conAnswers).length === 10;
-  const ashleyComplete = Object.keys(ashleyAnswers).length === 10;
-
-  if (!conComplete || !ashleyComplete) {
-    container.innerHTML = `
-      <div class="decision-card" style="grid-column: span 2; border: 2px dashed var(--card-border); text-align: center; padding: 20px;">
-        <div class="decision-prompt">🔒 PERSONALIZED RANKING</div>
-        <div class="decision-dest" style="font-size: 16px; margin: 8px 0;">Complete both Con + Ashley surveys on Home to unlock Best Personal Fit and Runner Up.</div>
-        <div style="font-size: 12.5px; color: var(--text-muted);">Current status: Con (${Object.keys(conAnswers).length}/10) · Ashley (${Object.keys(ashleyAnswers).length}/10)</div>
-      </div>
-      <div class="decision-card">
-        <div class="decision-prompt">BEST VALUE TRIP</div>
-        <div class="decision-dest">🇭🇷🇲🇪 Croatia + Montenegro</div>
-        <div class="decision-price">~$5,900 likely / $6,500 ceiling</div>
-        <div class="decision-vibe">Objective value champion — lowest overall entry budget while offering high-impact coastal scenery and historic towns.</div>
-      </div>
-      <div class="decision-card">
-        <div class="decision-prompt">EASIEST / LOWEST STRESS ROUTE</div>
-        <div class="decision-dest">🇵🇹🇪🇸 Portugal + Spain</div>
-        <div class="decision-price">~$6,500 likely / $7,000 ceiling</div>
-        <div class="decision-vibe">Easiest logistics — 2 bases, 1 move, hotel amenities in Cascais and private terrace relaxing in Spain.</div>
-      </div>
-    `;
-    return;
-  }
-
-  const destinations = [
-    { key: 'croatia', name: '🇭🇷🇲🇪 Croatia + Montenegro', price: '~$5,900 likely / $6,500 ceiling', vibe: '“The Adriatic Escape” — Old Town Dubrovnik history + Kotor Bay mountain fjord scenery across two countries.' },
-    { key: 'greece', name: '🇬🇷 Greece', price: '~$6,300 likely / $6,800 ceiling', vibe: '“The Adventure” — Naxos beaches, car-free Hydra relaxation, and Acropolis views in Athens.' },
-    { key: 'portugal', name: '🇵🇹🇪🇸 Portugal + Spain', price: '~$6,500 likely / $7,000 ceiling', vibe: '“The Vacation” — Cascais hotel pool + Calpe sea-view private terrace. Unpack twice and live slow.' },
-    { key: 'italy', name: '🇮🇹 Italy', price: '~$6,700 likely / $7,000 ceiling', vibe: '“The Food + Culture Powerhouse” — Four nights of Rome landmarks while fresh followed by nine slow nights in coastal Puglia coves.' },
-    { key: 'france', name: '🇫🇷 France', price: '~$7,050 likely / $7,850 ceiling', vibe: '“Châteaux, Marais & Calanques” — Loire countryside castles → living in the Marais → Mediterranean calanques.' }
-  ];
-
-  const calculated = destinations.map(d => ({
-    ...d,
-    fitPct: calculateCoupleMatch(d.key)
-  })).sort((a, b) => b.fitPct - a.fitPct);
-
-  const bestFit = calculated[0];
-  const runnerUp = calculated[1];
-
-  container.innerHTML = `
-    <div class="decision-card" style="border: 2px solid var(--accent);">
-      <div class="decision-prompt">★ BEST PERSONAL FIT (${bestFit.fitPct}% MATCH)</div>
-      <div class="decision-dest">${bestFit.name}</div>
-      <div class="decision-price">${bestFit.price}</div>
-      <div class="decision-vibe">${bestFit.vibe} Highest overall match based on your combined couple survey priorities.</div>
-    </div>
-    <div class="decision-card">
-      <div class="decision-prompt">RUNNER UP (${runnerUp.fitPct}% MATCH)</div>
-      <div class="decision-dest">${runnerUp.name}</div>
-      <div class="decision-price">${runnerUp.price}</div>
-      <div class="decision-vibe">${runnerUp.vibe} Close second choice aligning with your shared travel preferences.</div>
-    </div>
-    <div class="decision-card">
-      <div class="decision-prompt">BEST VALUE TRIP</div>
-      <div class="decision-dest">🇭🇷🇲🇪 Croatia + Montenegro</div>
-      <div class="decision-price">~$5,900 likely / $6,500 ceiling</div>
-      <div class="decision-vibe">Objective value champion — lowest overall entry budget while offering high-impact coastal scenery and historic towns.</div>
-    </div>
-    <div class="decision-card">
-      <div class="decision-prompt">EASIEST / LOWEST STRESS ROUTE</div>
-      <div class="decision-dest">🇵🇹🇪🇸 Portugal + Spain</div>
-      <div class="decision-price">~$6,500 likely / $7,000 ceiling</div>
-      <div class="decision-vibe">Easiest logistics — 2 bases, 1 move, hotel amenities in Cascais and private terrace relaxing in Spain.</div>
-    </div>
-  `;
+function flipTheme(){
+  const dark = document.documentElement.getAttribute("data-theme")==="dark"
+    || (!document.documentElement.getAttribute("data-theme") && matchMedia("(prefers-color-scheme:dark)").matches);
+  document.documentElement.setAttribute("data-theme", dark ? "light" : "dark");
+  try{ localStorage.setItem("eu27_theme", dark ? "light" : "dark"); }catch(e){}
 }
 
-function getAnnualCombinations() {
-  const combos = [];
+(function(){
+  const dep = new Date("2027-08-26T17:30:00-04:00");
+  const days = Math.ceil((dep - new Date())/86400000);
+  document.getElementById("cdNum").textContent = days > 0 ? days : "0";
+  document.getElementById("cdText").textContent = days > 0
+    ? "days until wheels up from JFK. Dates firm up once Ashley's October calendar lands."
+    : "Buon viaggio.";
+})();
 
-  const sFrance = UNLOCK_DATA.summerFrance.fixedSummer;
-  UNLOCK_DATA.summerFrance.options.forEach(nye => {
-    const combinedLow = sFrance.lowVal + nye.lowVal;
-    const combinedHigh = sFrance.highVal + nye.highVal;
-    combos.push({
-      key: `summer_france_${nye.id}`,
-      branch: 'summer',
-      summerName: sFrance.name,
-      winterName: nye.name,
-      label: `${sFrance.name} + ${nye.name}`,
-      combinedLow,
-      combinedHigh,
-      midpoint: (combinedLow + combinedHigh) / 2
-    });
-  });
-
-  const parisScen = UNLOCK_DATA.winterFrance.parisFixed;
-  UNLOCK_DATA.winterFrance.options.forEach(summerOpt => {
-    const combinedLow = summerOpt.lowVal + parisScen.lowVal;
-    const combinedHigh = summerOpt.highVal + parisScen.highVal;
-    combos.push({
-      key: `winter_france_${summerOpt.id}`,
-      branch: 'winter',
-      summerName: summerOpt.name,
-      winterName: `Paris NYE (${parisScen.name})`,
-      summerOptId: summerOpt.id,
-      label: `${summerOpt.name} + 🇫🇷 Paris NYE (${parisScen.name})`,
-      combinedLow,
-      combinedHigh,
-      midpoint: (combinedLow + combinedHigh) / 2
-    });
-  });
-
-  return combos;
-}
-
-function renderUnlockModule() {
-  const promptBox = document.getElementById("unlockPromptText");
-  const cardsGrid = document.getElementById("unlockCardsGrid");
-  const calcBanner = document.getElementById("combinedCalcBanner");
-  const btnSummer = document.getElementById("btnFranceSummerMode");
-  const btnWinter = document.getElementById("btnFranceWinterMode");
-
-  if (!promptBox || !cardsGrid || !calcBanner) return;
-
-  const combos = getAnnualCombinations();
-  
-  let minCombo = combos[0];
-  let maxCombo = combos[0];
-  combos.forEach(c => {
-    if (c.midpoint < minCombo.midpoint) minCombo = c;
-    if (c.midpoint > maxCombo.midpoint) maxCombo = c;
-  });
-
-  const sortedMidpoints = combos.map(c => c.midpoint).sort((a, b) => a - b);
-  const n = sortedMidpoints.length;
-  const t1 = sortedMidpoints[Math.floor(n / 3)];
-  const t2 = sortedMidpoints[Math.floor((2 * n) / 3)];
-
-  if (franceSeasonMode === 'summer') {
-    btnSummer?.classList.add("active");
-    btnWinter?.classList.remove("active");
-
-    const data = UNLOCK_DATA.summerFrance;
-    promptBox.innerHTML = data.prompt;
-
-    cardsGrid.innerHTML = data.options.map(opt => {
-      const isSelected = opt.id === selectedNyeOptionId;
-      const isBackup = opt.tier === "BACKUP";
-      return `
-        <div class="unlock-card ${isSelected ? 'selected' : ''} ${isBackup ? 'backup-card' : ''}" onclick="selectNyeOption('${opt.id}')">
-          <div class="uc-dest">
-            <span>${opt.name}</span>
-            <span class="uc-tier-tag ${opt.tier.toLowerCase()}">${opt.tier}</span>
-          </div>
-          <div class="uc-cost">${opt.costRangeText}</div>
-          <div class="uc-nights">${opt.nights}</div>
-          <div class="uc-vibe">${opt.vibe}</div>
-          <div class="uc-lodging">${opt.lodging}</div>
-        </div>
-      `;
-    }).join("");
-
-    const activeOpt = data.options.find(o => o.id === selectedNyeOptionId) || data.options[0];
-    const combinedLow = data.fixedSummer.lowVal + activeOpt.lowVal;
-    const combinedHigh = data.fixedSummer.highVal + activeOpt.highVal;
-    const activeMidpoint = (combinedLow + combinedHigh) / 2;
-
-    let tierBadgeClass = "balanced";
-    let tierText = "BALANCED YEAR";
-    if (activeMidpoint < t1) { tierBadgeClass = "best"; tierText = "BEST VALUE YEAR"; }
-    else if (activeMidpoint >= t2) { tierBadgeClass = "highest"; tierText = "HIGH-SPEND YEAR"; }
-
-    calcBanner.innerHTML = `
-      <div class="annual-tier-badge ${tierBadgeClass}">${tierText}</div>
-      <div class="calc-label">2027 Combined Major Travel Spend</div>
-      <div class="calc-combo-title">${data.fixedSummer.name} + ${activeOpt.name}</div>
-      <div class="calc-number-big">~$${combinedLow.toLocaleString()}–$${combinedHigh.toLocaleString()} combined range</div>
-      <div class="calc-breakdown">
-        <span>Summer France (2 Travelers): <b>${data.fixedSummer.costRangeText}</b></span>
-        <span>NYE Choice (2 Travelers): <b>${activeOpt.costRangeText}</b></span>
-      </div>
-      <div class="calc-comparative-context">
-        <span>Lowest Annual Combo: <b>~$${minCombo.combinedLow.toLocaleString()}–$${minCombo.combinedHigh.toLocaleString()}</b> (${minCombo.label})</span>
-        <span>Highest Annual Combo: <b>~$${maxCombo.combinedLow.toLocaleString()}–$${maxCombo.combinedHigh.toLocaleString()}</b> (${maxCombo.label})</span>
-      </div>
-    `;
-  } else {
-    btnWinter?.classList.add("active");
-    btnSummer?.classList.remove("active");
-
-    const data = UNLOCK_DATA.winterFrance;
-    promptBox.innerHTML = data.prompt;
-
-    cardsGrid.innerHTML = data.options.map(opt => {
-      const isSelected = opt.id === selectedWinterSummerOptionId;
-      return `
-        <div class="unlock-card ${isSelected ? 'selected' : ''}" onclick="selectWinterSummerOption('${opt.id}')">
-          <div class="uc-dest">${opt.name}</div>
-          <div class="uc-cost">${opt.costRangeText}</div>
-          <div class="uc-nights">${opt.nights}</div>
-          <div class="uc-vibe">${opt.vibe}</div>
-          <div class="uc-lodging">${opt.lodging}</div>
-        </div>
-      `;
-    }).join("");
-
-    const activeSummerOpt = data.options.find(o => o.id === selectedWinterSummerOptionId) || data.options[0];
-    const parisScen = data.parisFixed;
-    const combinedLow = activeSummerOpt.lowVal + parisScen.lowVal;
-    const combinedHigh = activeSummerOpt.highVal + parisScen.highVal;
-    const activeMidpoint = (combinedLow + combinedHigh) / 2;
-
-    let tierBadgeClass = "balanced";
-    let tierText = "BALANCED YEAR";
-    if (activeMidpoint < t1) { tierBadgeClass = "best"; tierText = "BEST VALUE YEAR"; }
-    else if (activeMidpoint >= t2) { tierBadgeClass = "highest"; tierText = "HIGH-SPEND YEAR"; }
-
-    calcBanner.innerHTML = `
-      <div class="annual-tier-badge ${tierBadgeClass}">${tierText}</div>
-      <div class="calc-label">2027 Combined Major Travel Spend</div>
-      <div class="calc-combo-title">${activeSummerOpt.name} + 🇫🇷 Paris NYE (3 Travelers · 5n)</div>
-      <div class="calc-number-big">~$${combinedLow.toLocaleString()}–$${combinedHigh.toLocaleString()} combined range</div>
-      <div style="font-size:12px; color:#fef3c7; margin-bottom:8px;">${parisScen.lodgingText}</div>
-      <div class="calc-breakdown">
-        <span>Summer Choice (2 Travelers): <b>${activeSummerOpt.costRangeText}</b></span>
-        <span>Paris NYE (${parisScen.partySize}): <b>~$${parisScen.lowVal.toLocaleString()}–$${parisScen.highVal.toLocaleString()}</b></span>
-      </div>
-      <div class="calc-comparative-context">
-        <span>Lowest Annual Combo: <b>~$${minCombo.combinedLow.toLocaleString()}–$${minCombo.combinedHigh.toLocaleString()}</b> (${minCombo.label})</span>
-        <span>Highest Annual Combo: <b>~$${maxCombo.combinedLow.toLocaleString()}–$${maxCombo.combinedHigh.toLocaleString()}</b> (${maxCombo.label})</span>
-      </div>
-    `;
-  }
-}
-
-function selectNyeOption(id) {
-  selectedNyeOptionId = id;
-  renderUnlockModule();
-  saveState();
-}
-
-function selectWinterSummerOption(id) {
-  selectedWinterSummerOptionId = id;
-  renderUnlockModule();
-  saveState();
-}
-
-function updateSelectedTrip(tripKey) {
-  currentTripKey = tripKey;
-
-  document.querySelectorAll(".country-tab").forEach(tab => {
-    tab.setAttribute("aria-selected", tab.dataset.trip === tripKey ? "true" : "false");
-  });
-
-  const viewHome = document.getElementById("viewHome");
-  const viewSummer = document.getElementById("viewSummer");
-  const viewNye = document.getElementById("viewNye");
-
-  if (tripKey === 'home') {
-    document.body.setAttribute("data-theme", "home");
-    if (viewHome) viewHome.style.display = "block";
-    if (viewSummer) viewSummer.style.display = "none";
-    if (viewNye) viewNye.style.display = "none";
-    renderSurveyUI();
-    updateAllHomeBadges();
-  } else if (tripKey === 'nye') {
-    document.body.setAttribute("data-theme", "nye");
-    if (viewHome) viewHome.style.display = "none";
-    if (viewSummer) viewSummer.style.display = "none";
-    if (viewNye) viewNye.style.display = "block";
-    renderUnlockModule();
-  } else {
-    document.body.setAttribute("data-theme", tripKey);
-    if (viewHome) viewHome.style.display = "none";
-    if (viewSummer) viewSummer.style.display = "block";
-    if (viewNye) viewNye.style.display = "none";
-
-    document.querySelectorAll(".bar-fill").forEach(bar => bar.classList.remove("highlight"));
-    if (tripKey === "croatia") document.getElementById("barCroatia")?.classList.add("highlight");
-    if (tripKey === "greece") document.getElementById("barGreece")?.classList.add("highlight");
-    if (tripKey === "portugal") document.getElementById("barPortugal")?.classList.add("highlight");
-    if (tripKey === "italy") document.getElementById("barItaly")?.classList.add("highlight");
-    if (tripKey === "france") document.getElementById("barFrance")?.classList.add("highlight");
-
-    const trip = DATA[tripKey];
-    if (trip) {
-      renderTopBanner(trip);
-      renderTripProfile(trip);
-      renderPersonalizedFitSection();
-      renderDynamicPace();
-      renderItalySpecificModules();
-      renderDecisionSummary();
-    }
-  }
-
-  saveState();
-}
-
-document.addEventListener("DOMContentLoaded", async () => {
-  await loadState();
-
-  document.querySelectorAll(".country-tab").forEach(tab => {
-    tab.addEventListener("click", (e) => {
-      updateSelectedTrip(e.currentTarget.dataset.trip);
-    });
-  });
-
-  document.getElementById("btnFranceSummerMode")?.addEventListener("click", () => {
-    franceSeasonMode = 'summer';
-    renderUnlockModule();
-    saveState();
-  });
-
-  document.getElementById("btnFranceWinterMode")?.addEventListener("click", () => {
-    franceSeasonMode = 'winter';
-    renderUnlockModule();
-    saveState();
-  });
-
-  renderSurveyUI();
-  updateAllHomeBadges();
-  updateSelectedTrip(currentTripKey || 'home');
-});
+try{
+  const t = localStorage.getItem("eu27_theme");
+  if(t) document.documentElement.setAttribute("data-theme", t);
+  const v = localStorage.getItem("eu27_view");
+  if(v && VIEWS.includes(v) && v!=="home") showView(v);
+}catch(e){}
 </script>
 </body>
 </html>
